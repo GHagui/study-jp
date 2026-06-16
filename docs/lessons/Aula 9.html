@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 9 — Adjetivos (形容詞)</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7; --card-bg: #FFFFFF; --border: #1A1A2E; --shadow: #1A1A2E; --text: #1A1A2E;
+  --accent1: #FF6B6B; --accent2: #4ECDC4; --accent3: #FFE66D; --accent4: #A78BFA;
+  --accent5: #FF8C42; --accent6: #6BCB77; --accent7: #FFD93D; --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); background-image:radial-gradient(circle,#e8e8e8 1px,transparent 1px); background-size:24px 24px; font-family:var(--font-body); color:var(--text); line-height:1.6; padding:2rem; max-width:1100px; margin:0 auto; }
+h1 { font-size:2.8rem; font-weight:900; text-transform:uppercase; letter-spacing:-1px; background:var(--accent1); color:#fff; padding:1rem 1.5rem; border:4px solid var(--border); box-shadow:8px 8px 0 var(--shadow); margin-bottom:2rem; text-align:center; -webkit-text-stroke:2px var(--border); }
+h2 { font-size:1.8rem; font-weight:800; margin:2rem 0 1rem; padding:0.5rem 1rem; border:3px solid var(--border); box-shadow:5px 5px 0 var(--shadow); display:inline-block; }
+h3 { font-size:1.3rem; font-weight:700; margin:1.2rem 0 0.6rem; padding:0.3rem 0.8rem; border-left:6px solid var(--border); }
+.card { background:var(--card-bg); border:4px solid var(--border); box-shadow:6px 6px 0 var(--shadow); padding:1.5rem; margin:1.5rem 0; border-radius:2px; }
+.card-accent1{background:#FFF5F5;border-color:var(--accent1)} .card-accent2{background:#F0FFFE;border-color:var(--accent2)} .card-accent3{background:#FFFEF5;border-color:var(--accent3)} .card-accent4{background:#F8F5FF;border-color:var(--accent4)} .card-accent5{background:#FFF9F5;border-color:var(--accent5)} .card-accent6{background:#F5FFF6;border-color:var(--accent6)}
+table { width:100%; border-collapse:separate; border-spacing:0; border:4px solid var(--border); box-shadow:5px 5px 0 var(--shadow); margin:1rem 0; font-size:0.95rem; }
+thead th { background:var(--border); color:#fff; font-weight:800; padding:0.7rem 0.8rem; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px; border-bottom:3px solid var(--border); }
+tbody td { padding:0.6rem 0.8rem; border-bottom:2px solid #ddd; border-right:2px solid #ddd; font-family:var(--font-jp); vertical-align:middle; }
+tbody td:last-child{border-right:none} tbody tr:last-child td{border-bottom:none} tbody tr:nth-child(even){background:#f9f9f9} tbody tr:hover{background:#FFF3CD}
+.flashcard { display:inline-block; background:var(--card-bg); border:3px solid var(--border); box-shadow:4px 4px 0 var(--shadow); padding:0.5rem 1rem; margin:0.3rem; font-family:var(--font-jp); font-size:1.1rem; font-weight:600; transition:transform 0.1s; cursor:pointer; user-select:none; }
+.flashcard:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--shadow)} .flashcard .jp{font-size:1.4rem;color:#E63946} .flashcard .romaji{font-size:0.85rem;color:#555} .flashcard .pt{font-size:0.9rem;color:#1A1A2E;font-weight:700}
+.tag { display:inline-block; padding:0.2rem 0.7rem; border:2px solid var(--border); box-shadow:2px 2px 0 var(--shadow); font-size:0.75rem; font-weight:700; text-transform:uppercase; margin:0.2rem; }
+.tag-red{background:var(--accent1);color:#fff} .tag-teal{background:var(--accent2);color:#1A1A2E} .tag-yellow{background:var(--accent3);color:#1A1A2E} .tag-purple{background:var(--accent4);color:#fff} .tag-orange{background:var(--accent5);color:#fff} .tag-green{background:var(--accent6);color:#fff}
+.quiz { background:var(--accent3); border:4px solid var(--border); box-shadow:6px 6px 0 var(--shadow); padding:1.5rem; margin:1.5rem 0; } .quiz h3{border-left-color:var(--accent1)} .quiz details{margin:0.5rem 0;padding:0.5rem 1rem;background:#fff;border:2px solid var(--border)} .quiz summary{font-weight:700;cursor:pointer;padding:0.3rem 0} .quiz details[open]{background:#FFF5F5;border-color:var(--accent1)}
+.cheatsheet { background:#1A1A2E; color:#00FF88; font-family:'Courier New',monospace; border:4px solid #00FF88; box-shadow:6px 6px 0 #00FF8844; padding:1.5rem; margin:1.5rem 0; font-size:0.9rem; white-space:pre-wrap; line-height:1.5; }
+.info-box { padding:1rem 1.5rem; margin:1rem 0; border:3px solid var(--border); box-shadow:4px 4px 0 var(--shadow); font-weight:600; } .info-tip{background:#E8F8F5;border-left:8px solid var(--accent2)} .info-warn{background:#FFF3CD;border-left:8px solid var(--accent3)} .info-danger{background:#FFE5E5;border-left:8px solid var(--accent1)} .info-note{background:#F0E6FF;border-left:8px solid var(--accent4)}
+.example-dialog { background:#fff; border:3px dashed var(--border); padding:1rem 1.5rem; margin:0.8rem 0; font-size:0.95rem; } .example-dialog .speaker{font-weight:800;color:var(--accent1)} .example-dialog .jp-text{font-family:var(--font-jp)} .example-dialog .translation{color:#666;font-style:italic;margin-left:1.5rem}
+.section-badge{display:inline-block;font-size:1.8rem;margin-right:0.5rem;vertical-align:middle} hr{border:2px solid var(--border);margin:2rem 0} .op-words{display:flex;flex-wrap:wrap;gap:0.8rem;margin:1rem 0}
+nav.footer-nav{display:flex;justify-content:space-between;margin-top:3rem;padding:1rem 1.5rem;background:var(--border);border:3px solid var(--border)} nav.footer-nav a{color:#fff;font-weight:800;text-decoration:none;font-size:1.1rem} nav.footer-nav a:hover{text-decoration:underline}
+.mnemonic{background:#FFF9E6;border:2px dashed var(--accent5);padding:0.5rem 1rem;margin:0.5rem 0;font-size:0.9rem;border-radius:4px} .mnemonic strong{color:var(--accent5)}
+@media(max-width:768px){body{padding:1rem}h1{font-size:2rem}table{font-size:0.8rem}td,th{padding:0.4rem}}
+.info-box h3{border-left:none;padding-left:0;margin-top:0} .info-box h4{margin-bottom:0.3rem} .card h3{border-left:none;padding-left:0;margin-top:0} .example-dialog h3{border-left:none;padding-left:0;margin-top:0}
+</style>
+</head>
+<body>
+
+<h1>&#x1F3A8; Aula 9 — Adjetivos (形容詞)</h1>
+
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem; line-height:1.8;">
+    <li>Distinguir os <strong>dois tipos de adjetivos</strong>: い (i) e な (na)</li>
+    <li>Usar <strong>15+ adjetivos essenciais</strong> com pares de opostos</li>
+    <li>Intensificar com <strong>とても (muito)</strong> e atenuar com <strong>すこし (um pouco)</strong></li>
+    <li>Perguntar <strong>"o que é [adj]?"</strong> com なにが〜ですか？</li>
+    <li>Entender <strong>つめたい vs さむい</strong> (gelado vs frio) e <strong>じゅうよう vs たいせつ</strong> (importante)</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: OS DOIS TIPOS DE ADJETIVOS ===== -->
+<h2 style="background:var(--accent1); color:#fff;">&#x1F4D6; 01. Os Dois Tipos de Adjetivos</h2>
+
+<div class="info-box info-warn">
+  <h3>&#x26A0;&#xFE0F; CONCEITO FUNDAMENTAL</h3>
+  <p>Japonês tem <strong>DOIS tipos</strong> de adjetivos. Esta é a diferença mais importante desta aula:</p>
+</div>
+
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0;">
+  <div class="card card-accent1">
+    <h3>&#x31F6; い-Adjetivos (i-keiyoushi)</h3>
+    <p>Terminam em <strong>&#x3044; (i)</strong> na forma de dicionário.</p>
+    <p style="font-family:var(--font-jp);font-size:1.2rem;margin:0.5rem 0;">おおき<strong>い</strong> · ちいさ<strong>い</strong> · あつ<strong>い</strong></p>
+    <p>São <strong>verbos disfarçados</strong> — já contêm o "é" embutido. Podem ser usados diretamente antes de substantivos ou no final da frase.</p>
+    <p style="margin-top:0.5rem;"><span class="tag tag-red">Japonês nativo</span> <span class="tag tag-teal">Conjugável</span></p>
+  </div>
+  <div class="card card-accent4">
+    <h3>&#x306A; な-Adjetivos (na-keiyoushi)</h3>
+    <p>NÃO terminam em い. Precisam do <strong>な (na)</strong> antes de substantivos.</p>
+    <p style="font-family:var(--font-jp);font-size:1.2rem;margin:0.5rem 0;">きれい<strong>な</strong> · ゆうめい<strong>な</strong> · たいせつ<strong>な</strong></p>
+    <p>Comportam-se como <strong>substantivos descritivos</strong>. Precisam de な/です para modificar.</p>
+    <p style="margin-top:0.5rem;"><span class="tag tag-purple">Chinês/origem</span> <span class="tag tag-orange">Precisa de な/です</span></p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>&#x1F4CC; Regra Visual</h3>
+  <table>
+    <thead><tr><th>Tipo</th><th>Antes de substantivo</th><th>No final da frase</th><th>Exemplo</th></tr></thead>
+    <tbody>
+      <tr><td><strong>い-adj</strong></td><td>おおきい ほん</td><td>ほんは おおきい<strong>です</strong></td><td>Livro grande / O livro é grande</td></tr>
+      <tr><td><strong>な-adj</strong></td><td>きれい<strong>な</strong> はな</td><td>はなは きれい<strong>です</strong></td><td>Flor bonita / A flor é bonita</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.5rem;">&#x1F4A1; <strong>Macete:</strong> Se termina em い, use direto. Se não, bote な antes do substantivo. No final da frase, ambos usam です para polidez.</p>
+</div>
+
+<div class="info-box info-danger">
+  <h3>&#x26A0;&#xFE0F; Cuidado: Falsos い-Adjetivos!</h3>
+  <p><strong>きれい (kirei)</strong> e <strong>ゆうめい (yuumei)</strong> terminam em い mas são <strong>な-adjetivos</strong>! O い faz parte do kanji/leitura, não é a terminação gramatical.</p>
+  <p>&#x2705; きれい<strong>な</strong> ところ (lugar bonito) — correto<br>
+  &#x274C; きれい ところ — errado (faltou o な!)</p>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: INTENSIFICADORES ===== -->
+<h2 style="background:var(--accent2); color:#1A1A2E;">&#x1F50A; 02. Intensificadores</h2>
+
+<table>
+  <thead><tr><th>Hiragana</th><th>Romaji</th><th>Significado</th><th>Efeito</th></tr></thead>
+  <tbody>
+    <tr><td>とても</td><td><strong>totemo</strong></td><td>muito</td><td>&#x1F50A; Reforça qualquer adjetivo</td></tr>
+    <tr><td>すこし</td><td><strong>sukoshi</strong></td><td>um pouco</td><td>&#x1F509; Atenua o adjetivo</td></tr>
+    <tr><td>あまり</td><td><strong>amari</strong></td><td>não muito (com negativo)</td><td>&#x1F508; あまり＋ない = "não é muito~"</td></tr>
+  </tbody>
+</table>
+
+<div class="example-dialog">
+  <p class="jp-text"><strong>とても おおきい です。</strong> → É muito grande. &#x1F50A;</p>
+  <p class="jp-text"><strong>すこし さむい です。</strong> → Está um pouco frio. &#x1F509;</p>
+  <p class="jp-text"><strong>あまり おおきくない です。</strong> → Não é muito grande. &#x1F508; (forma negativa — aula futura!)</p>
+</div>
+
+<div class="op-words">
+  <div class="flashcard"><div class="jp">とても</div><div class="romaji">totemo</div><div class="pt">muito</div></div>
+  <div class="flashcard"><div class="jp">すこし</div><div class="romaji">sukoshi</div><div class="pt">um pouco</div></div>
+  <div class="flashcard"><div class="jp">あまり</div><div class="romaji">amari</div><div class="pt">não muito</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: PARES DE OPOSTOS ===== -->
+<h2 style="background:var(--accent3); color:#1A1A2E;">&#x2194;&#xFE0F; 03. Pares de Opostos (い-Adjetivos)</h2>
+
+<table>
+  <thead><tr><th>Hiragana</th><th>Romaji</th><th>Significado</th><th>&#x2194; Oposto</th><th>Romaji</th><th>Significado</th></tr></thead>
+  <tbody>
+    <tr><td>おおきい</td><td><strong>ookii</strong></td><td>grande &#x1F418;</td><td>ちいさい</td><td><strong>chiisai</strong></td><td>pequeno &#x1F41D;</td></tr>
+    <tr><td>ながい</td><td><strong>nagai</strong></td><td>longo &#x1F9ED;</td><td>みじかい</td><td><strong>mijikai</strong></td><td>curto &#x1F4CF;</td></tr>
+    <tr><td>ひろい</td><td><strong>hiroi</strong></td><td>largo/espaçoso &#x1F3DE;</td><td>せまい</td><td><strong>semai</strong></td><td>estreito/apertado &#x1F6AA;</td></tr>
+    <tr><td>あつい</td><td><strong>atsui</strong></td><td>quente &#x1F525;</td><td>さむい</td><td><strong>samui</strong></td><td>frio &#x2744;&#xFE0F;</td></tr>
+    <tr><td>たかい</td><td><strong>takai</strong></td><td>caro / alto &#x1F4B8;</td><td>やすい</td><td><strong>yasui</strong></td><td>barato &#x1F4B5;</td></tr>
+    <tr><td>おもしろい</td><td><strong>omoshiroi</strong></td><td>interessante/divertido &#x1F602;</td><td>つまらない</td><td><strong>tsumaranai</strong></td><td>chato/sem graça &#x1F4A4;</td></tr>
+    <tr><td>むずかしい</td><td><strong>muzukashii</strong></td><td>difícil &#x1F9E9;</td><td>やさしい</td><td><strong>yasashii</strong></td><td>fácil / gentil &#x1F60A;</td></tr>
+  </tbody>
+</table>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica dos Opostos:</strong>
+  "<strong>Oo</strong>kii = <strong>O</strong> (óbvio, grande). <strong>Chi</strong>isai = <strong>Chi</strong>quinho (pequeno). <strong>Ta</strong>kai = <strong>Ta</strong>nto caro. <strong>Ya</strong>sui = <strong>Ya</strong> (já é barato). <strong>Omo</strong>shiroi = <strong>Omo</strong> (omom = diversão em árabe). <strong>Mu</strong>zukashii = <strong>Mu</strong>ito difícil."
+</div>
+
+<h3>&#x1F44B; Flashcards — い-Adjetivos</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">おおきい</div><div class="romaji">ookii</div><div class="pt">grande</div></div>
+  <div class="flashcard"><div class="jp">ちいさい</div><div class="romaji">chiisai</div><div class="pt">pequeno</div></div>
+  <div class="flashcard"><div class="jp">ながい</div><div class="romaji">nagai</div><div class="pt">longo</div></div>
+  <div class="flashcard"><div class="jp">みじかい</div><div class="romaji">mijikai</div><div class="pt">curto</div></div>
+  <div class="flashcard"><div class="jp">ひろい</div><div class="romaji">hiroi</div><div class="pt">largo</div></div>
+  <div class="flashcard"><div class="jp">せまい</div><div class="romaji">semai</div><div class="pt">estreito</div></div>
+  <div class="flashcard"><div class="jp">たかい</div><div class="romaji">takai</div><div class="pt">caro/alto</div></div>
+  <div class="flashcard"><div class="jp">やすい</div><div class="romaji">yasui</div><div class="pt">barato</div></div>
+  <div class="flashcard"><div class="jp">おもしろい</div><div class="romaji">omoshiroi</div><div class="pt">interessante</div></div>
+  <div class="flashcard"><div class="jp">つまらない</div><div class="romaji">tsumaranai</div><div class="pt">chato</div></div>
+  <div class="flashcard"><div class="jp">むずかしい</div><div class="romaji">muzukashii</div><div class="pt">difícil</div></div>
+  <div class="flashcard"><div class="jp">やさしい</div><div class="romaji">yasashii</div><div class="pt">fácil/gentil</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: TEMPERATURA ===== -->
+<h2 style="background:var(--accent4); color:#fff;">&#x1F321;&#xFE0F; 04. Temperatura — Frio do Ar vs. Frio do Toque</h2>
+
+<div class="card card-accent4">
+  <table>
+    <thead><tr><th>Hiragana</th><th>Romaji</th><th>Significado</th><th>Usa para</th></tr></thead>
+    <tbody>
+      <tr><td>あつい</td><td><strong>atsui</strong></td><td>quente</td><td>&#x2600;&#xFE0F; Clima / ambiente (暑い) OU &#x1F525; Objeto (熱い)</td></tr>
+      <tr><td>さむい</td><td><strong>samui</strong></td><td>frio</td><td>&#x2744;&#xFE0F; Clima / ambiente (寒い)</td></tr>
+      <tr><td>つめたい</td><td><strong>tsumetai</strong></td><td>gelado</td><td>&#x1F9CA; Objeto, bebida, toque (冷たい)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="example-dialog">
+    <p class="jp-text"><strong>きょうは さむいです。</strong> → Hoje está frio (clima).</p>
+    <p class="jp-text"><strong>この みずは つめたいです。</strong> → Esta água está gelada (toque).</p>
+  </div>
+
+  <div class="info-box info-tip">
+    <h3>&#x1F4A1; Regra Fácil</h3>
+    <p><strong>さむい</strong> = você SENTE no corpo (ar, ambiente). <strong>つめたい</strong> = você TOCA (objeto, líquido, mão de alguém).</p>
+    <p>Nunca diga &#x274C; つめたい てんき (tempo gelado) — o correto é &#x2705; さむい てんき.</p>
+  </div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: QUALIDADE E VALOR (な-Adjetivos) ===== -->
+<h2 style="background:var(--accent5); color:#fff;">&#x2B50; 05. Qualidade e Valor — な-Adjetivos</h2>
+
+<table>
+  <thead><tr><th>Hiragana</th><th>Romaji</th><th>Significado</th><th>Oposto</th></tr></thead>
+  <tbody>
+    <tr><td>すき</td><td><strong>suki</strong></td><td>gostar / gostoso &#x2764;&#xFE0F;</td><td>きらい</td></tr>
+    <tr><td>きれい</td><td><strong>kirei</strong></td><td>bonito / limpo &#x2728;</td><td>きたない</td></tr>
+    <tr><td>ゆうめい</td><td><strong>yuumei</strong></td><td>famoso &#x1F31F;</td><td>—</td></tr>
+    <tr><td>たいせつ</td><td><strong>taisetsu</strong></td><td>importante/precioso (afetivo) &#x1F48E;</td><td>—</td></tr>
+    <tr><td>じゅうよう</td><td><strong>juuyou</strong></td><td>importante (objetivo/essencial) &#x1F4CB;</td><td>—</td></tr>
+    <tr><td>べんり</td><td><strong>benri</strong></td><td>conveniente / útil &#x1F527;</td><td>ふべん</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-note">
+  <h3>&#x1F4A1; たいせつ vs じゅうよう</h3>
+  <p><strong>たいせつ (taisetsu)</strong> = precioso, querido, de valor sentimental → para <strong>pessoas e relacionamentos</strong>.</p>
+  <p><strong>じゅうよう (juuyou)</strong> = importante, essencial, relevante → para <strong>coisas, documentos, ideias</strong>.</p>
+  <p>Ex: かぞくは <strong>たいせつ</strong> です (A família é preciosa). このしょるいは <strong>じゅうよう</strong> です (Este documento é importante).</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — な-Adjetivos</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">きれい</div><div class="romaji">kirei</div><div class="pt">bonito/limpo</div></div>
+  <div class="flashcard"><div class="jp">ゆうめい</div><div class="romaji">yuumei</div><div class="pt">famoso</div></div>
+  <div class="flashcard"><div class="jp">たいせつ</div><div class="romaji">taisetsu</div><div class="pt">precioso</div></div>
+  <div class="flashcard"><div class="jp">じゅうよう</div><div class="romaji">juuyou</div><div class="pt">importante</div></div>
+  <div class="flashcard"><div class="jp">べんり</div><div class="romaji">benri</div><div class="pt">conveniente</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 6: PERGUNTAR ===== -->
+<h2 style="background:var(--accent6); color:#fff;">&#x2753; 06. Perguntar com Adjetivos</h2>
+
+<div class="card">
+  <h3>Estrutura</h3>
+  <p style="font-size:1.15rem;font-weight:800;">なにが [adjetivo] ですか？</p>
+  <p><em>Nani ga [adjetivo] desu ka?</em> = "O que é [adjetivo]?" (para coisas)</p>
+  <p style="margin-top:0.5rem;font-size:1.15rem;font-weight:800;">だれが [adjetivo] ですか？</p>
+  <p><em>Dare ga [adjetivo] desu ka?</em> = "Quem é [adjetivo]?" (para pessoas)</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">A:</span> <span class="jp-text"><strong>なにが おもしろい ですか？</strong></span></p>
+  <p class="translation"><em>Nani ga omoshiroi desu ka?</em> → O que é interessante?</p>
+  <p style="margin-top:0.5rem;"><span class="speaker">B:</span> <span class="jp-text"><strong>にほんごが おもしろいです。</strong></span></p>
+  <p class="translation"><em>Nihongo ga omoshiroi desu.</em> → Japonês é interessante. &#x1F38C;</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">A:</span> <span class="jp-text"><strong>なにが たいせつ ですか？</strong></span></p>
+  <p class="translation"><em>Nani ga taisetsu desu ka?</em> → O que é precioso para você?</p>
+  <p style="margin-top:0.5rem;"><span class="speaker">B:</span> <span class="jp-text"><strong>かぞくが たいせつです。</strong></span></p>
+  <p class="translation"><em>Kazoku ga taisetsu desu.</em> → A família é preciosa. &#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;&#x200D;&#x1F466;</p>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 7: COLA RÁPIDA ===== -->
+<h2 style="background:var(--accent1); color:#fff;">&#x1F9E0; 07. Tabela Cola Rápida</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">Tipos de Adjetivos</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>い-ADJ (termina em い)</td><td>uso direto c/ substantivo</td></tr>
+        <tr><td>な-ADJ (NÃO termina em い)</td><td>precisa de な antes do subst</td></tr>
+        <tr><td>Final da frase</td><td>AMBOS usam です (polidez)</td></tr>
+        <tr><td>Falsos い: きれい, ゆうめい</td><td>são な-adjetivos!</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">Intensificadores</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>とても</td><td>muito</td></tr>
+        <tr><td>すこし</td><td>um pouco</td></tr>
+        <tr><td>あまり</td><td>não muito (+ negativo)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">Pares de Opostos (い-Adjetivos)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>おおきい ↔ ちいさい</td><td>grande ↔ pequeno</td></tr>
+        <tr><td>ながい ↔ みじかい</td><td>longo ↔ curto</td></tr>
+        <tr><td>ひろい ↔ せまい</td><td>largo ↔ estreito</td></tr>
+        <tr><td>あつい ↔ さむい</td><td>quente ↔ frio</td></tr>
+        <tr><td>たかい ↔ やすい</td><td>caro/alto ↔ barato</td></tr>
+        <tr><td>おもしろい ↔ つまらない</td><td>interessante ↔ chato</td></tr>
+        <tr><td>むずかしい ↔ やさしい</td><td>difícil ↔ fácil/gentil</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--sakura">Temperatura &amp; Valor</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>さむい</td><td>frio (ar/ambiente)</td></tr>
+        <tr><td>つめたい</td><td>gelado (toque/objeto)</td></tr>
+        <tr><td>たいせつ</td><td>precioso (afeto)</td></tr>
+        <tr><td>じゅうよう</td><td>importante (objetivo)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">Perguntar</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>なにが〜ですか？</td><td>O que é〜?</td></tr>
+        <tr><td>だれが〜ですか？</td><td>Quem é〜?</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 8: EXERCÍCIOS ===== -->
+<h2 style="background:var(--accent2); color:#1A1A2E;">&#x1F3AF; 08. Exercícios</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Classifique (い ou な?)</h3>
+  <ol>
+    <li>おおきい → ?</li>
+    <li>きれい → ?</li>
+    <li>たかい → ?</li>
+    <li>ゆうめい → ?</li>
+    <li>べんり → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>い-adjetivo</strong> — termina em い (verdadeiro)</li>
+      <li><strong>な-adjetivo</strong> — falso い! O い faz parte da palavra, não é terminação</li>
+      <li><strong>い-adjetivo</strong> — verdadeiro い</li>
+      <li><strong>な-adjetivo</strong> — falso い! 有名 (yuumei) → ゆうめい<strong>な</strong></li>
+      <li><strong>な-adjetivo</strong> — não termina em い → べんり<strong>な</strong></li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Complete</h3>
+  <ol>
+    <li>"Livro interessante" → おもしろい ＿＿＿ (precisa de な?)</li>
+    <li>"Flor bonita" → きれい ＿＿＿ はな (precisa de な!)</li>
+    <li>"Este café está gelado" → このコーヒーは ＿＿＿ です。</li>
+    <li>"O que é famoso?" → なにが ＿＿＿ ですか？</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>おもしろい <strong>ほん</strong> (SEM な — é い-adjetivo!)</li>
+      <li>きれい<strong>な</strong> はな (COM な — é な-adjetivo!)</li>
+      <li>このコーヒーは <strong>つめたい</strong> です (tsumetai — toque, não clima)</li>
+      <li>なにが <strong>ゆうめい</strong> ですか？ (yuumei — famoso)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F4AC; Nível 3 — Responda</h3>
+  <ol>
+    <li>なにが おもしろい ですか？ (Responda em japonês)</li>
+    <li>なにが たいせつ ですか？ (O que é precioso para você?)</li>
+    <li>Qual a diferença entre さむい e つめたい?</li>
+  </ol>
+  <details><summary>Respostas Sugeridas</summary>
+    <ol>
+      <li><strong>にほんごが おもしろいです</strong> / <strong>アニメが おもしろいです</strong> (Japonês/Anime é interessante)</li>
+      <li><strong>かぞくが たいせつです</strong> / <strong>ともだちが たいせつです</strong> (Família/Amigos são preciosos)</li>
+      <li><strong>さむい</strong> = frio que se SENTE no corpo (ambiente, clima). <strong>つめたい</strong> = gelado que se TOCA (objeto, líquido).</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<nav class="footer-nav">
+  <a href="Aula 8.html">&larr; Aula 8</a>
+  <a href="Aula 10.html">Aula 10 &rarr;</a>
+</nav>
+
+</body>
+</html>

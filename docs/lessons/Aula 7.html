@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 7 — Lugares, Direções e Posições (ばしょ / Basho)</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--border);
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border-left: 6px solid var(--border);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background: var(--border);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.7rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--border);
+}
+
+tbody td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  font-family: var(--font-jp);
+  vertical-align: middle;
+}
+
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+
+.flashcard {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem;
+}
+
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+
+.quiz {
+  background: var(--accent3);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.quiz h3 { border-left-color: var(--accent1); }
+
+.quiz details {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+
+.quiz summary {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+
+.cheatsheet {
+  background: #1A1A2E;
+  color: #00FF88;
+  font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88;
+  box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-weight: 600;
+}
+
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+
+.example-dialog {
+  background: #fff;
+  border: 3px dashed var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+
+.section-badge {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+
+.op-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+nav.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 1rem 1.5rem;
+  background: var(--border);
+  border: 3px solid var(--border);
+}
+
+nav.footer-nav a {
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav.footer-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TITLE ===== -->
+<h1>Aula 7 — Lugares, Direções e Posições (ばしょ / Basho)</h1>
+
+<!-- ===== DICA DE MEMORIZAÇÃO ===== -->
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem; line-height:1.8;">
+    <li>Nomear <strong>18 lugares</strong> essenciais em japonês</li>
+    <li>Usar <strong>10 palavras de posição</strong> (うえ·した·まえ·うしろ...)</li>
+    <li>Reconhecer o padrão <strong>〜や (ya) = loja de ~</strong></li>
+    <li>Pedir e dar <strong>direções na cidade</strong> com どこですか？</li>
+    <li>Nomear os <strong>4 pontos cardeais</strong> (北·南·東·西)</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ======================================================================== -->
+<!-- SECTION 1 — BASHO (LUGARES) — accent1                                    -->
+<!-- ======================================================================== -->
+<h2 style="background: var(--accent1); color: #fff;">
+  <span class="section-badge">🏙️</span> ばしょ — Basho (Lugares)
+</h2>
+
+<p>
+  <span class="tag tag-red">Vocabulário</span>
+  <span class="tag tag-teal">Lugares</span>
+  <span class="tag tag-purple">Basho</span>
+</p>
+
+<div class="card card-accent1">
+  <table>
+    <thead>
+      <tr>
+        <th>🇯🇵 Hiragana/Katakana</th>
+        <th>Romaji</th>
+        <th>🇧🇷 Lugar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>ぎんこう</td><td><strong>Ginkō</strong></td><td>Banco 🏦</td></tr>
+      <tr><td>スーパー</td><td><strong>Supā</strong></td><td>Mercado / Supermercado 🛒</td></tr>
+      <tr><td>ホテル</td><td><strong>Hoteru</strong></td><td>Hotel 🏨</td></tr>
+      <tr><td>としょかん</td><td><strong>Toshokan</strong></td><td>Biblioteca 📚</td></tr>
+      <tr><td>くうこう</td><td><strong>Kūkō</strong></td><td>Aeroporto ✈️</td></tr>
+      <tr><td>ほんや</td><td><strong>Honya</strong></td><td>Livraria 📖</td></tr>
+      <tr><td>はなや</td><td><strong>Hanaya</strong></td><td>Floricultura 🌺</td></tr>
+      <tr><td>きっさてん</td><td><strong>Kissaten</strong></td><td>Cafeteria ☕</td></tr>
+      <tr><td>レストラン</td><td><strong>Resutoran</strong></td><td>Restaurante 🍽️</td></tr>
+      <tr><td>がっこう</td><td><strong>Gakkō</strong></td><td>Escola 🏫</td></tr>
+      <tr><td>こうえん</td><td><strong>Kōen</strong></td><td>Parque 🌳</td></tr>
+      <tr><td>えいがかん</td><td><strong>Eigakan</strong></td><td>Cinema 🎬</td></tr>
+      <tr><td>コンビニ</td><td><strong>Konbini</strong></td><td>Conveniência 🏪</td></tr>
+      <tr><td>えき</td><td><strong>Eki</strong></td><td>Estação (trem/metrô) 🚉</td></tr>
+      <tr><td>パン屋</td><td><strong>Panya</strong></td><td>Padaria 🥐</td></tr>
+      <tr><td>バー</td><td><strong>Bā</strong></td><td>Bar 🍺</td></tr>
+      <tr><td>やっきょく</td><td><strong>Yakkyoku</strong></td><td>Farmácia 💊</td></tr>
+      <tr><td>ガススタンド</td><td><strong>Gasu sutando</strong></td><td>Posto de gasolina ⛽</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>📇 Flashcards dos Lugares</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">ぎんこう</div><div class="romaji">Ginkō</div><div class="pt">Banco 🏦</div></div>
+  <div class="flashcard"><div class="jp">スーパー</div><div class="romaji">Supā</div><div class="pt">Supermercado 🛒</div></div>
+  <div class="flashcard"><div class="jp">ホテル</div><div class="romaji">Hoteru</div><div class="pt">Hotel 🏨</div></div>
+  <div class="flashcard"><div class="jp">としょかん</div><div class="romaji">Toshokan</div><div class="pt">Biblioteca 📚</div></div>
+  <div class="flashcard"><div class="jp">くうこう</div><div class="romaji">Kūkō</div><div class="pt">Aeroporto ✈️</div></div>
+  <div class="flashcard"><div class="jp">ほんや</div><div class="romaji">Honya</div><div class="pt">Livraria 📖</div></div>
+  <div class="flashcard"><div class="jp">はなや</div><div class="romaji">Hanaya</div><div class="pt">Floricultura 🌺</div></div>
+  <div class="flashcard"><div class="jp">きっさてん</div><div class="romaji">Kissaten</div><div class="pt">Cafeteria ☕</div></div>
+  <div class="flashcard"><div class="jp">レストラン</div><div class="romaji">Resutoran</div><div class="pt">Restaurante 🍽️</div></div>
+  <div class="flashcard"><div class="jp">がっこう</div><div class="romaji">Gakkō</div><div class="pt">Escola 🏫</div></div>
+  <div class="flashcard"><div class="jp">こうえん</div><div class="romaji">Kōen</div><div class="pt">Parque 🌳</div></div>
+  <div class="flashcard"><div class="jp">えいがかん</div><div class="romaji">Eigakan</div><div class="pt">Cinema 🎬</div></div>
+  <div class="flashcard"><div class="jp">コンビニ</div><div class="romaji">Konbini</div><div class="pt">Conveniência 🏪</div></div>
+  <div class="flashcard"><div class="jp">えき</div><div class="romaji">Eki</div><div class="pt">Estação 🚉</div></div>
+  <div class="flashcard"><div class="jp">パン屋</div><div class="romaji">Panya</div><div class="pt">Padaria 🥐</div></div>
+  <div class="flashcard"><div class="jp">バー</div><div class="romaji">Bā</div><div class="pt">Bar 🍺</div></div>
+  <div class="flashcard"><div class="jp">やっきょく</div><div class="romaji">Yakkyoku</div><div class="pt">Farmácia 💊</div></div>
+  <div class="flashcard"><div class="jp">ガススタンド</div><div class="romaji">Gasu sutando</div><div class="pt">Posto de gasolina ⛽</div></div>
+</div>
+
+<div class="info-box info-note">
+  <strong>Kata x Hira nos Lugares</strong><br>
+  Palavras em <strong>カタカナ</strong> são empréstimos estrangeiros:<br>
+  ホテル (hotel), レストラン (restaurant), コンビニ (convenience store), バー (bar)<br><br>
+  Palavras em <strong>ひらがな/漢字</strong> são japonesas originais:<br>
+  ぎんこう, としょかん, がっこう, えき
+</div>
+
+<div class="info-box info-tip">
+  <h3>&#x1F3EA; Padrão 〜や (ya) = Loja de ~</h3>
+  <p>Muitas palavras para lojas terminam com <strong>や (ya)</strong> = "loja/estabelecimento":</p>
+  <ul style="margin:0.3rem 0 0 1.5rem; line-height:1.8;">
+    <li><strong>ほん (hon)</strong> = livro → <strong>ほんや (honya)</strong> = livraria (loja de livros)</li>
+    <li><strong>はな (hana)</strong> = flor → <strong>はなや (hanaya)</strong> = floricultura (loja de flores)</li>
+    <li><strong>パン (pan)</strong> = pão → <strong>パンや (panya)</strong> = padaria (loja de pão)</li>
+  </ul>
+  <p>Regra: <strong>[produto] + や</strong> = loja que vende [produto]! &#x1F9E0;</p>
+</div>
+
+<hr>
+
+<!-- ======================================================================== -->
+<!-- SECTION 2 — POSIÇÕES E LOCALIZAÇÃO — accent2                              -->
+<!-- ======================================================================== -->
+<h2 style="background: var(--accent2); color: #1A1A2E;">
+  <span class="section-badge">🧭</span> Posições e Localização
+</h2>
+
+<p>
+  <span class="tag tag-teal">Posições</span>
+  <span class="tag tag-green">Localização</span>
+  <span class="tag tag-orange">Espaço</span>
+</p>
+
+<div class="card card-accent2">
+  <table>
+    <thead>
+      <tr>
+        <th>🇯🇵 Hiragana</th>
+        <th>Romaji</th>
+        <th>🇧🇷 Significado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>うえ</td><td><strong>ue</strong></td><td>em cima ⬆️</td></tr>
+      <tr><td>した</td><td><strong>shita</strong></td><td>em baixo ⬇️</td></tr>
+      <tr><td>なか</td><td><strong>naka</strong></td><td>dentro / no meio</td></tr>
+      <tr><td>まえ</td><td><strong>mae</strong></td><td>frente / na frente</td></tr>
+      <tr><td>うしろ</td><td><strong>ushiro</strong></td><td>atrás</td></tr>
+      <tr><td>そと</td><td><strong>soto</strong></td><td>fora</td></tr>
+      <tr><td>ちかく</td><td><strong>chikaku</strong></td><td>perto</td></tr>
+      <tr><td>とおく</td><td><strong>tooku</strong></td><td>longe</td></tr>
+      <tr><td>みぎ</td><td><strong>migi</strong></td><td>direita ➡️</td></tr>
+      <tr><td>ひだり</td><td><strong>hidari</strong></td><td>esquerda ⬅️</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="mnemonic">
+  <strong>🧠 Mnemônica das Posições:</strong>
+  "<strong>U</strong>e = <strong>U</strong>p (cima). <strong>Shi</strong>ta = <strong>Si</strong> (chão). <strong>Ma</strong>e = <strong>Ma</strong>in (frente). <strong>Ushi</strong>ro = atrás de você. <strong>Mi</strong>gi = <strong>Mi</strong>nha direita. <strong>Hi</strong>dari = <strong>Hi</strong> (esquerda)."
+</div>
+
+<h3>📇 Flashcards das Posições</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">うえ</div><div class="romaji">ue</div><div class="pt">em cima ⬆️</div></div>
+  <div class="flashcard"><div class="jp">した</div><div class="romaji">shita</div><div class="pt">em baixo ⬇️</div></div>
+  <div class="flashcard"><div class="jp">なか</div><div class="romaji">naka</div><div class="pt">dentro / no meio</div></div>
+  <div class="flashcard"><div class="jp">まえ</div><div class="romaji">mae</div><div class="pt">frente / na frente</div></div>
+  <div class="flashcard"><div class="jp">うしろ</div><div class="romaji">ushiro</div><div class="pt">atrás</div></div>
+  <div class="flashcard"><div class="jp">そと</div><div class="romaji">soto</div><div class="pt">fora</div></div>
+  <div class="flashcard"><div class="jp">ちかく</div><div class="romaji">chikaku</div><div class="pt">perto</div></div>
+  <div class="flashcard"><div class="jp">とおく</div><div class="romaji">tooku</div><div class="pt">longe</div></div>
+  <div class="flashcard"><div class="jp">みぎ</div><div class="romaji">migi</div><div class="pt">direita ➡️</div></div>
+  <div class="flashcard"><div class="jp">ひだり</div><div class="romaji">hidari</div><div class="pt">esquerda ⬅️</div></div>
+</div>
+
+<hr>
+
+<!-- ======================================================================== -->
+<!-- SECTION 3 — PONTOS CARDEAIS — accent3                                    -->
+<!-- ======================================================================== -->
+<h2 style="background: var(--accent3); color: #1A1A2E;">
+  <span class="section-badge">🗺️</span> Pontos Cardeais (Direções)
+</h2>
+
+<p>
+  <span class="tag tag-yellow">Cardeais</span>
+  <span class="tag tag-red">Direções</span>
+  <span class="tag tag-purple">Kanji</span>
+</p>
+
+<div class="card card-accent3">
+  <table>
+    <thead>
+      <tr>
+        <th>🇯🇵 Kanji</th>
+        <th>Hiragana</th>
+        <th>Romaji</th>
+        <th>🇧🇷</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>北</td><td>きた</td><td><strong>kita</strong></td><td>Norte</td></tr>
+      <tr><td>南</td><td>みなみ</td><td><strong>minami</strong></td><td>Sul</td></tr>
+      <tr><td>東</td><td>ひがし</td><td><strong>higashi</strong></td><td>Leste</td></tr>
+      <tr><td>西</td><td>にし</td><td><strong>nishi</strong></td><td>Oeste</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>📇 Flashcards dos Pontos Cardeais</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">北 / きた</div><div class="romaji">kita</div><div class="pt">Norte</div></div>
+  <div class="flashcard"><div class="jp">南 / みなみ</div><div class="romaji">minami</div><div class="pt">Sul</div></div>
+  <div class="flashcard"><div class="jp">東 / ひがし</div><div class="romaji">higashi</div><div class="pt">Leste</div></div>
+  <div class="flashcard"><div class="jp">西 / にし</div><div class="romaji">nishi</div><div class="pt">Oeste</div></div>
+</div>
+
+<hr>
+
+<!-- ======================================================================== -->
+<!-- SECTION 4 — PEDINDO E DANDO DIREÇÕES — accent4                            -->
+<!-- ======================================================================== -->
+<h2 style="background: var(--accent4); color: #fff;">
+  <span class="section-badge">💬</span> Pedindo e Dando Direções
+</h2>
+
+<p>
+  <span class="tag tag-purple">Diálogo</span>
+  <span class="tag tag-teal">Conversação</span>
+  <span class="tag tag-orange">Direções</span>
+</p>
+
+<div class="card">
+  <h3>Estrutura do Diálogo</h3>
+  <ol style="margin-left: 1.5rem; line-height: 2;">
+    <li><strong>Chamar atenção:</strong> <span style="font-family:var(--font-jp);">すみません</span> (Sumimasen) = "Com licença"</li>
+    <li><strong>Perguntar localização:</strong> <span style="font-family:var(--font-jp);">[lugar]はどこですか？</span> = "Onde fica [lugar]?"</li>
+    <li><strong>Responder com posição:</strong> <span style="font-family:var(--font-jp);">[lugar A]は[lugar B]の[posição]です。</span> = "[Lugar A] fica [posição] de [Lugar B]."</li>
+    <li><strong>Agradecer:</strong> <span style="font-family:var(--font-jp);">ありがとうございます</span> (Arigatogozaimasu) = "Obrigado/a"</li>
+    <li><strong>Responder:</strong> <span style="font-family:var(--font-jp);">どういたしまして</span> (Doitashimashite) = "De nada / Imagina"</li>
+  </ol>
+</div>
+
+<h3>📝 Diálogo 1 — Procurando o Banco</h3>
+<div class="example-dialog">
+  <p>
+    <span class="speaker">A:</span> <span class="jp-text">すみません。</span><br>
+    <em>Sumimasen.</em><br>
+    <span class="translation">→ Com licença.</span>
+  </p>
+  <p>
+    <span class="speaker">A:</span> <span class="jp-text">ぎんこうはどこですか？</span><br>
+    <em>Ginkō wa doko desuka?</em><br>
+    <span class="translation">→ Onde fica o banco?</span>
+  </p>
+  <p>
+    <span class="speaker">B:</span> <span class="jp-text">ぎんこうはこうえんの<strong>ちかく</strong>です。</span><br>
+    <em>Ginkō wa kōen no <strong>chikaku</strong> desu.</em><br>
+    <span class="translation">→ O banco fica <strong>perto</strong> do parque.</span>
+  </p>
+  <p>
+    <span class="speaker">A:</span> <span class="jp-text">ありがとうございます。</span><br>
+    <em>Arigatogozaimasu.</em><br>
+    <span class="translation">→ Obrigado/a!</span>
+  </p>
+  <p>
+    <span class="speaker">B:</span> <span class="jp-text">どういたしまして。</span><br>
+    <em>Doitashimashite.</em><br>
+    <span class="translation">→ De nada!</span>
+  </p>
+</div>
+
+<h3>📝 Diálogo 2 — Procurando o Hotel</h3>
+<div class="example-dialog">
+  <p>
+    <span class="speaker">A:</span> <span class="jp-text">すみません。ホテルはどこですか？</span><br>
+    <em>Sumimasen. Hoteru wa doko desuka?</em><br>
+    <span class="translation">→ Com licença. Onde fica o hotel?</span>
+  </p>
+  <p>
+    <span class="speaker">B:</span> <span class="jp-text">ホテルはレストランの<strong>うしろ</strong>です。</span><br>
+    <em>Hoteru wa resutoran no <strong>ushiro</strong> desu.</em><br>
+    <span class="translation">→ O hotel fica <strong>atrás</strong> do restaurante.</span>
+  </p>
+  <p>
+    <span class="speaker">A:</span> <span class="jp-text">ありがとうございます。</span><br>
+    <em>Arigatogozaimasu.</em><br>
+    <span class="translation">→ Obrigado/a!</span>
+  </p>
+  <p>
+    <span class="speaker">B:</span> <span class="jp-text">どういたしまして。</span><br>
+    <em>Doitashimashite.</em><br>
+    <span class="translation">→ De nada!</span>
+  </p>
+</div>
+
+<hr>
+
+<!-- ======================================================================== -->
+<!-- SECTION 5 — COLA RÁPIDA — accent5                                         -->
+<!-- ======================================================================== -->
+<h2 style="background: var(--accent5); color: #fff;">
+  <span class="section-badge">🧠</span> Tabela Cola Rápida
+</h2>
+
+<p>
+  <span class="tag tag-orange">Resumo</span>
+  <span class="tag tag-red">Revisão</span>
+  <span class="tag tag-green">Cheatsheet</span>
+</p>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">Lugares (ばしょ / Basho)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>ぎんこう</td><td>banco</td></tr>
+        <tr><td>スーパー</td><td>mercado</td></tr>
+        <tr><td>ホテル</td><td>hotel</td></tr>
+        <tr><td>としょかん</td><td>biblioteca</td></tr>
+        <tr><td>くうこう</td><td>aeroporto</td></tr>
+        <tr><td>ほんや</td><td>livraria</td></tr>
+        <tr><td>はなや</td><td>floricultura</td></tr>
+        <tr><td>きっさてん</td><td>cafeteria</td></tr>
+        <tr><td>レストラン</td><td>restaurante</td></tr>
+        <tr><td>がっこう</td><td>escola</td></tr>
+        <tr><td>こうえん</td><td>parque</td></tr>
+        <tr><td>えいがかん</td><td>cinema</td></tr>
+        <tr><td>コンビニ</td><td>conveniência</td></tr>
+        <tr><td>えき</td><td>estação</td></tr>
+        <tr><td>パン屋</td><td>padaria</td></tr>
+        <tr><td>やっきょく</td><td>farmácia</td></tr>
+        <tr><td>ガススタンド</td><td>posto</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">Posições</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>うえ</td><td>cima</td></tr>
+        <tr><td>した</td><td>baixo</td></tr>
+        <tr><td>なか</td><td>dentro</td></tr>
+        <tr><td>まえ</td><td>frente</td></tr>
+        <tr><td>うしろ</td><td>atrás</td></tr>
+        <tr><td>そと</td><td>fora</td></tr>
+        <tr><td>ちかく</td><td>perto</td></tr>
+        <tr><td>とおく</td><td>longe</td></tr>
+        <tr><td>みぎ</td><td>direita</td></tr>
+        <tr><td>ひだり</td><td>esquerda</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">Diálogo Padrão</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>すみません。</td><td>Com licença.</td></tr>
+        <tr><td>[X]はどこですか？</td><td>Onde fica [X]?</td></tr>
+        <tr><td>[X]は[Y]の[pos]です。</td><td>[X] fica [pos] de [Y].</td></tr>
+        <tr><td>ありがとうございます</td><td>Obrigado/a</td></tr>
+        <tr><td>どういたしまして</td><td>De nada</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ======================================================================== -->
+<!-- SECTION 6 — MINI-QUIZ — accent6                                           -->
+<!-- ======================================================================== -->
+<h2 style="background: var(--accent6); color: #fff;">
+  <span class="section-badge">🎯</span> Mini-Quiz
+</h2>
+
+<p>
+  <span class="tag tag-green">Teste</span>
+  <span class="tag tag-purple">Quiz</span>
+  <span class="tag tag-red">Desafio</span>
+</p>
+
+<div class="quiz">
+  <h3>📝 Nível 1 — Traduza</h3>
+  <ol>
+    <li>Banco → ?</li>
+    <li>Biblioteca → ?</li>
+    <li>Em cima → ?</li>
+    <li>Direita → ?</li>
+    <li>Norte → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>ぎんこう</strong> (ginkou)</li>
+      <li><strong>としょかん</strong> (toshokan)</li>
+      <li><strong>うえ</strong> (ue)</li>
+      <li><strong>みぎ</strong> (migi)</li>
+      <li><strong>きた</strong> (kita)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>🧠 Nível 2 — Complete</h3>
+  <ol>
+    <li>"Onde fica o cinema?" → えいがかんは ＿＿＿ ですか？</li>
+    <li>"O hotel fica atrás do restaurante" → ホテルはレストランの ＿＿＿ です。</li>
+    <li>Loja de pão → パン + や = ＿＿＿</li>
+    <li>"Com licença" → ＿＿＿</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>えいがかんは <strong>どこ</strong> ですか？ (doko = onde)</li>
+      <li>ホテルはレストランの <strong>うしろ</strong> です (ushiro = atrás)</li>
+      <li><strong>パンや</strong> (panya) — padrão [produto] + や!</li>
+      <li><strong>すみません</strong> (sumimasen)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>🗺️ Nível 3 — Dê Direções</h3>
+  <p>Usando これ/それ/あれ (isto/isso/aquilo — básico), indique:</p>
+  <ol>
+    <li>"O parque fica perto da estação" → ?</li>
+    <li>"A cafeteria fica na frente da escola" → ?</li>
+    <li>"A farmácia fica à esquerda do supermercado" → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>こうえんは えきの <strong>ちかく</strong> です (kouen wa eki no chikaku desu)</li>
+      <li>きっさてんは がっこうの <strong>まえ</strong> です (kissaten wa gakkou no mae desu)</li>
+      <li>やっきょくは スーパーの <strong>ひだり</strong> です (yakkyoku wa suupaa no hidari desu)</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<!-- ======================================================================== -->
+<!-- SECTION 7 — NAVEGAÇÃO — accent1 (cycle back)                              -->
+<!-- ======================================================================== -->
+<h2 style="background: var(--accent1); color: #fff;">
+  <span class="section-badge">🔗</span> Navegação
+</h2>
+
+<nav class="footer-nav">
+  <a href="Aula 6.html">← Aula 6</a>
+  <a href="Aula 8.html">Aula 8 →</a>
+</nav>
+
+</body>
+</html>

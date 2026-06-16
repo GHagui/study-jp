@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 3 — Família, Comidas, Bebidas e Gostos</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--border);
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border-left: 6px solid var(--border);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background: var(--border);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.7rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--border);
+}
+
+tbody td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  font-family: var(--font-jp);
+  vertical-align: middle;
+}
+
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+
+.flashcard {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem;
+}
+
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+
+.quiz {
+  background: var(--accent3);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.quiz h3 { border-left-color: var(--accent1); }
+
+.quiz details {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+.quiz summary { font-weight: 700; cursor: pointer; padding: 0.3rem 0; }
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+
+.cheatsheet {
+  background: #1A1A2E;
+  color: #00FF88;
+  font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88;
+  box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-weight: 600;
+}
+
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+
+.example-dialog {
+  background: #fff;
+  border: 3px dashed var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+
+.section-badge { display: inline-block; font-size: 1.8rem; margin-right: 0.5rem; vertical-align: middle; }
+
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+
+.op-words { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }
+
+nav.footer-nav {
+  display: flex; justify-content: space-between; margin-top: 3rem;
+  padding: 1rem 1.5rem; background: var(--border); border: 3px solid var(--border);
+}
+nav.footer-nav a { color: #fff; font-weight: 800; text-decoration: none; font-size: 1.1rem; }
+nav.footer-nav a:hover { text-decoration: underline; }
+
+.mnemonic {
+  background: #FFF9E6; border: 2px dashed var(--accent5);
+  padding: 0.5rem 1rem; margin: 0.5rem 0; font-size: 0.9rem; border-radius: 4px;
+}
+.mnemonic strong { color: var(--accent5); }
+
+.compare-table td:first-child { background: #f0f4ff; font-weight: 700; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+
+.info-box h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.info-box h4 { margin-bottom: 0.3rem; }
+.card h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.example-dialog h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.example-dialog h4 { margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<h1><span class="section-badge">&#x1F38C;</span> Aula 3 — Família, Comidas, Bebidas e Gostos</h1>
+
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.8;">
+    <li>Falar sobre sua <strong>família</strong> em japonês (formal e casual)</li>
+    <li>Nomear <strong>comidas e bebidas</strong> japonesas comuns</li>
+    <li>Expressar o que você <strong>gosta e não gosta</strong> com すき・きらい</li>
+    <li>Fazer e responder <strong>perguntas sobre gostos</strong> (〜がすきですか？)</li>
+    <li>Entender a <strong>diferença entre falar da própria família vs. família dos outros</strong></li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: FAMÍLIA ===== -->
+<h2 style="background: var(--accent1); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  &#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;&#x200D;&#x1F466; かぞく — Kazoku (Família)
+</h2>
+
+<div class="card card-accent1">
+  <h3>Estrutura para Falar da Família</h3>
+  <p style="font-family: var(--font-jp); font-size: 1.2rem; font-weight: 700;">[membro da família] は … です。</p>
+  <p style="font-size: 0.95rem; color: #555;"><em>[membro] wa … desu.</em></p>
+  <p style="font-weight: 700;">= "[Membro da família] é/sou …"</p>
+</div>
+
+<h3 style="border-left-color: var(--accent1);">Vocabulário da Família</h3>
+
+<table>
+  <thead>
+    <tr><th>Kanji/Kana</th><th>Romaji</th><th>Significado</th><th>Relação</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>そふ</td><td><strong>sofu</strong></td><td>avô</td><td>&#x1F474; Avós</td></tr>
+    <tr><td>そぼ</td><td><strong>sobo</strong></td><td>avó</td><td>&#x1F475; Avós</td></tr>
+    <tr><td>ちち</td><td><strong>chichi</strong></td><td>pai</td><td>&#x1F468; Pais</td></tr>
+    <tr><td>はは</td><td><strong>haha</strong></td><td>mãe</td><td>&#x1F469; Pais</td></tr>
+    <tr><td>あに</td><td><strong>ani</strong></td><td>irmão mais velho</td><td>&#x1F9D1; Irmãos + velhos</td></tr>
+    <tr><td>あね</td><td><strong>ane</strong></td><td>irmã mais velha</td><td>&#x1F467; Irmãos + velhos</td></tr>
+    <tr><td>おとうと</td><td><strong>otouto</strong></td><td>irmão mais novo</td><td>&#x1F476; Irmãos + novos</td></tr>
+    <tr><td>いもうと</td><td><strong>imouto</strong></td><td>irmã mais nova</td><td>&#x1F476; Irmãos + novos</td></tr>
+    <tr><td>かぞく</td><td><strong>kazoku</strong></td><td>família</td><td>&#x1F3E0; Geral</td></tr>
+  </tbody>
+</table>
+
+<!-- CRITICAL: Formal vs Casual family terms -->
+<div class="info-box info-warn">
+  <h3>&#x26A0;&#xFE0F; REGRA FUNDAMENTAL: Própria Família vs. Família dos Outros</h3>
+  <p>Em japonês, existe <strong>dois conjuntos de palavras</strong> para membros da família. Um para falar da <strong>sua própria família</strong> (humilde) e outro para falar da <strong>família de outras pessoas</strong> (respeitoso).</p>
+</div>
+
+<table class="compare-table">
+  <thead>
+    <tr><th>Relação</th><th>&#x1F464; Minha Família<br>(uso humilde)</th><th>&#x1F465; Família dos Outros<br>(uso respeitoso)</th><th>Para Chamar<br>(em casa)</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Pai</td>
+      <td style="font-size:1.1rem;">ちち <em>chichi</em></td>
+      <td style="font-size:1.1rem;">おとうさん <em>otousan</em></td>
+      <td style="font-size:1.1rem;">おとうさん</td>
+    </tr>
+    <tr>
+      <td>Mãe</td>
+      <td style="font-size:1.1rem;">はは <em>haha</em></td>
+      <td style="font-size:1.1rem;">おかあさん <em>okaasan</em></td>
+      <td style="font-size:1.1rem;">おかあさん</td>
+    </tr>
+    <tr>
+      <td>Avô</td>
+      <td style="font-size:1.1rem;">そふ <em>sofu</em></td>
+      <td style="font-size:1.1rem;">おじいさん <em>ojiisan</em></td>
+      <td style="font-size:1.1rem;">おじいちゃん</td>
+    </tr>
+    <tr>
+      <td>Avó</td>
+      <td style="font-size:1.1rem;">そぼ <em>sobo</em></td>
+      <td style="font-size:1.1rem;">おばあさん <em>obaasan</em></td>
+      <td style="font-size:1.1rem;">おばあちゃん</td>
+    </tr>
+    <tr>
+      <td>Irmão + velho</td>
+      <td style="font-size:1.1rem;">あに <em>ani</em></td>
+      <td style="font-size:1.1rem;">おにいさん <em>oniisan</em></td>
+      <td style="font-size:1.1rem;">おにいちゃん</td>
+    </tr>
+    <tr>
+      <td>Irmã + velha</td>
+      <td style="font-size:1.1rem;">あね <em>ane</em></td>
+      <td style="font-size:1.1rem;">おねえさん <em>oneesan</em></td>
+      <td style="font-size:1.1rem;">おねえちゃん</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica:</strong> Palavras da <strong>MINHA</strong> família são <strong>CURTAS</strong> (ちち, はは, あに). Palavras da família <strong>DOS OUTROS</strong> levam <strong>お</strong> no começo e <strong>さん</strong> no fim (おとうさん, おかあさん). Pense: "Falo pouco de mim (curto), falo bem dos outros (longo, com お e さん)!"
+</div>
+
+<div class="example-dialog">
+  <h3>&#x1F4AC; Exemplos de Uso</h3>
+
+  <p><span class="speaker">Falando da PRÓPRIA família:</span></p>
+  <p class="jp-text"><strong>ちちは かいしゃいんです。</strong></p>
+  <p class="translation"><em>Chichi wa kaishain desu.</em> → Meu pai é funcionário de empresa.</p>
+
+  <p style="margin-top:0.8rem;"><span class="speaker">Falando da família do AMIGO:</span></p>
+  <p class="jp-text"><strong>おとうさんは かいしゃいんですか。</strong></p>
+  <p class="translation"><em>Otousan wa kaishain desu ka.</em> → Seu pai é funcionário de empresa?</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Família</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">そふ</div><div class="romaji">sofu</div><div class="pt">avô (meu)</div></div>
+  <div class="flashcard"><div class="jp">そぼ</div><div class="romaji">sobo</div><div class="pt">avó (minha)</div></div>
+  <div class="flashcard"><div class="jp">ちち</div><div class="romaji">chichi</div><div class="pt">pai (meu)</div></div>
+  <div class="flashcard"><div class="jp">はは</div><div class="romaji">haha</div><div class="pt">mãe (minha)</div></div>
+  <div class="flashcard"><div class="jp">あに</div><div class="romaji">ani</div><div class="pt">irmão +velho (meu)</div></div>
+  <div class="flashcard"><div class="jp">あね</div><div class="romaji">ane</div><div class="pt">irmã +velha (minha)</div></div>
+  <div class="flashcard"><div class="jp">おとうと</div><div class="romaji">otouto</div><div class="pt">irmão +novo</div></div>
+  <div class="flashcard"><div class="jp">いもうと</div><div class="romaji">imouto</div><div class="pt">irmã +nova</div></div>
+  <div class="flashcard"><div class="jp">おとうさん</div><div class="romaji">otousan</div><div class="pt">pai (de outro)</div></div>
+  <div class="flashcard"><div class="jp">おかあさん</div><div class="romaji">okaasan</div><div class="pt">mãe (de outro)</div></div>
+  <div class="flashcard"><div class="jp">おにいさん</div><div class="romaji">oniisan</div><div class="pt">irmão +velho (de outro)</div></div>
+  <div class="flashcard"><div class="jp">おねえさん</div><div class="romaji">oneesan</div><div class="pt">irmã +velha (de outro)</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: COMIDAS ===== -->
+<h2 style="background: var(--accent2); color: #1A1A2E; -webkit-text-stroke: 1px var(--border);">
+  &#x1F35C; たべもの — Tabemono (Comidas)
+</h2>
+
+<div class="info-box info-note">
+  <strong>Vocabulário-chave:</strong>
+  <span style="font-family: var(--font-jp);">たべもの</span> (tabemono) = <strong>comida</strong> |
+  <span style="font-family: var(--font-jp);">たべる</span> (taberu) = comer (verbo)
+</div>
+
+<table>
+  <thead><tr><th>Escrita</th><th>Romaji</th><th>O que é</th><th>Tipo</th></tr></thead>
+  <tbody>
+    <tr><td>ラーメン</td><td><strong>raamen</strong></td><td>Macarrão em caldo saboroso</td><td>&#x1F35C; Prato quente</td></tr>
+    <tr><td>カレーライス</td><td><strong>karee raisu</strong></td><td>Curry japonês com arroz</td><td>&#x1F35B; Prato principal</td></tr>
+    <tr><td>ぎゅうどん</td><td><strong>gyuudon</strong></td><td>Tigela de arroz com carne bovina</td><td>&#x1F969; Prato principal</td></tr>
+    <tr><td>すし</td><td><strong>sushi</strong></td><td>Arroz temperado com peixe/vegetais</td><td>&#x1F363; Tradicional</td></tr>
+    <tr><td>てんぷら</td><td><strong>tenpura</strong></td><td>Vegetais e camarão empanados fritos</td><td>&#x1F364; Tradicional</td></tr>
+    <tr><td>うどん</td><td><strong>udon</strong></td><td>Macarrão grosso de trigo em caldo</td><td>&#x1F35C; Prato quente</td></tr>
+    <tr><td>おにぎり</td><td><strong>onigiri</strong></td><td>Bolinho de arroz (com recheio)</td><td>&#x1F359; Lanche</td></tr>
+    <tr><td>オムライス</td><td><strong>omuraisu</strong></td><td>Omelete sobre arroz frito com ketchup</td><td>&#x1F373; Yoshoku*</td></tr>
+    <tr><td>スパゲッティ</td><td><strong>supagetti</strong></td><td>Espaguete (estilo japonês)</td><td>&#x1F35D; Yoshoku*</td></tr>
+    <tr><td>ハヤシライス</td><td><strong>hayashi raisu</strong></td><td>Arroz com molho de carne e cogumelos</td><td>&#x1F372; Yoshoku*</td></tr>
+    <tr><td>すきやき</td><td><strong>sukiyaki</strong></td><td>Panela quente: carne fina + vegetais + molho doce</td><td>&#x1F956; Nabe</td></tr>
+    <tr><td>ピザ</td><td><strong>piza</strong></td><td>Pizza (emprestado do italiano)</td><td>&#x1F355; Estrageiro</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-tip">
+  <h3>&#x1F4D6; *Yoshoku (洋食) = Comida Ocidental Japonesa</h3>
+  <p>São pratos de origem ocidental que foram <strong>adaptados ao paladar japonês</strong>. Exemplos: オムライス (omelete + arroz), ハヤシライス (hashed beef rice), スパゲッティ (espaguete com molhos japoneses como mentaiko ou natto).</p>
+</div>
+
+<div class="info-box info-note">
+  <h3>&#x1F1EF;&#x1F1F5; Katakana vs Hiragana</h3>
+  <p>Palavras em <strong>カタカナ</strong> (katakana) = emprestadas de outros idiomas:</p>
+  <ul style="margin:0.3rem 0 0 1.5rem;">
+    <li>ラーメン (raamen) ← chinês 拉麵</li>
+    <li>スパゲッティ (supagetti) ← italiano spaghetti</li>
+    <li>ピザ (piza) ← italiano/inglês pizza</li>
+    <li>カレー (karee) ← inglês curry (via Índia)</li>
+  </ul>
+  <p>Palavras em <strong>ひらがな</strong> = origem japonesa: すし, うどん, おにぎり</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Comidas</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">ラーメン</div><div class="romaji">raamen</div><div class="pt">Ramen</div></div>
+  <div class="flashcard"><div class="jp">カレーライス</div><div class="romaji">karee raisu</div><div class="pt">Curry com arroz</div></div>
+  <div class="flashcard"><div class="jp">ぎゅうどん</div><div class="romaji">gyuudon</div><div class="pt">Tigela arroz+carne</div></div>
+  <div class="flashcard"><div class="jp">すし</div><div class="romaji">sushi</div><div class="pt">Sushi</div></div>
+  <div class="flashcard"><div class="jp">てんぷら</div><div class="romaji">tenpura</div><div class="pt">Tempura</div></div>
+  <div class="flashcard"><div class="jp">うどん</div><div class="romaji">udon</div><div class="pt">Udon</div></div>
+  <div class="flashcard"><div class="jp">おにぎり</div><div class="romaji">onigiri</div><div class="pt">Bolinho de arroz</div></div>
+  <div class="flashcard"><div class="jp">オムライス</div><div class="romaji">omuraisu</div><div class="pt">Omelete+arroz</div></div>
+  <div class="flashcard"><div class="jp">すきやき</div><div class="romaji">sukiyaki</div><div class="pt">Panela quente</div></div>
+  <div class="flashcard"><div class="jp">ピザ</div><div class="romaji">piza</div><div class="pt">Pizza</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: BEBIDAS ===== -->
+<h2 style="background: var(--accent3); color: #1A1A2E; -webkit-text-stroke: 1px var(--border);">
+  &#x1F964; のみもの — Nomimono (Bebidas)
+</h2>
+
+<div class="info-box info-note">
+  <strong>Vocabulário-chave:</strong>
+  <span style="font-family: var(--font-jp);">のみもの</span> (nomimono) = <strong>bebida</strong> |
+  <span style="font-family: var(--font-jp);">のむ</span> (nomu) = beber (verbo)
+</div>
+
+<table>
+  <thead><tr><th>Escrita</th><th>Romaji</th><th>O que é</th><th>Tipo</th></tr></thead>
+  <tbody>
+    <tr><td>みず</td><td><strong>mizu</strong></td><td>Água</td><td>&#x1F4A7; Básico</td></tr>
+    <tr><td>おちゃ</td><td><strong>ocha</strong></td><td>Chá verde (genérico para chá)</td><td>&#x1F375; Tradicional</td></tr>
+    <tr><td>こうちゃ</td><td><strong>koucha</strong></td><td>Chá preto (estilo ocidental)</td><td>&#x2615; Ocidental</td></tr>
+    <tr><td>コーヒー</td><td><strong>koohii</strong></td><td>Café</td><td>&#x2615; Ocidental</td></tr>
+    <tr><td>ぎゅうにゅう</td><td><strong>gyuunyuu</strong></td><td>Leite de vaca</td><td>&#x1F95B; Lácteo</td></tr>
+    <tr><td>ジュース</td><td><strong>juusu</strong></td><td>Suco / Refrigerante</td><td>&#x1F964; Variado</td></tr>
+    <tr><td>おさけ</td><td><strong>osake</strong></td><td>Saquê / bebida alcoólica em geral</td><td>&#x1F376; Alcoólico</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-tip">
+  <h3>&#x1F375; Cultura do Chá no Japão</h3>
+  <p><strong>おちゃ (ocha)</strong> normalmente se refere ao <strong>chá verde</strong> (ryokucha). O prefixo <strong>お</strong> indica respeito — chá é tão importante que sempre recebe o honorífico! &#x1F33F;</p>
+  <p>こうちゃ (koucha) = "chá vermelho" = chá preto ocidental. Veio com os ingleses no período Meiji.</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Bebidas</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">みず</div><div class="romaji">mizu</div><div class="pt">água</div></div>
+  <div class="flashcard"><div class="jp">おちゃ</div><div class="romaji">ocha</div><div class="pt">chá verde</div></div>
+  <div class="flashcard"><div class="jp">こうちゃ</div><div class="romaji">koucha</div><div class="pt">chá preto</div></div>
+  <div class="flashcard"><div class="jp">コーヒー</div><div class="romaji">koohii</div><div class="pt">café</div></div>
+  <div class="flashcard"><div class="jp">ぎゅうにゅう</div><div class="romaji">gyuunyuu</div><div class="pt">leite</div></div>
+  <div class="flashcard"><div class="jp">ジュース</div><div class="romaji">juusu</div><div class="pt">suco</div></div>
+  <div class="flashcard"><div class="jp">おさけ</div><div class="romaji">osake</div><div class="pt">saquê/álcool</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: GOSTAR E NÃO GOSTAR ===== -->
+<h2 style="background: var(--accent4); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  &#x2764;&#xFE0F; Gostar e Não Gostar — すき・きらい
+</h2>
+
+<div class="card card-accent4">
+  <h3>Estrutura Fundamental</h3>
+  <p style="font-size:1.1rem;"><strong>[Pessoa] は [Coisa] が [Sentimento] です。</strong></p>
+  <p style="color:#555;">A partícula <strong>が</strong> marca o <strong>objeto do sentimento</strong> (aquilo que você gosta/não gosta).</p>
+</div>
+
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0;">
+
+  <div class="card card-accent6">
+    <h3>&#x2705; GOSTAR</h3>
+    <p style="font-family:var(--font-jp);font-size:1.2rem;font-weight:700;">〜が すきです</p>
+    <p><em>~ ga suki desu</em></p>
+    <p>= "Eu gosto de ~"</p>
+    <div class="mnemonic"><strong>&#x1F9E0;</strong> <strong>Su</strong>ki = <strong>Su</strong>ave (você gosta, é suave)</div>
+  </div>
+
+  <div class="card card-accent1">
+    <h3>&#x274C; NÃO GOSTAR</h3>
+    <p style="font-family:var(--font-jp);font-size:1.2rem;font-weight:700;">〜が きらいです</p>
+    <p><em>~ ga kirai desu</em></p>
+    <p>= "Eu não gosto de ~"</p>
+    <div class="mnemonic"><strong>&#x1F9E0;</strong> <strong>Ki</strong>rai = <strong>Ki</strong>lo (pesado, ruim → não gosta)</div>
+  </div>
+
+  <div class="card card-accent5">
+    <h3>&#x1F496; AMAR / ADORAR</h3>
+    <p style="font-family:var(--font-jp);font-size:1.2rem;font-weight:700;">〜が だいすきです</p>
+    <p><em>~ ga daisuki desu</em></p>
+    <p>= "Eu adoro/amo ~"</p>
+    <div class="mnemonic"><strong>&#x1F9E0;</strong> 大 (dai) = grande → "GRANDE gostar" = amar</div>
+  </div>
+
+  <div class="card" style="border-color:var(--accent1);background:#fff0f0;">
+    <h3>&#x1F6AB; ODIAR / DETESTAR</h3>
+    <p style="font-family:var(--font-jp);font-size:1.2rem;font-weight:700;">〜が だいきらいです</p>
+    <p><em>~ ga daikirai desu</em></p>
+    <p>= "Eu odeio/detesto ~"</p>
+    <div class="mnemonic"><strong>&#x1F9E0;</strong> 大 (dai) + きらい = "GRANDE não-gostar" = odiar</div>
+  </div>
+
+</div>
+
+<h3 style="border-left-color: var(--accent4);">Escala de Intensidade</h3>
+<table>
+  <thead><tr><th>Nível</th><th>Japonês</th><th>Romaji</th><th>Sentimento</th></tr></thead>
+  <tbody>
+    <tr><td>+2</td><td>だいすき</td><td><strong>daisuki</strong></td><td>Amar / Adorar &#x1F496;</td></tr>
+    <tr><td>+1</td><td>すき</td><td><strong>suki</strong></td><td>Gostar &#x2764;&#xFE0F;</td></tr>
+    <tr><td>0</td><td>—</td><td>—</td><td>Neutro &#x1F610;</td></tr>
+    <tr><td>-1</td><td>きらい</td><td><strong>kirai</strong></td><td>Não gostar &#x1F494;</td></tr>
+    <tr><td>-2</td><td>だいきらい</td><td><strong>daikirai</strong></td><td>Odiar / Detestar &#x1F6AB;</td></tr>
+  </tbody>
+</table>
+
+<h3>&#x1F4AC; Exemplos Práticos</h3>
+<div class="example-dialog">
+  <p class="jp-text"><strong>わたしは ラーメンが すきです。</strong></p>
+  <p class="translation"><em>Watashi wa raamen ga suki desu.</em> → Eu gosto de ramen. &#x1F35C;&#x2764;&#xFE0F;</p>
+</div>
+<div class="example-dialog">
+  <p class="jp-text"><strong>ぼくは すしが だいすきです!</strong></p>
+  <p class="translation"><em>Boku wa sushi ga daisuki desu!</em> → Eu adoro sushi! &#x1F363;&#x1F496;</p>
+</div>
+<div class="example-dialog">
+  <p class="jp-text"><strong>わたしは ぎゅうにゅうが きらいです。</strong></p>
+  <p class="translation"><em>Watashi wa gyuunyuu ga kirai desu.</em> → Eu não gosto de leite. &#x1F95B;&#x274C;</p>
+</div>
+
+<h3>&#x2753; Perguntas sobre Gostos</h3>
+<div class="card card-accent2">
+  <table>
+    <thead><tr><th>Pergunta</th><th>Romaji</th><th>Significado</th></tr></thead>
+    <tbody>
+      <tr><td>なにが すきですか？</td><td><em>Nani ga suki desu ka?</em></td><td>Do que você gosta?</td></tr>
+      <tr><td>なにが きらいですか？</td><td><em>Nani ga kirai desu ka?</em></td><td>Do que você não gosta?</td></tr>
+      <tr><td>ラーメンが すきですか？</td><td><em>Raamen ga suki desu ka?</em></td><td>Você gosta de ramen?</td></tr>
+      <tr><td>どんな たべものが すきですか？</td><td><em>Donna tabemono ga suki desu ka?</em></td><td>Que tipo de comida você gosta?</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="example-dialog">
+  <h3>&#x1F4AC; Diálogo: No Restaurante</h3>
+  <p><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">なにが すきですか？</span></p>
+  <p class="translation"><em>Nani ga suki desu ka?</em> — Do que você gosta?</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F466; Ken:</span> <span class="jp-text">ラーメンが だいすきです! ぎゅうどんも すきです。</span></p>
+  <p class="translation"><em>Raamen ga daisuki desu! Gyuudon mo suki desu.</em> — Eu adoro ramen! Também gosto de gyudon.</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">すしは すきですか？</span></p>
+  <p class="translation"><em>Sushi wa suki desu ka?</em> — E sushi, você gosta? (は = contraste: "e quanto a...?")</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F466; Ken:</span> <span class="jp-text">はい、すきです。でも、ピザは きらいです。</span></p>
+  <p class="translation"><em>Hai, suki desu. Demo, piza wa kirai desu.</em> — Sim, gosto. Mas não gosto de pizza.</p>
+</div>
+
+<div class="info-box info-tip">
+  <h3>&#x1F4A1; は vs が nos Gostos</h3>
+  <p><strong>が</strong> = marca o objeto do gosto (padrão): ラーメン<strong>が</strong>すきです = "Gosto de ramen"</p>
+  <p><strong>は</strong> = contraste ou tópico: ラーメン<strong>は</strong>すきです = "Quanto a ramen, (eu) gosto" (implica: "mas outras coisas não")</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Sentimentos</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">すき</div><div class="romaji">suki</div><div class="pt">gostar</div></div>
+  <div class="flashcard"><div class="jp">きらい</div><div class="romaji">kirai</div><div class="pt">não gostar</div></div>
+  <div class="flashcard"><div class="jp">だいすき</div><div class="romaji">daisuki</div><div class="pt">amar/adorar</div></div>
+  <div class="flashcard"><div class="jp">だいきらい</div><div class="romaji">daikirai</div><div class="pt">odiar/detestar</div></div>
+  <div class="flashcard"><div class="jp">なにがすきですか？</div><div class="romaji">nani ga suki desu ka?</div><div class="pt">Do que você gosta?</div></div>
+  <div class="flashcard"><div class="jp">どんなたべものがすき？</div><div class="romaji">donna tabemono ga suki?</div><div class="pt">Que tipo de comida gosta?</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: COLA RÁPIDA ===== -->
+<h2 style="background: var(--accent5); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  &#x1F9E0; Tabela Cola Rápida
+</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">&#x1F468;&#x200D;&#x1F469;&#x200D;&#x1F467;&#x200D;&#x1F466; Família (かぞく)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>ちち</td><td>meu pai</td></tr>
+        <tr><td>はは</td><td>minha mãe</td></tr>
+        <tr><td>そふ</td><td>meu avô</td></tr>
+        <tr><td>そぼ</td><td>minha avó</td></tr>
+        <tr><td>あに</td><td>meu irmão +velho</td></tr>
+        <tr><td>あね</td><td>minha irmã +velha</td></tr>
+        <tr><td>おとうと</td><td>irmão +novo</td></tr>
+        <tr><td>いもうと</td><td>irmã +nova</td></tr>
+        <tr><td>おとうさん</td><td>(seu) pai</td></tr>
+        <tr><td>おかあさん</td><td>(sua) mãe</td></tr>
+        <tr><td>おじいさん</td><td>(seu) avô</td></tr>
+        <tr><td>おばあさん</td><td>(sua) avó</td></tr>
+        <tr><td>おにいさん</td><td>(seu) irmão +velho</td></tr>
+        <tr><td>おねえさん</td><td>(sua) irmã +velha</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">&#x1F35C; Comidas (たべもの)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>ラーメン</td><td>Ramen</td></tr>
+        <tr><td>すし</td><td>Sushi</td></tr>
+        <tr><td>うどん</td><td>Udon</td></tr>
+        <tr><td>カレーライス</td><td>Curry com arroz</td></tr>
+        <tr><td>おにぎり</td><td>Bolinho de arroz</td></tr>
+        <tr><td>ぎゅうどん</td><td>Tigela arroz+carne</td></tr>
+        <tr><td>てんぷら</td><td>Tempura</td></tr>
+        <tr><td>オムライス</td><td>Omelete+arroz</td></tr>
+        <tr><td>すきやき</td><td>Panela quente</td></tr>
+        <tr><td>ピザ</td><td>Pizza</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">&#x1F964; Bebidas (のみもの)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>みず</td><td>água</td></tr>
+        <tr><td>おちゃ</td><td>chá verde</td></tr>
+        <tr><td>こうちゃ</td><td>chá preto</td></tr>
+        <tr><td>コーヒー</td><td>café</td></tr>
+        <tr><td>ぎゅうにゅう</td><td>leite</td></tr>
+        <tr><td>ジュース</td><td>suco</td></tr>
+        <tr><td>おさけ</td><td>saquê/álcool</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">&#x2764;&#xFE0F; Gostos (すき・きらい)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>だいすき (+2)</td><td>Amar / Adorar</td></tr>
+        <tr><td>すき (+1)</td><td>Gostar</td></tr>
+        <tr><td>— (0)</td><td>Neutro</td></tr>
+        <tr><td>きらい (-1)</td><td>Não gostar</td></tr>
+        <tr><td>だいきらい (-2)</td><td>Odiar / Detestar</td></tr>
+        <tr><td>〜がすきです</td><td>Eu gosto de 〜</td></tr>
+        <tr><td>〜がきらいです</td><td>Eu não gosto de 〜</td></tr>
+        <tr><td>〜がだいすきです</td><td>Eu adoro 〜</td></tr>
+        <tr><td>なにがすきですか？</td><td>Do que você gosta?</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 6: EXERCÍCIOS ===== -->
+<h2 style="background: var(--accent6); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  &#x1F3AF; Exercícios
+</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Traduza</h3>
+  <ol>
+    <li>Meu pai → ?</li>
+    <li>(Seu) pai → ?</li>
+    <li>Eu gosto de sushi → ?</li>
+    <li>Eu não gosto de leite → ?</li>
+    <li>Eu adoro ramen → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>ちち (chichi)</li>
+      <li>おとうさん (otousan)</li>
+      <li>わたしは すしが すきです (watashi wa sushi ga suki desu)</li>
+      <li>わたしは ぎゅうにゅうが きらいです (watashi wa gyuunyuu ga kirai desu)</li>
+      <li>わたしは ラーメンが だいすきです (watashi wa raamen ga daisuki desu)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Complete a Frase</h3>
+  <ol>
+    <li>＿＿＿は かいしゃいんです。(Meu pai é funcionário de empresa.)</li>
+    <li>＿＿＿は ラーメンが すきです。(Meu avô gosta de ramen.)</li>
+    <li>田中さんの ＿＿＿は せんせいですか？(O pai do Tanaka é professor?)</li>
+    <li>わたしは コーヒーが ＿＿＿。(Eu odeio café.)</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>ちち</strong> (chichi) — falando do próprio pai</li>
+      <li><strong>そふ</strong> (sofu) — falando do próprio avô</li>
+      <li><strong>おとうさん</strong> (otousan) — falando do pai de outra pessoa</li>
+      <li><strong>だいきらいです</strong> (daikirai desu) — odiar/detestar</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F30D; Nível 3 — Cultura</h3>
+  <ol>
+    <li>Por que existe duas palavras para "pai" em japonês?</li>
+    <li>O que significa yoshoku (洋食)? Dê 2 exemplos.</li>
+    <li>Por que おちゃ (ocha) sempre leva o prefixo お?</li>
+    <li>Qual a diferença entre すし e おにぎり?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>Uma para falar da <strong>própria família</strong> (humilde: ちち) e outra para falar da <strong>família dos outros</strong> (respeitosa: おとうさん). Reflete a cultura japonesa de hierarquia e modéstia.</li>
+      <li><strong>Comida ocidental adaptada ao Japão.</strong> Ex: オムライス (omelete+arroz), ハヤシライス (hashed beef rice), スパゲッティ (espaguete estilo japonês).</li>
+      <li>O chá é <strong>culturalmente sagrado</strong> no Japão. O お é um prefixo honorífico que demonstra respeito. Tirar o お seria como falar "chazinho" sem o "zinho" — não é errado, mas soa seco.</li>
+      <li>すし = arroz temperado com vinagre + peixe/vegetais (técnica de conservação). おにぎり = bolinho de arroz simples (sem vinagre), geralmente com recheio (umeboshi, salmão) e envolto em alga. Mais cotidiano e caseiro.</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<h2 style="background: var(--accent1); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  &#x1F517; Navegação
+</h2>
+
+<nav class="footer-nav">
+  <a href="Aula 2.html">&larr; Aula 2</a>
+  <a href="Aula 4.html">Aula 4 &rarr;</a>
+</nav>
+
+</body>
+</html>

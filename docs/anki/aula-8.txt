@@ -1,0 +1,40 @@
+Frente	Verso
+きのう	<b>Ontem</b><br>(kinoo)
+きょう	<b>Hoje</b><br>(kyou)
+あした	<b>Amanhã</b><br>(ashita)
+とても	<b>Muito</b><br>(totemo)
+はれ	<b>Ensolarado</b><br>(hare)
+くもり	<b>Nublado</b><br>(kumori)
+あめ	<b>Chuva</b><br>(ame)
+ゆき	<b>Neve</b><br>(yuki)
+かぜ	<b>Vento</b><br>(kaze)
+かみなり	<b>Raio / Trovão</b><br>(kaminari)
+たいふう	<b>Tufão</b><br>(taifuu)
+あらし	<b>Tempestade</b><br>(arashi)
+きり	<b>Neblina / Nevoeiro</b><br>(kiri)
+たつまき	<b>Tornado</b><br>(tatsumaki)
+にじ	<b>Arco-íris</b><br>(niji)
+あつい	<b>Quente / Calor (seco)</b><br>(atsui)
+むしあつい	<b>Calor úmido e abafado</b><br>(mushiatsui)<br>⚠️ Literalmente "quente como vapor" — típico do verão japonês
+さむい	<b>Frio</b><br>(samui)
+すずしい	<b>Fresco / Agradável</b><br>(suzushii)
+きょうのてんきはどうですか？	<b>Como está o tempo hoje?</b><br>(Kyou no tenki wa doudesuka?)
+きょうははれです。	<b>Hoje está ensolarado.</b><br>(Kyou wa hare desu.)
+あしたのてんきはどうですか？	<b>Como está o tempo amanhã?</b><br>(Ashita no tenki wa doudesuka?)
+あしたはくもりです。	<b>Amanhã estará nublado.</b><br>(Ashita wa kumori desu.)
+[tempo]のてんきはどうですか？	<b>Perguntar sobre o clima</b><br>Ex: きょうのてんきはどうですか？<br>([tempo] no tenki wa doudesuka?)<br>Estrutura: [tempo] + の + てんき + は + どうですか？
+[tempo]は[clima]です。	<b>Responder sobre o clima</b><br>Ex: きょうははれです。<br>([tempo] wa [clima] desu.)<br>Estrutura: [tempo] + は + [clima] + です
+きょうの[cidade]のきおんはどうですか？	<b>Qual a temperatura de [cidade] hoje?</b><br>(Kyou no [cidade] no kion wa doudesuka?)
+きょうのサンパウロのきおんはさむいです。	<b>Hoje em São Paulo está frio.</b><br>(Kyou no San Pauro no kion wa samui desu.)
+おきなわはあついです。	<b>Em Okinawa está calor.</b><br>(Okinawa wa atsui desu.)
+[lugar]はどうですか？	<b>E em [lugar]?</b><br>([lugar] wa doudesuka?)
+てんき	<b>Clima / Tempo (fenômenos)</b><br>(tenki)<br>Usado para: sol, chuva, nublado, vento, etc.
+きおん	<b>Temperatura (sensação térmica)</b><br>(kion)<br>Usado para: quente, frio, fresco, etc.
+あつい vs むしあつい	<b>Diferença:</b><br>あつい (atsui) = calor seco 🔥<br>むしあつい (mushiatsui) = calor úmido/abafado 😓<br>⚠️ むし = vapor / inseto + あつい = quente
+Formal vs Coloquial (temperatura)	<b>Formal:</b> きょうの[cidade]のきおんは〜です<br><b>Coloquial:</b> [cidade]はあつい／さむいです<br>Ex formal: きょうのサンパウロのきおんはさむいです<br>Ex coloquial: おきなわはあついです
+かぜ 💨	<b>Vento</b><br>(kaze)<br>Não confundir com かぜ (resfriado) — são homófonas!
+たいふう 🌀	<b>Tufão</b><br>(taifuu)<br>Muito comum no Japão entre agosto e outubro
+きょうは[clima]です。	<b>Hoje está [clima].</b><br>(Kyou wa [clima] desu.)<br>Padrão de resposta sobre o clima
+くもり + あめ、あつい	<b>Nublado com chuva, calor</b><br>(kumori + ame, atsui)<br>Combinação de fenômenos — use  +  para listar
+ゆき、さむい	<b>Neve, frio</b><br>(yuki, samui)<br>Combinação clima + temperatura
+てんき (tenki) = clima<br>きおん (kion) = temperatura	<b>Diferença entre てんき e きおん</b><br>てんき (tenki) → fenômenos: はれ, あめ, くもり<br>きおん (kion) → sensação: あつい, さむい, すずしい<br>São conceitos complementares!

@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 8 — Clima e Temperatura (てんき・きおん)</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--border);
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border-left: 6px solid var(--border);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background: var(--border);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.7rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--border);
+}
+
+tbody td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  font-family: var(--font-jp);
+  vertical-align: middle;
+}
+
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+
+.flashcard {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem;
+}
+
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+
+.quiz {
+  background: var(--accent3);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.quiz h3 { border-left-color: var(--accent1); }
+
+.quiz details {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+
+.quiz summary {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+
+.cheatsheet {
+  background: #1A1A2E;
+  color: #00FF88;
+  font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88;
+  box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-weight: 600;
+}
+
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+
+.example-dialog {
+  background: #fff;
+  border: 3px dashed var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+
+.section-badge {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+
+.op-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+nav.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 1rem 1.5rem;
+  background: var(--border);
+  border: 3px solid var(--border);
+}
+
+nav.footer-nav a {
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav.footer-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== MAIN TITLE ===== -->
+<h1>Aula 8 — Clima e Temperatura (てんき・きおん)</h1>
+
+<!-- ===== TIP CALLOUT ===== -->
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem; line-height:1.8;">
+    <li>Nomear <strong>11 fenômenos climáticos</strong> em japonês</li>
+    <li>Descrever a <strong>temperatura</strong> (あつい·さむい·すずしい·むしあつい)</li>
+    <li>Perguntar <strong>"como está o tempo?"</strong> com 〜のてんきはどうですか？</li>
+    <li>Consultar a <strong>temperatura de cidades</strong> com 〜のきおん</li>
+    <li>Entender a diferença entre <strong>あつい (calor seco) e むしあつい (calor úmido)</strong></li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: Vocabulário Temporal — accent1 -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent1); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  <span class="section-badge">⏱️</span>Vocabulário Temporal
+</h2>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Romaji</th>
+        <th>Português</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>きのう</td>
+        <td><strong>kinoo</strong></td>
+        <td>ontem</td>
+      </tr>
+      <tr>
+        <td>きょう</td>
+        <td><strong>kyou</strong></td>
+        <td>hoje</td>
+      </tr>
+      <tr>
+        <td>あした</td>
+        <td><strong>ashita</strong></td>
+        <td>amanhã</td>
+      </tr>
+      <tr>
+        <td>とても</td>
+        <td><strong>totemo</strong></td>
+        <td>muito</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Flashcards — Temporal</h3>
+  <div class="op-words">
+    <div class="flashcard">
+      <div class="jp">きのう</div>
+      <div class="romaji">kinoo</div>
+      <div class="pt">ontem</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">きょう</div>
+      <div class="romaji">kyou</div>
+      <div class="pt">hoje</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">あした</div>
+      <div class="romaji">ashita</div>
+      <div class="pt">amanhã</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">とても</div>
+      <div class="romaji">totemo</div>
+      <div class="pt">muito</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: てんき — Tenki (Clima / Fenômenos) — accent2 -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent2); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  <span class="section-badge">🌤️</span> てんき — Tenki (Clima / Fenômenos)
+</h2>
+
+<div class="card card-accent2">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Romaji</th>
+        <th>Português</th>
+        <th>Símbolo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>はれ</td>
+        <td><strong>hare</strong></td>
+        <td>ensolarado</td>
+        <td>☀️</td>
+      </tr>
+      <tr>
+        <td>くもり</td>
+        <td><strong>kumori</strong></td>
+        <td>nublado</td>
+        <td>☁️</td>
+      </tr>
+      <tr>
+        <td>あめ</td>
+        <td><strong>ame</strong></td>
+        <td>chuva</td>
+        <td>🌧️</td>
+      </tr>
+      <tr>
+        <td>ゆき</td>
+        <td><strong>yuki</strong></td>
+        <td>neve</td>
+        <td>❄️</td>
+      </tr>
+      <tr>
+        <td>かぜ</td>
+        <td><strong>kaze</strong></td>
+        <td>vento</td>
+        <td>💨</td>
+      </tr>
+      <tr>
+        <td>かみなり</td>
+        <td><strong>kaminari</strong></td>
+        <td>raio / trovão</td>
+        <td>⚡</td>
+      </tr>
+      <tr>
+        <td>たいふう</td>
+        <td><strong>taifuu</strong></td>
+        <td>tufão</td>
+        <td>🌀</td>
+      </tr>
+      <tr>
+        <td>あらし</td>
+        <td><strong>arashi</strong></td>
+        <td>tempestade</td>
+        <td>🌩️</td>
+      </tr>
+      <tr>
+        <td>きり</td>
+        <td><strong>kiri</strong></td>
+        <td>neblina / nevoeiro</td>
+        <td>🌫️</td>
+      </tr>
+      <tr>
+        <td>たつまき</td>
+        <td><strong>tatsumaki</strong></td>
+        <td>tornado</td>
+        <td>🌪️</td>
+      </tr>
+      <tr>
+        <td>にじ</td>
+        <td><strong>niji</strong></td>
+        <td>arco-íris</td>
+        <td>🌈</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box info-note">
+    <strong>Curiosidade</strong><br>
+    <strong>たいふう (taifuu)</strong> é a palavra japonesa para tufão — um fenômeno muito comum no Japão entre agosto e outubro! O Japão é regularmente atingido por tufões que vêm do Pacífico.
+  </div>
+
+  <h3>Flashcards — Clima</h3>
+  <div class="op-words">
+    <div class="flashcard">
+      <div class="jp">はれ</div>
+      <div class="romaji">hare</div>
+      <div class="pt">ensolarado ☀️</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">くもり</div>
+      <div class="romaji">kumori</div>
+      <div class="pt">nublado ☁️</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">あめ</div>
+      <div class="romaji">ame</div>
+      <div class="pt">chuva 🌧️</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">ゆき</div>
+      <div class="romaji">yuki</div>
+      <div class="pt">neve ❄️</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">かぜ</div>
+      <div class="romaji">kaze</div>
+      <div class="pt">vento 💨</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">かみなり</div>
+      <div class="romaji">kaminari</div>
+      <div class="pt">raio ⚡</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">たいふう</div>
+      <div class="romaji">taifuu</div>
+      <div class="pt">tufão 🌀</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">あらし</div>
+      <div class="romaji">arashi</div>
+      <div class="pt">tempestade 🌩️</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">きり</div>
+      <div class="romaji">kiri</div>
+      <div class="pt">neblina 🌫️</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">たつまき</div>
+      <div class="romaji">tatsumaki</div>
+      <div class="pt">tornado 🌪️</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">にじ</div>
+      <div class="romaji">niji</div>
+      <div class="pt">arco-íris 🌈</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: きおん — Kion (Temperatura / Sensação Térmica) — accent3 -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent3); color: var(--text);">
+  <span class="section-badge">🌡️</span> きおん — Kion (Temperatura / Sensação Térmica)
+</h2>
+
+<div class="card card-accent3">
+  <table>
+    <thead>
+      <tr>
+        <th>Hiragana</th>
+        <th>Romaji</th>
+        <th>Português</th>
+        <th>Sensor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>あつい</td>
+        <td><strong>atsui</strong></td>
+        <td>quente / calor</td>
+        <td>🔥</td>
+      </tr>
+      <tr>
+        <td>むしあつい</td>
+        <td><strong>mushiatsui</strong></td>
+        <td>calor úmido / muito quente</td>
+        <td>😓</td>
+      </tr>
+      <tr>
+        <td>さむい</td>
+        <td><strong>samui</strong></td>
+        <td>frio</td>
+        <td>🥶</td>
+      </tr>
+      <tr>
+        <td>すずしい</td>
+        <td><strong>suzushii</strong></td>
+        <td>fresco / agradável</td>
+        <td>🌬️</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box info-note">
+    <strong>Detalhe — むしあつい (Mushiatsui)</strong><br>
+    <span style="font-family: var(--font-jp);">むし (mushi)</span> = inseto / vapor &bull; <span style="font-family: var(--font-jp);">あつい (atsui)</span> = quente<br><br>
+    Literalmente: &quot;quente como vapor&quot;. É o calor <strong>úmido e abafado</strong> típico do verão japonês — muito diferente de um calor seco! Quem já viveu verão no Brasil entende bem essa sensação.
+  </div>
+
+  <h3>Flashcards — Temperatura</h3>
+  <div class="op-words">
+    <div class="flashcard">
+      <div class="jp">あつい</div>
+      <div class="romaji">atsui</div>
+      <div class="pt">calor 🔥</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">むしあつい</div>
+      <div class="romaji">mushiatsui</div>
+      <div class="pt">calor úmido 😓</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">さむい</div>
+      <div class="romaji">samui</div>
+      <div class="pt">frio 🥶</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">すずしい</div>
+      <div class="romaji">suzushii</div>
+      <div class="pt">fresco 🌬️</div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: Perguntar sobre o Clima — accent4 -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent4); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  <span class="section-badge">💬</span> Perguntar sobre o Clima
+</h2>
+
+<div class="card card-accent4">
+  <h3>Estrutura Principal</h3>
+  <div style="font-size: 1.1rem; line-height: 2; padding: 0.5rem 0;">
+    <div><strong>[tempo]</strong> <span style="font-family: var(--font-jp);">の てんき は どうですか？</span></div>
+    <div style="font-style: italic; color: #555;">[tempo] no tenki wa doudesuka?</div>
+    <div style="color: #666; margin-bottom: 1rem;">&rarr; Qual o tempo [hoje/amanhã]?</div>
+
+    <div><strong>[tempo]</strong> <span style="font-family: var(--font-jp);">は [clima] です。</span></div>
+    <div style="font-style: italic; color: #555;">[tempo] wa [clima] desu.</div>
+    <div style="color: #666;">&rarr; [Hoje/Amanhã] está/será [clima].</div>
+  </div>
+</div>
+
+<div class="example-dialog">
+  <div class="speaker">Dialogo Modelo 1</div>
+  <div class="jp-text"><strong>きょうのてんきはどうですか？</strong></div>
+  <div style="font-style: italic; color: #555;">Kyo no tenki wa dodesuka?</div>
+  <div class="translation">&rarr; Qual o tempo de hoje?</div>
+
+  <div style="margin-top: 0.5rem;"></div>
+
+  <div class="jp-text"><strong>きょうははれです。</strong></div>
+  <div style="font-style: italic; color: #555;">Kyo wa hare desu.</div>
+  <div class="translation">&rarr; Hoje está ensolarado. ☀️</div>
+</div>
+
+<div class="example-dialog">
+  <div class="speaker">Dialogo Modelo 2</div>
+  <div class="jp-text"><strong>あしたのてんきはどうですか？</strong></div>
+  <div style="font-style: italic; color: #555;">Ashita no tenki wa doudesuka?</div>
+  <div class="translation">&rarr; Qual o tempo para amanhã?</div>
+
+  <div style="margin-top: 0.5rem;"></div>
+
+  <div class="jp-text"><strong>あしたのてんきはくもりです。</strong></div>
+  <div style="font-style: italic; color: #555;">Ashita no tenki wa kumori desu.</div>
+  <div class="translation">&rarr; Amanhã será nublado. ☁️</div>
+</div>
+
+<h3>Flashcards — Frases Úteis</h3>
+<div class="op-words">
+  <div class="flashcard">
+    <div class="jp">きょうのてんきはどうですか？</div>
+    <div class="romaji">Kyou no tenki wa doudesuka?</div>
+    <div class="pt">Tempo de hoje?</div>
+  </div>
+  <div class="flashcard">
+    <div class="jp">きょうははれです。</div>
+    <div class="romaji">Kyou wa hare desu.</div>
+    <div class="pt">Ensolarado ☀️</div>
+  </div>
+  <div class="flashcard">
+    <div class="jp">あしたのてんきはどうですか？</div>
+    <div class="romaji">Ashita no tenki wa doudesuka?</div>
+    <div class="pt">Tempo de amanhã?</div>
+  </div>
+  <div class="flashcard">
+    <div class="jp">あしたはくもりです。</div>
+    <div class="romaji">Ashita wa kumori desu.</div>
+    <div class="pt">Nublado ☁️</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: Perguntar Temperatura de Cidades — accent5 -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent5); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  <span class="section-badge">🌏</span> Perguntar Temperatura de Cidades
+</h2>
+
+<div class="card card-accent5">
+  <h3>Estrutura com Cidades</h3>
+  <div style="font-size: 1.1rem; line-height: 2; padding: 0.5rem 0;">
+    <div><span style="font-family: var(--font-jp);">きょうの [cidade] の きおん は どうですか？</span></div>
+    <div style="font-style: italic; color: #555;">Kyou no [cidade] no kion wa doudesuka?</div>
+    <div style="color: #666; margin-bottom: 1rem;">&rarr; Qual a temperatura de [cidade] hoje?</div>
+
+    <div><span style="font-family: var(--font-jp);">[cidade] の きおん は [temperatura] です。</span></div>
+    <div style="font-style: italic; color: #555;">[cidade] no kion wa [temperatura] desu.</div>
+    <div style="color: #666;">&rarr; A temperatura em [cidade] está [temperatura].</div>
+  </div>
+</div>
+
+<div class="example-dialog">
+  <div class="speaker">Exemplo 1 — São Paulo</div>
+  <div class="jp-text"><strong>きょうのサンパウロのきおんはどうですか？</strong></div>
+  <div style="font-style: italic; color: #555;">Kyou no San Pauro no kion wa doudesuka?</div>
+  <div class="translation">&rarr; Qual a temperatura de São Paulo hoje?</div>
+
+  <div style="margin-top: 0.5rem;"></div>
+
+  <div class="jp-text"><strong>きょうのサンパウロのきおんはさむいです。</strong></div>
+  <div style="font-style: italic; color: #555;">Kyou no San Pauro no kion wa samui desu.</div>
+  <div class="translation">&rarr; Hoje em São Paulo está frio. 🥶</div>
+</div>
+
+<div class="example-dialog">
+  <div class="speaker">Exemplo 2 — Okinawa</div>
+  <div class="jp-text"><strong>おきなわはどうですか？</strong></div>
+  <div style="font-style: italic; color: #555;">Okinawa wa doudesuka?</div>
+  <div class="translation">&rarr; E em Okinawa?</div>
+
+  <div style="margin-top: 0.5rem;"></div>
+
+  <div class="jp-text"><strong>おきなわはあついです。</strong></div>
+  <div style="font-style: italic; color: #555;">Okinawa wa atsui desu.</div>
+  <div class="translation">&rarr; Em Okinawa está calor. 🔥</div>
+</div>
+
+<div class="info-box info-note">
+  <strong>Formal vs. Informal</strong>
+  <ul style="margin-top: 0.3rem; font-weight: 400;">
+    <li><strong>きょうの〇〇のきおんは〜です。</strong> &rarr; mais formal (escrito, notícia)</li>
+    <li><strong>〇〇はあついです。</strong> &rarr; mais do dia a dia, coloquial</li>
+  </ul>
+</div>
+
+<h3>Flashcards — Perguntar Temperatura</h3>
+<div class="op-words">
+  <div class="flashcard">
+    <div class="jp">きょうの[cidade]のきおんは？</div>
+    <div class="romaji">Kyou no [cidade] no kion wa?</div>
+    <div class="pt">Temp. de [cidade]?</div>
+  </div>
+  <div class="flashcard">
+    <div class="jp">サンパウロはさむいです。</div>
+    <div class="romaji">San Pauro wa samui desu.</div>
+    <div class="pt">SP está frio 🥶</div>
+  </div>
+  <div class="flashcard">
+    <div class="jp">おきなわはあついです。</div>
+    <div class="romaji">Okinawa wa atsui desu.</div>
+    <div class="pt">Okinawa calor 🔥</div>
+  </div>
+  <div class="flashcard">
+    <div class="jp">[lugar]はどうですか？</div>
+    <div class="romaji">[lugar] wa doudesuka?</div>
+    <div class="pt">E em [lugar]?</div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: Previsão do Tempo — Prática — accent6 -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent6); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  <span class="section-badge">📊</span> Previsão do Tempo — Prática
+</h2>
+
+<div class="card card-accent6">
+  <table>
+    <thead>
+      <tr>
+        <th>Cidade</th>
+        <th>Clima</th>
+        <th>Temperatura</th>
+        <th>Como dizer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tóquio</td>
+        <td>☁️🌧️</td>
+        <td>28°C</td>
+        <td><span style="font-family: var(--font-jp);">くもり + あめ</span>、<span style="font-family: var(--font-jp);">あつい</span></td>
+      </tr>
+      <tr>
+        <td>Kanagawa</td>
+        <td>⚡☁️</td>
+        <td>20°C</td>
+        <td><span style="font-family: var(--font-jp);">かみなり + くもり</span>、<span style="font-family: var(--font-jp);">すずしい</span></td>
+      </tr>
+      <tr>
+        <td>Gunma</td>
+        <td>❄️</td>
+        <td>18°C</td>
+        <td><span style="font-family: var(--font-jp);">ゆき</span>、<span style="font-family: var(--font-jp);">さむい</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: Tabela Cola Rápida — accent1 (cycle) — cheatsheet -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent1); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  <span class="section-badge">🧠</span> Tabela Cola Rápida
+</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--sakura">Clima (てんき / Tenki)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>はれ</td><td>ensolarado ☀️</td></tr>
+        <tr><td>くもり</td><td>nublado ☁️</td></tr>
+        <tr><td>あめ</td><td>chuva 🌧️</td></tr>
+        <tr><td>ゆき</td><td>neve ❄️</td></tr>
+        <tr><td>かぜ</td><td>vento 💨</td></tr>
+        <tr><td>かみなり</td><td>raio ⚡</td></tr>
+        <tr><td>たいふう</td><td>tufão 🌀</td></tr>
+        <tr><td>あらし</td><td>tempestade 🌩️</td></tr>
+        <tr><td>きり</td><td>neblina 🌫️</td></tr>
+        <tr><td>たつまき</td><td>tornado 🌪️</td></tr>
+        <tr><td>にじ</td><td>arco-íris 🌈</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">Temperatura (きおん / Kion)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>あつい</td><td>calor 🔥</td></tr>
+        <tr><td>むしあつい</td><td>calor úmido 😓</td></tr>
+        <tr><td>さむい</td><td>frio 🥶</td></tr>
+        <tr><td>すずしい</td><td>fresco 🌬️</td></tr>
+        <tr><td>とても</td><td>muito</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">Temporal</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>きのう</td><td>ontem</td></tr>
+        <tr><td>きょう</td><td>hoje</td></tr>
+        <tr><td>あした</td><td>amanhã</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">Frases</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>きょうのてんきはどうですか？</td><td>Qual o tempo hoje?</td></tr>
+        <tr><td>きょうは[clima]です。</td><td>Hoje está [clima].</td></tr>
+        <tr><td>あしたのてんきはどうですか？</td><td>Tempo de amanhã?</td></tr>
+        <tr><td>きょうの[cidade]のきおんは[temp]です。</td><td>Temp. de [cidade] é [temp].</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: Mini-Quiz — accent2 (cycle) -->
+<!-- ============================================================ -->
+<h2 style="background: var(--accent2); color: #fff; -webkit-text-stroke: 1px var(--border);">
+  <span class="section-badge">🎯</span> Mini-Quiz
+</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Traduza</h3>
+  <ol>
+    <li>Ensolarado → ?</li>
+    <li>Chuva → ?</li>
+    <li>Neve → ?</li>
+    <li>Frio → ?</li>
+    <li>Arco-íris → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>はれ</strong> (hare) &#x2600;&#xFE0F;</li>
+      <li><strong>あめ</strong> (ame) &#x1F327;&#xFE0F;</li>
+      <li><strong>ゆき</strong> (yuki) &#x2744;&#xFE0F;</li>
+      <li><strong>さむい</strong> (samui) &#x1F976;</li>
+      <li><strong>にじ</strong> (niji) &#x1F308;</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Complete a Frase</h3>
+  <ol>
+    <li>"Como está o tempo hoje?" → きょうの ＿＿＿ は どうですか？</li>
+    <li>"Amanhã estará nublado" → あしたは ＿＿＿ です。</li>
+    <li>"Está MUITO frio" → とても ＿＿＿ です。</li>
+    <li>"Qual a temperatura de Tóquio?" → とうきょうの ＿＿＿ は どうですか？</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>きょうの <strong>てんき</strong> は どうですか？ (tenki)</li>
+      <li>あしたは <strong>くもり</strong> です (kumori)</li>
+      <li>とても <strong>さむい</strong> です (samui)</li>
+      <li>とうきょうの <strong>きおん</strong> は どうですか？ (kion)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F30F; Nível 3 — Previsão do Tempo</h3>
+  <p>Você é meteorologista! Descreva:</p>
+  <ol>
+    <li>"Hoje em São Paulo: nublado e frio" → ?</li>
+    <li>"Amanhã em Okinawa: ensolarado e calor" → ?</li>
+    <li>Qual a diferença entre てんき (tenki) e きおん (kion)?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>きょうのサンパウロは くもりで さむいです</strong> (kyou no San Pauro wa kumori de samui desu)</li>
+      <li><strong>あしたのおきなわは はれで あついです</strong> (ashita no Okinawa wa hare de atsui desu)</li>
+      <li><strong>てんき (tenki)</strong> = clima/tempo (sol, chuva, nublado). <strong>きおん (kion)</strong> = temperatura (quente, frio, fresco). São conceitos complementares!</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<!-- ===== FOOTER NAVIGATION ===== -->
+<nav class="footer-nav">
+  <a href="Aula 7.html">&larr; Aula 7</a>
+  <a href="Aula 9.html">Aula 9 &rarr;</a>
+</nav>
+
+</body>
+</html>

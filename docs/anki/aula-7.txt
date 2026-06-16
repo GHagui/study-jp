@@ -1,0 +1,42 @@
+Frente	Verso
+ぎんこう	Banco <b>(Ginkō)</b>
+スーパー	Supermercado <b>(Supā)</b>
+ホテル	Hotel <b>(Hoteru)</b>
+としょかん	Biblioteca <b>(Toshokan)</b>
+くうこう	Aeroporto <b>(Kūkō)</b>
+ほんや	Livraria <b>(Honya)</b>
+はなや	Floricultura <b>(Hanaya)</b>
+きっさてん	Cafeteria <b>(Kissaten)</b>
+レストラン	Restaurante <b>(Resutoran)</b>
+がっこう	Escola <b>(Gakkō)</b>
+こうえん	Parque <b>(Kōen)</b>
+えいがかん	Cinema <b>(Eigakan)</b>
+コンビニ	Conveniencia <b>(Konbini)</b>
+えき	Estacao <b>(Eki)</b>
+パン屋	Padaria <b>(Panya)</b>
+バー	Bar <b>(Bā)</b>
+やっきょく	Farmacia <b>(Yakkyoku)</b>
+ガススタンド	Posto de gasolina <b>(Gasu sutando)</b>
+うえ	Em cima <b>(ue)</b>
+した	Em baixo <b>(shita)</b>
+なか	Dentro / No meio <b>(naka)</b>
+まえ	Na frente <b>(mae)</b>
+うしろ	Atras <b>(ushiro)</b>
+そと	Fora <b>(soto)</b>
+ちかく	Perto <b>(chikaku)</b>
+とおく	Longe <b>(tooku)</b>
+みぎ	Direita <b>(migi)</b>
+ひだり	Esquerda <b>(hidari)</b>
+北 / きた	Norte <b>(kita)</b>
+南 / みなみ	Sul <b>(minami)</b>
+東 / ひがし	Leste <b>(higashi)</b>
+西 / にし	Oeste <b>(nishi)</b>
+すみません	Com licenca <b>(Sumimasen)</b>
+ありがとうございます	Obrigado(a) <b>(Arigatō gozaimasu)</b>
+どういたしまして	De nada / Imagina <b>(Dō itashimashite)</b>
+[X]はどこですか？	Onde fica [X]? <b>([X] wa doko desu ka)</b>
+[A]は[B]の[Posicao]です	[A] fica [Posicao] de [B] <b>([A] wa [B] no [Posicao] desu)</b>
+〜や = loja de ~ (padrao: [produto] + や)<br>Ex: ほん (livro) → ほんや (livraria)	Loja de [produto] <b>(ya)</b><br>Ex: honya, hanaya, panya
+の (particula de ligacao)<br>Usada em: BのPosicao (ex: こうえんのちかく)	Particula "de" — liga dois substantivos <b>(no)</b>
+ぎんこうはこうえんのちかくです。	O banco fica perto do parque. <b>(Ginkō wa kōen no chikaku desu)</b>
+ホテルはレストランのうしろです。	O hotel fica atras do restaurante. <b>(Hoteru wa resutoran no ushiro desu)</b>

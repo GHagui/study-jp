@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 6 — Estações do Ano (季節 / Kisetsu)</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7; --card-bg: #FFFFFF; --border: #1A1A2E; --shadow: #1A1A2E; --text: #1A1A2E;
+  --accent1: #FF6B6B; --accent2: #4ECDC4; --accent3: #FFE66D; --accent4: #A78BFA;
+  --accent5: #FF8C42; --accent6: #6BCB77; --accent7: #FFD93D; --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg); background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px; font-family: var(--font-body); color: var(--text);
+  line-height: 1.6; padding: 2rem; max-width: 1100px; margin: 0 auto;
+}
+h1 { font-size:2.8rem; font-weight:900; text-transform:uppercase; letter-spacing:-1px; background:var(--accent1); color:#fff; padding:1rem 1.5rem; border:4px solid var(--border); box-shadow:8px 8px 0 var(--shadow); margin-bottom:2rem; text-align:center; -webkit-text-stroke:2px var(--border); }
+h2 { font-size:1.8rem; font-weight:800; margin:2rem 0 1rem; padding:0.5rem 1rem; border:3px solid var(--border); box-shadow:5px 5px 0 var(--shadow); display:inline-block; }
+h3 { font-size:1.3rem; font-weight:700; margin:1.2rem 0 0.6rem; padding:0.3rem 0.8rem; border-left:6px solid var(--border); }
+.card { background:var(--card-bg); border:4px solid var(--border); box-shadow:6px 6px 0 var(--shadow); padding:1.5rem; margin:1.5rem 0; border-radius:2px; }
+.card-accent1 { background:#FFF5F5; border-color:var(--accent1); } .card-accent2 { background:#F0FFFE; border-color:var(--accent2); }
+.card-accent3 { background:#FFFEF5; border-color:var(--accent3); } .card-accent4 { background:#F8F5FF; border-color:var(--accent4); }
+.card-accent5 { background:#FFF9F5; border-color:var(--accent5); } .card-accent6 { background:#F5FFF6; border-color:var(--accent6); }
+table { width:100%; border-collapse:separate; border-spacing:0; border:4px solid var(--border); box-shadow:5px 5px 0 var(--shadow); margin:1rem 0; font-size:0.95rem; }
+thead th { background:var(--border); color:#fff; font-weight:800; padding:0.7rem 0.8rem; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px; border-bottom:3px solid var(--border); }
+tbody td { padding:0.6rem 0.8rem; border-bottom:2px solid #ddd; border-right:2px solid #ddd; font-family:var(--font-jp); vertical-align:middle; }
+tbody td:last-child { border-right:none; } tbody tr:last-child td { border-bottom:none; }
+tbody tr:nth-child(even) { background:#f9f9f9; } tbody tr:hover { background:#FFF3CD; }
+.flashcard { display:inline-block; background:var(--card-bg); border:3px solid var(--border); box-shadow:4px 4px 0 var(--shadow); padding:0.5rem 1rem; margin:0.3rem; font-family:var(--font-jp); font-size:1.1rem; font-weight:600; transition:transform 0.1s; cursor:pointer; user-select:none; }
+.flashcard:hover { transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--shadow); }
+.flashcard .jp { font-size:1.4rem; color:#E63946; } .flashcard .romaji { font-size:0.85rem; color:#555; } .flashcard .pt { font-size:0.9rem; color:#1A1A2E; font-weight:700; }
+.tag { display:inline-block; padding:0.2rem 0.7rem; border:2px solid var(--border); box-shadow:2px 2px 0 var(--shadow); font-size:0.75rem; font-weight:700; text-transform:uppercase; margin:0.2rem; }
+.tag-red { background:var(--accent1); color:#fff; } .tag-teal { background:var(--accent2); color:#1A1A2E; } .tag-yellow { background:var(--accent3); color:#1A1A2E; } .tag-purple { background:var(--accent4); color:#fff; } .tag-orange { background:var(--accent5); color:#fff; } .tag-green { background:var(--accent6); color:#fff; }
+.quiz { background:var(--accent3); border:4px solid var(--border); box-shadow:6px 6px 0 var(--shadow); padding:1.5rem; margin:1.5rem 0; }
+.quiz h3 { border-left-color:var(--accent1); }
+.quiz details { margin:0.5rem 0; padding:0.5rem 1rem; background:#fff; border:2px solid var(--border); }
+.quiz summary { font-weight:700; cursor:pointer; padding:0.3rem 0; } .quiz details[open] { background:#FFF5F5; border-color:var(--accent1); }
+.cheatsheet { background:#1A1A2E; color:#00FF88; font-family:'Courier New',monospace; border:4px solid #00FF88; box-shadow:6px 6px 0 #00FF8844; padding:1.5rem; margin:1.5rem 0; font-size:0.9rem; white-space:pre-wrap; line-height:1.5; }
+.info-box { padding:1rem 1.5rem; margin:1rem 0; border:3px solid var(--border); box-shadow:4px 4px 0 var(--shadow); font-weight:600; }
+.info-tip { background:#E8F8F5; border-left:8px solid var(--accent2); } .info-warn { background:#FFF3CD; border-left:8px solid var(--accent3); }
+.info-danger { background:#FFE5E5; border-left:8px solid var(--accent1); } .info-note { background:#F0E6FF; border-left:8px solid var(--accent4); }
+.example-dialog { background:#fff; border:3px dashed var(--border); padding:1rem 1.5rem; margin:0.8rem 0; font-size:0.95rem; }
+.example-dialog .speaker { font-weight:800; color:var(--accent1); } .example-dialog .jp-text { font-family:var(--font-jp); } .example-dialog .translation { color:#666; font-style:italic; margin-left:1.5rem; }
+.section-badge { display:inline-block; font-size:1.8rem; margin-right:0.5rem; vertical-align:middle; }
+hr { border:2px solid var(--border); margin:2rem 0; }
+.op-words { display:flex; flex-wrap:wrap; gap:0.8rem; margin:1rem 0; }
+nav.footer-nav { display:flex; justify-content:space-between; margin-top:3rem; padding:1rem 1.5rem; background:var(--border); border:3px solid var(--border); }
+nav.footer-nav a { color:#fff; font-weight:800; text-decoration:none; font-size:1.1rem; } nav.footer-nav a:hover { text-decoration:underline; }
+.mnemonic { background:#FFF9E6; border:2px dashed var(--accent5); padding:0.5rem 1rem; margin:0.5rem 0; font-size:0.9rem; border-radius:4px; } .mnemonic strong { color:var(--accent5); }
+@media (max-width:768px) { body { padding:1rem; } h1 { font-size:2rem; } table { font-size:0.8rem; } td,th { padding:0.4rem; } }
+.info-box h3 { border-left:none; padding-left:0; margin-top:0; } .info-box h4 { margin-bottom:0.3rem; }
+.card h3 { border-left:none; padding-left:0; margin-top:0; }
+.example-dialog h3 { border-left:none; padding-left:0; margin-top:0; } .example-dialog h4 { margin-bottom:0.3rem; }
+</style>
+</head>
+<body>
+
+<h1>&#x1F338; Aula 6 — Estações do Ano (季節 / Kisetsu)</h1>
+
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem; line-height:1.8;">
+    <li>Nomear as <strong>4 estações</strong> em japonês e seus kanjis</li>
+    <li>Expressar <strong>qual estação você gosta / não gosta</strong></li>
+    <li>Perguntar <strong>em qual estação cai cada mês</strong></li>
+    <li>Usar <strong>adjetivos de clima</strong> para descrever cada estação</li>
+    <li>Conhecer os <strong>eventos sazonais japoneses</strong> (hanami, hanabi, kouyou)</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: AS 4 ESTAÇÕES ===== -->
+<h2 style="background:var(--accent1); color:#fff;">&#x1F33F; 01. As Quatro Estações — きせつ (Kisetsu)</h2>
+
+<div class="card">
+  <h3>きせつ = Estação do ano</h3>
+  <p>O Japão é famoso por suas <strong>4 estações bem marcadas</strong>. A cultura japonesa celebra intensamente cada transição sazonal.</p>
+</div>
+
+<table>
+  <thead><tr><th>Hiragana</th><th>Romaji</th><th>Estação</th><th>Kanji</th><th>Símbolo</th><th>Meses (Japão)</th></tr></thead>
+  <tbody>
+    <tr><td>はる</td><td><strong>haru</strong></td><td>Primavera</td><td>春</td><td>&#x1F338;</td><td>Mar, Abr, Mai</td></tr>
+    <tr><td>なつ</td><td><strong>natsu</strong></td><td>Verão</td><td>夏</td><td>&#x2600;&#xFE0F;</td><td>Jun, Jul, Ago</td></tr>
+    <tr><td>あき</td><td><strong>aki</strong></td><td>Outono</td><td>秋</td><td>&#x1F341;</td><td>Set, Out, Nov</td></tr>
+    <tr><td>ふゆ</td><td><strong>fuyu</strong></td><td>Inverno</td><td>冬</td><td>&#x2744;&#xFE0F;</td><td>Dez, Jan, Fev</td></tr>
+  </tbody>
+</table>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica das 4 Estações:</strong>
+  "<strong>Ha</strong>ru = <strong>Ha</strong>nami (flores). <strong>Na</strong>tsu = <strong>Na</strong>dar (calor). <strong>A</strong>ki = <strong>A</strong>marelo (folhas). <strong>Fu</strong>yu = <strong>Fu</strong>rio." — Associa cada nome com uma palavra portuguesa que começa igual.
+</div>
+
+<h3>&#x1F44B; Flashcards — Estações</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">はる</div><div class="romaji">haru</div><div class="pt">Primavera &#x1F338;</div></div>
+  <div class="flashcard"><div class="jp">なつ</div><div class="romaji">natsu</div><div class="pt">Verão &#x2600;&#xFE0F;</div></div>
+  <div class="flashcard"><div class="jp">あき</div><div class="romaji">aki</div><div class="pt">Outono &#x1F341;</div></div>
+  <div class="flashcard"><div class="jp">ふゆ</div><div class="romaji">fuyu</div><div class="pt">Inverno &#x2744;&#xFE0F;</div></div>
+  <div class="flashcard"><div class="jp">きせつ</div><div class="romaji">kisetsu</div><div class="pt">estação</div></div>
+  <div class="flashcard"><div class="jp">春</div><div class="romaji">haru</div><div class="pt">Primavera (kanji)</div></div>
+  <div class="flashcard"><div class="jp">夏</div><div class="romaji">natsu</div><div class="pt">Verão (kanji)</div></div>
+  <div class="flashcard"><div class="jp">秋</div><div class="romaji">aki</div><div class="pt">Outono (kanji)</div></div>
+  <div class="flashcard"><div class="jp">冬</div><div class="romaji">fuyu</div><div class="pt">Inverno (kanji)</div></div>
+</div>
+
+<h3>Tags Rápidas</h3>
+<div>
+  <span class="tag tag-red">春 Haru</span>
+  <span class="tag tag-teal">夏 Natsu</span>
+  <span class="tag tag-yellow">秋 Aki</span>
+  <span class="tag tag-purple">冬 Fuyu</span>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: GOSTAR DE ESTAÇÕES ===== -->
+<h2 style="background:var(--accent2); color:#1A1A2E;">&#x2764;&#xFE0F; 02. Gostar e Não Gostar de Estações</h2>
+
+<div class="card card-accent2">
+  <h3>Estruturas</h3>
+
+  <div style="margin:0.8rem 0; padding-left:0.5rem; border-left:3px solid var(--accent6);">
+    <p><strong>&#x2753; Pergunta:</strong></p>
+    <p style="font-family:var(--font-jp); font-size:1.15rem;">どのきせつが <strong>すき</strong>ですか？</p>
+    <p><em>Dono kisetsu ga suki desu ka?</em> → Qual estação você gosta?</p>
+  </div>
+
+  <div style="margin:0.8rem 0; padding-left:0.5rem; border-left:3px solid var(--accent1);">
+    <p><strong>&#x2753; Pergunta (não gosta):</strong></p>
+    <p style="font-family:var(--font-jp); font-size:1.15rem;">どのきせつが <strong>きらい</strong>ですか？</p>
+    <p><em>Dono kisetsu ga kirai desu ka?</em> → Qual estação você não gosta?</p>
+  </div>
+
+  <div style="margin:0.8rem 0; padding-left:0.5rem; border-left:3px solid var(--accent5);">
+    <p><strong>&#x2753; Pergunta (favorita):</strong></p>
+    <p style="font-family:var(--font-jp); font-size:1.15rem;">どのきせつが <strong>いちばん</strong>すきですか？</p>
+    <p><em>Dono kisetsu ga ichiban suki desu ka?</em> → Qual estação você MAIS gosta?</p>
+  </div>
+</div>
+
+<div class="example-dialog">
+  <h3>&#x1F4AC; Diálogo: Estações Favoritas</h3>
+  <p><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">どのきせつが いちばん すきですか？</span></p>
+  <p class="translation"><em>Dono kisetsu ga ichiban suki desu ka?</em> — Qual sua estação favorita?</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F466; Ken:</span> <span class="jp-text">あきが いちばん すきです。こうようが きれいですから。</span></p>
+  <p class="translation"><em>Aki ga ichiban suki desu. Kouyou ga kirei desu kara.</em> — Outono é minha favorita. Porque as folhas de outono são lindas.</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">わたしは はるが すきです。さくらが すきですから。</span></p>
+  <p class="translation"><em>Watashi wa haru ga suki desu. Sakura ga suki desu kara.</em> — Eu gosto da primavera. Porque gosto das cerejeiras.</p>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: CLIMA ===== -->
+<h2 style="background:var(--accent3); color:#1A1A2E;">&#x2601;&#xFE0F; 03. Adjetivos de Clima — てんき (Tenki)</h2>
+
+<table>
+  <thead><tr><th>Japonês</th><th>Romaji</th><th>Significado</th><th>Estação Típica</th></tr></thead>
+  <tbody>
+    <tr><td>あつい</td><td><strong>atsui</strong></td><td>quente (calor)</td><td>&#x2600;&#xFE0F; 夏 (natsu)</td></tr>
+    <tr><td>さむい</td><td><strong>samui</strong></td><td>frio (temperatura)</td><td>&#x2744;&#xFE0F; 冬 (fuyu)</td></tr>
+    <tr><td>あたたかい</td><td><strong>atatakai</strong></td><td>morno / agradável</td><td>&#x1F338; 春 (haru)</td></tr>
+    <tr><td>すずしい</td><td><strong>suzushii</strong></td><td>fresco / refrescante</td><td>&#x1F341; 秋 (aki)</td></tr>
+    <tr><td>きれい</td><td><strong>kirei</strong></td><td>bonito / lindo</td><td>Todas!</td></tr>
+    <tr><td>てんき</td><td><strong>tenki</strong></td><td>tempo / clima</td><td>—</td></tr>
+  </tbody>
+</table>
+
+<div class="example-dialog">
+  <p class="jp-text"><strong>なつは あついです。</strong></p>
+  <p class="translation"><em>Natsu wa atsui desu.</em> → O verão é quente. &#x2600;&#xFE0F;</p>
+</div>
+<div class="example-dialog">
+  <p class="jp-text"><strong>ふゆは さむいです。</strong></p>
+  <p class="translation"><em>Fuyu wa samui desu.</em> → O inverno é frio. &#x2744;&#xFE0F;</p>
+</div>
+<div class="example-dialog">
+  <p class="jp-text"><strong>あきは すずしいです。</strong></p>
+  <p class="translation"><em>Aki wa suzushii desu.</em> → O outono é fresco. &#x1F341;</p>
+</div>
+
+<div class="info-box info-tip">
+  <h3>&#x26A0;&#xFE0F; Não confunda!</h3>
+  <p><strong>あつい (atsui)</strong> = quente (temperatura do ar) &#x2600;&#xFE0F;</p>
+  <p><strong>あつい (atsui)</strong> = quente (objeto, comida) &#x1F525; → <em>mesma pronúncia, kanji diferente! (暑い vs 熱い)</em></p>
+  <p><strong>さむい (samui)</strong> = frio (temperatura do ar) &#x2744;&#xFE0F;</p>
+  <p><strong>つめたい (tsumetai)</strong> = frio (objeto, bebida, pessoa) &#x1F9CA; → <em>para coisas que você toca</em></p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Clima</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">あつい</div><div class="romaji">atsui</div><div class="pt">quente &#x2600;&#xFE0F;</div></div>
+  <div class="flashcard"><div class="jp">さむい</div><div class="romaji">samui</div><div class="pt">frio &#x2744;&#xFE0F;</div></div>
+  <div class="flashcard"><div class="jp">あたたかい</div><div class="romaji">atatakai</div><div class="pt">morno &#x1F338;</div></div>
+  <div class="flashcard"><div class="jp">すずしい</div><div class="romaji">suzushii</div><div class="pt">fresco &#x1F341;</div></div>
+  <div class="flashcard"><div class="jp">きれい</div><div class="romaji">kirei</div><div class="pt">bonito</div></div>
+  <div class="flashcard"><div class="jp">てんき</div><div class="romaji">tenki</div><div class="pt">clima / tempo</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: MESES E ESTAÇÕES ===== -->
+<h2 style="background:var(--accent4); color:#fff;">&#x1F4C5; 04. Meses e Estações</h2>
+
+<div class="card card-accent4">
+  <h3>&#x2753; Perguntar: "[Mês] é qual estação?"</h3>
+  <p style="font-family:var(--font-jp); font-size:1.15rem;"><strong>[mês]</strong> は どのきせつですか？</p>
+  <p><em>[mês] wa dono kisetsu desu ka?</em></p>
+
+  <h3 style="margin-top:1rem;">&#x2705; Responder: "[Mês] é [estação]."</h3>
+  <p style="font-family:var(--font-jp); font-size:1.15rem;"><strong>[mês]</strong> は <strong>[estação]</strong> です。</p>
+  <p><em>[mês] wa [estação] desu.</em></p>
+</div>
+
+<table>
+  <thead><tr><th>Estação &#x1F1EF;&#x1F1F5;</th><th>Meses no Japão</th><th>Meses no Brasil &#x1F1E7;&#x1F1F7;</th></tr></thead>
+  <tbody>
+    <tr><td>&#x1F338; はる (Haru)</td><td>さんがつ, しがつ, ごがつ</td><td>くがつ, じゅうがつ, じゅういちがつ</td></tr>
+    <tr><td>&#x2600;&#xFE0F; なつ (Natsu)</td><td>ろくがつ, しちがつ, はちがつ</td><td>じゅうにがつ, いちがつ, にがつ</td></tr>
+    <tr><td>&#x1F341; あき (Aki)</td><td>くがつ, じゅうがつ, じゅういちがつ</td><td>さんがつ, しがつ, ごがつ</td></tr>
+    <tr><td>&#x2744;&#xFE0F; ふゆ (Fuyu)</td><td>じゅうにがつ, いちがつ, にがつ</td><td>ろくがつ, しちがつ, はちがつ</td></tr>
+  </tbody>
+</table>
+
+<div class="example-dialog">
+  <p><span class="jp-text"><strong>しがつは どのきせつですか？</strong></span></p>
+  <p><em>Shigatsu wa dono kisetsu desu ka?</em> → Abril é qual estação?</p>
+  <p class="translation"><strong>&#x1F1EF;&#x1F1F5; しがつは はるです。 (Japão)</strong></p>
+  <p class="translation"><strong>&#x1F1E7;&#x1F1F7; しがつは あきです。 (Brasil)</strong></p>
+</div>
+
+<div class="info-box info-note">
+  <h3>&#x1F30D; Hemisfério Sul vs. Norte</h3>
+  <p>Brasil e Japão estão em <strong>hemisférios opostos</strong>. Quando é verão no Japão (julho), é inverno no Brasil! Ao responder perguntas sobre estações, verifique o contexto. A aula usa o calendário brasileiro como referência para exemplos em português.</p>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: EVENTOS SAZONAIS ===== -->
+<h2 style="background:var(--accent5); color:#fff;">&#x1F38A; 05. Eventos Sazonais Japoneses</h2>
+
+<table>
+  <thead><tr><th>Evento</th><th>Japonês</th><th>Estação</th><th>Descrição</th></tr></thead>
+  <tbody>
+    <tr><td>&#x1F338; 花見</td><td><strong>はなみ (hanami)</strong></td><td>&#x1F338; 春</td><td>Contemplação das flores de cerejeira (sakura). Piquenique sob as árvores!</td></tr>
+    <tr><td>&#x1F386; 花火</td><td><strong>はなび (hanabi)</strong></td><td>&#x2600;&#xFE0F; 夏</td><td>Festivais de fogos de artifício. Vestir yukata (kimono de verão).</td></tr>
+    <tr><td>&#x1F341; 紅葉</td><td><strong>こうよう (kouyou)</strong></td><td>&#x1F341; 秋</td><td>Contemplação das folhas vermelhas e douradas. Tão popular quanto hanami!</td></tr>
+    <tr><td>&#x26C4; 雪祭り</td><td><strong>ゆきまつり (yukimatsuri)</strong></td><td>&#x2744;&#xFE0F; 冬</td><td>Festival da neve em Sapporo. Esculturas gigantes de gelo!</td></tr>
+  </tbody>
+</table>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica dos Eventos:</strong>
+  "<strong>Hana</strong>mi = <strong>Hana</strong> (flor) + mi (ver). <strong>Hana</strong>bi = <strong>Hana</strong> (flor) + bi (fogo) = flor de fogo = fogos! <strong>Kouyou</strong> = ko (vermelho) + you (folha). <strong>Yuki</strong>matsuri = <strong>Yuki</strong> (neve) + matsuri (festival)."
+</div>
+
+<hr>
+
+<!-- ===== SECTION 6: COLA RÁPIDA ===== -->
+<h2 style="background:var(--accent6); color:#fff;">&#x1F9E0; 06. Tabela Cola Rápida</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--sakura">&#x1F338; Estações (きせつ / Kisetsu)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>はる (haru)</td><td>Primavera</td><td>春</td></tr>
+        <tr><td>なつ (natsu)</td><td>Verão</td><td>夏</td></tr>
+        <tr><td>あき (aki)</td><td>Outono</td><td>秋</td></tr>
+        <tr><td>ふゆ (fuyu)</td><td>Inverno</td><td>冬</td></tr>
+      </table>
+      <p style="margin-top:0.5rem;">&#x1F1EF;&#x1F1F5; Japão &#x2260; &#x1F1E7;&#x1F1F7; Brasil — estações opostas!</p>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">&#x2601;&#xFE0F; Clima (てんき / Tenki)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>あつい</td><td>quente</td></tr>
+        <tr><td>さむい</td><td>frio</td></tr>
+        <tr><td>あたたかい</td><td>morno</td></tr>
+        <tr><td>すずしい</td><td>fresco</td></tr>
+        <tr><td>きれい</td><td>bonito / lindo</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">&#x2764;&#xFE0F; Gostos e Perguntas</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>どのきせつがすきですか？</td><td>Qual estação você gosta?</td></tr>
+        <tr><td>どのきせつがいちばんすき？</td><td>Estação favorita?</td></tr>
+        <tr><td>[estação]がすきです</td><td>Eu gosto de [estação]</td></tr>
+        <tr><td>[estação]がいちばんすきです</td><td>[estação] é minha favorita</td></tr>
+        <tr><td>[mês]はどのきせつですか？</td><td>[Mês] é qual estação?</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">&#x1F38A; Eventos Sazonais</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>はなみ</td><td>花見</td><td>Contemplação das flores</td></tr>
+        <tr><td>はなび</td><td>花火</td><td>Fogos de artifício</td></tr>
+        <tr><td>こうよう</td><td>紅葉</td><td>Folhas de outono</td></tr>
+        <tr><td>ゆきまつり</td><td>雪祭り</td><td>Festival da neve (Sapporo)</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 7: EXERCÍCIOS ===== -->
+<h2 style="background:var(--accent1); color:#fff;">&#x1F3AF; 07. Exercícios</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Traduza</h3>
+  <ol>
+    <li>Outono → ?</li>
+    <li>Verão → ?</li>
+    <li>"Eu gosto da primavera" (fem) → ?</li>
+    <li>"Qual estação você não gosta?" → ?</li>
+    <li>"O inverno é frio" → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>あき (aki)</strong> &#x1F341;</li>
+      <li><strong>なつ (natsu)</strong> &#x2600;&#xFE0F;</li>
+      <li><strong>わたしは はるが すきです</strong> (watashi wa haru ga suki desu)</li>
+      <li><strong>どのきせつが きらいですか？</strong> (dono kisetsu ga kirai desu ka?)</li>
+      <li><strong>ふゆは さむいです</strong> (fuyu wa samui desu)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Complete</h3>
+  <ol>
+    <li>Dezembro é qual estação no Japão? → じゅうにがつは ＿＿＿ です。</li>
+    <li>"Qual sua estação favorita?" → どのきせつが ＿＿＿ すきですか？</li>
+    <li>"Porque as cerejeiras são bonitas" → さくらが ＿＿＿ ですから。</li>
+    <li>Fogos de artifício em japonês → ＿＿＿ (hana + fogo!)</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>じゅうにがつは <strong>ふゆ</strong> です (fuyu — inverno no Japão)</li>
+      <li>どのきせつが <strong>いちばん</strong> すきですか？ (ichiban = "o mais")</li>
+      <li>さくらが <strong>きれい</strong> ですから (kirei = bonito)</li>
+      <li><strong>はなび (hanabi)</strong> — 花 (hana=flor) + 火 (bi=fogo) = "flor de fogo"!</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F30D; Nível 3 — Cultura</h3>
+  <ol>
+    <li>O que é hanami (花見)? Em qual estação acontece?</li>
+    <li>Qual a diferença entre あつい (atsui) e さむい (samui)?</li>
+    <li>Por que as estações no Brasil são opostas às do Japão?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>花見 (hanami)</strong> = contemplação das flores de cerejeira (sakura). Acontece na <strong>primavera (はる)</strong>, geralmente final de março a abril. Famílias e amigos fazem piquenique sob as cerejeiras floridas.</li>
+      <li><strong>あつい</strong> = quente (temperatura do ar, verão). <strong>さむい</strong> = frio (temperatura do ar, inverno). Para objetos: use あつい (熱い) para coisas quentes e つめたい (tsumetai) para coisas frias.</li>
+      <li>O <strong>eixo de inclinação da Terra</strong> faz com que os hemisférios recebam luz solar oposta. Quando o hemisfério Norte (Japão) está inclinado para o sol = verão, o hemisfério Sul (Brasil) está inclinado para longe = inverno.</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<h2 style="background:var(--accent1); color:#fff;">&#x1F517; Navegação</h2>
+
+<nav class="footer-nav">
+  <a href="Aula 5.html">&larr; Aula 5</a>
+  <a href="Aula 7.html">Aula 7 &rarr;</a>
+</nav>
+
+</body>
+</html>

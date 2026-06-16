@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 5 — Meses, Dias e Calendário (月・日・曜日)</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body); color: var(--text); line-height: 1.6;
+  padding: 2rem; max-width: 1100px; margin: 0 auto;
+}
+h1 {
+  font-size: 2.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px;
+  background: var(--accent1); color: #fff; padding: 1rem 1.5rem;
+  border: 4px solid var(--border); box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem; text-align: center; -webkit-text-stroke: 2px var(--border);
+}
+h2 {
+  font-size: 1.8rem; font-weight: 800; margin: 2rem 0 1rem; padding: 0.5rem 1rem;
+  border: 3px solid var(--border); box-shadow: 5px 5px 0 var(--shadow); display: inline-block;
+}
+h3 { font-size: 1.3rem; font-weight: 700; margin: 1.2rem 0 0.6rem; padding: 0.3rem 0.8rem; border-left: 6px solid var(--border); }
+.card {
+  background: var(--card-bg); border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow); padding: 1.5rem; margin: 1.5rem 0; border-radius: 2px;
+}
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border: 4px solid var(--border); box-shadow: 5px 5px 0 var(--shadow); margin: 1rem 0; font-size: 0.95rem;
+}
+thead th {
+  background: var(--border); color: #fff; font-weight: 800; padding: 0.7rem 0.8rem;
+  text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; border-bottom: 3px solid var(--border);
+}
+tbody td {
+  padding: 0.6rem 0.8rem; border-bottom: 2px solid #ddd; border-right: 2px solid #ddd;
+  font-family: var(--font-jp); vertical-align: middle;
+}
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+.flashcard {
+  display: inline-block; background: var(--card-bg); border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow); padding: 0.5rem 1rem; margin: 0.3rem;
+  font-family: var(--font-jp); font-size: 1.1rem; font-weight: 600;
+  transition: transform 0.1s; cursor: pointer; user-select: none;
+}
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+.tag {
+  display: inline-block; padding: 0.2rem 0.7rem; border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow); font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; margin: 0.2rem;
+}
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+.quiz {
+  background: var(--accent3); border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow); padding: 1.5rem; margin: 1.5rem 0;
+}
+.quiz h3 { border-left-color: var(--accent1); }
+.quiz details { margin: 0.5rem 0; padding: 0.5rem 1rem; background: #fff; border: 2px solid var(--border); }
+.quiz summary { font-weight: 700; cursor: pointer; padding: 0.3rem 0; }
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+.cheatsheet {
+  background: #1A1A2E; color: #00FF88; font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88; box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem; margin: 1.5rem 0; font-size: 0.9rem; white-space: pre-wrap; line-height: 1.5;
+}
+.info-box { padding: 1rem 1.5rem; margin: 1rem 0; border: 3px solid var(--border); box-shadow: 4px 4px 0 var(--shadow); font-weight: 600; }
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+.example-dialog {
+  background: #fff; border: 3px dashed var(--border); padding: 1rem 1.5rem; margin: 0.8rem 0; font-size: 0.95rem;
+}
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+.section-badge { display: inline-block; font-size: 1.8rem; margin-right: 0.5rem; vertical-align: middle; }
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+.op-words { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }
+nav.footer-nav {
+  display: flex; justify-content: space-between; margin-top: 3rem;
+  padding: 1rem 1.5rem; background: var(--border); border: 3px solid var(--border);
+}
+nav.footer-nav a { color: #fff; font-weight: 800; text-decoration: none; font-size: 1.1rem; }
+nav.footer-nav a:hover { text-decoration: underline; }
+.mnemonic {
+  background: #FFF9E6; border: 2px dashed var(--accent5);
+  padding: 0.5rem 1rem; margin: 0.5rem 0; font-size: 0.9rem; border-radius: 4px;
+}
+.mnemonic strong { color: var(--accent5); }
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+.info-box h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.info-box h4 { margin-bottom: 0.3rem; }
+.card h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.example-dialog h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.example-dialog h4 { margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<h1>&#x1F4C5; Aula 5 — Meses, Dias e Calendário (月・日・曜日)</h1>
+
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.8;">
+    <li>Dizer os <strong>12 meses do ano</strong> em japonês [número] + がつ</li>
+    <li>Ler os <strong>dias do mês</strong> (atenção: os 10 primeiros + 14, 20, 24 são <strong>irregulares</strong>!)</li>
+    <li>Nomear os <strong>dias da semana</strong> com os 7 elementos japoneses</li>
+    <li>Perguntar e responder <strong>datas completas</strong> (mês + dia)</li>
+    <li>Usar vocabulário de tempo: hoje, amanhã, ontem, quando</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: MESES ===== -->
+<h2 style="background: var(--accent1); color: #fff;">&#x1F4C6; 01. Meses do Ano — がつ (Gatsu)</h2>
+
+<div class="card card-accent1">
+  <h3>Estrutura</h3>
+  <p style="font-size:1.2rem;"><strong>[número] + がつ (gatsu)</strong> = nome do mês</p>
+  <p>がつ sozinho = "mês" &nbsp;|&nbsp; Os meses japoneses são <strong>100% lógicos</strong> — sem nomes especiais como "janeiro"!</p>
+</div>
+
+<table>
+  <thead><tr><th>Nº</th><th>Hiragana</th><th>Romaji</th><th>Mês</th><th>Kanji</th><th>Nota</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>いちがつ</td><td><strong>ichigatsu</strong></td><td>Janeiro</td><td>一月</td><td></td></tr>
+    <tr><td>2</td><td>にがつ</td><td><strong>nigatsu</strong></td><td>Fevereiro</td><td>二月</td><td></td></tr>
+    <tr><td>3</td><td>さんがつ</td><td><strong>sangatsu</strong></td><td>Março</td><td>三月</td><td></td></tr>
+    <tr><td>4</td><td>しがつ</td><td><strong>shigatsu</strong></td><td>Abril</td><td>四月</td><td>&#x26A0;&#xFE0F; しがつ, NÃO よんがつ!</td></tr>
+    <tr><td>5</td><td>ごがつ</td><td><strong>gogatsu</strong></td><td>Maio</td><td>五月</td><td></td></tr>
+    <tr><td>6</td><td>ろくがつ</td><td><strong>rokugatsu</strong></td><td>Junho</td><td>六月</td><td></td></tr>
+    <tr><td>7</td><td>しちがつ</td><td><strong>shichigatsu</strong></td><td>Julho</td><td>七月</td><td>&#x26A0;&#xFE0F; しちがつ, NÃO なながつ!</td></tr>
+    <tr><td>8</td><td>はちがつ</td><td><strong>hachigatsu</strong></td><td>Agosto</td><td>八月</td><td></td></tr>
+    <tr><td>9</td><td>くがつ</td><td><strong>kugatsu</strong></td><td>Setembro</td><td>九月</td><td>&#x26A0;&#xFE0F; くがつ, NÃO きゅうがつ!</td></tr>
+    <tr><td>10</td><td>じゅうがつ</td><td><strong>juugatsu</strong></td><td>Outubro</td><td>十月</td><td></td></tr>
+    <tr><td>11</td><td>じゅういちがつ</td><td><strong>juuichigatsu</strong></td><td>Novembro</td><td>十一月</td><td></td></tr>
+    <tr><td>12</td><td>じゅうにがつ</td><td><strong>juunigatsu</strong></td><td>Dezembro</td><td>十二月</td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-warn">
+  <h3>&#x26A0;&#xFE0F; Exceções dos Meses</h3>
+  <p>Três meses usam a <strong>leitura secundária</strong> do número, NÃO a alternativa que você aprendeu para evitar azar:</p>
+  <ul style="margin:0.3rem 0 0 1.5rem; line-height:1.8;">
+    <li><strong>Abril = しがつ (shigatsu)</strong> — mesmo し = morte, é tradicional!</li>
+    <li><strong>Julho = しちがつ (shichigatsu)</strong> — NÃO se diz なながつ</li>
+    <li><strong>Setembro = くがつ (kugatsu)</strong> — NÃO se diz きゅうがつ</li>
+  </ul>
+  <p style="margin-top:0.5rem;">&#x1F3AF; Decore assim: <strong>"Shi, Shichi, Ku"</strong> — os meses 4, 7, 9 usam as leituras "proibidas"!</p>
+</div>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica — Meses Especiais:</strong>
+  "Em <strong>Abril</strong> (4), a <strong>morte</strong> (し) renasce em flores. Em <strong>Julho</strong> (7), sete <strong>shichis</strong> caem do céu. Em <strong>Setembro</strong> (9), a <strong>agonia</strong> (く) do verão termina." — Associações absurdas grudam na memória!
+</div>
+
+<h3>&#x1F44B; Flashcards — Meses</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">いちがつ</div><div class="romaji">ichigatsu</div><div class="pt">Janeiro</div></div>
+  <div class="flashcard"><div class="jp">しがつ</div><div class="romaji">shigatsu</div><div class="pt">Abril&#x26A0;&#xFE0F;</div></div>
+  <div class="flashcard"><div class="jp">しちがつ</div><div class="romaji">shichigatsu</div><div class="pt">Julho&#x26A0;&#xFE0F;</div></div>
+  <div class="flashcard"><div class="jp">くがつ</div><div class="romaji">kugatsu</div><div class="pt">Setembro&#x26A0;&#xFE0F;</div></div>
+  <div class="flashcard"><div class="jp">じゅうがつ</div><div class="romaji">juugatsu</div><div class="pt">Outubro</div></div>
+  <div class="flashcard"><div class="jp">じゅうにがつ</div><div class="romaji">juunigatsu</div><div class="pt">Dezembro</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: DIAS DO MÊS ===== -->
+<h2 style="background: var(--accent2); color: #1A1A2E;">&#x1F4C6; 02. Dias do Mês — にち / か (Nichi / Ka)</h2>
+
+<div class="info-box info-warn">
+  <h3>&#x26A0;&#xFE0F; Atenção — 14 dias irregulares!</h3>
+  <p>Os dias <strong>1 a 10, 14, 20, 24</strong> têm nomes próprios herdados do japonês antigo. A partir do dia 11 (exceto 14, 20, 24), usa-se: <strong>[número] + にち (nichi)</strong>.</p>
+  <p>Dica: os irregulares de 1-10 <strong>parecem o contador 〜つ</strong> (hitotsu→tsuitachi, futatsu→futsuka, mittsu→mikka...). Mesma raiz!</p>
+</div>
+
+<h3>Dias Irregulares (Decorar!)</h3>
+<table>
+  <thead><tr><th>Dia</th><th>Hiragana</th><th>Romaji</th><th>Kanji</th><th>Padrão</th></tr></thead>
+  <tbody>
+    <tr><td><strong>1</strong></td><td>ついたち</td><td><strong>tsuitachi</strong></td><td>一日</td><td>&#x1F195; Único — não segue padrão</td></tr>
+    <tr><td><strong>2</strong></td><td>ふつか</td><td><strong>futsuka</strong></td><td>二日</td><td>ふた→ふつ＋か</td></tr>
+    <tr><td><strong>3</strong></td><td>みっか</td><td><strong>mikka</strong></td><td>三日</td><td>み→みっ＋か</td></tr>
+    <tr><td><strong>4</strong></td><td>よっか</td><td><strong>yokka</strong></td><td>四日</td><td>よ→よっ＋か</td></tr>
+    <tr><td><strong>5</strong></td><td>いつか</td><td><strong>itsuka</strong></td><td>五日</td><td>いつ＋か</td></tr>
+    <tr><td><strong>6</strong></td><td>むいか</td><td><strong>muika</strong></td><td>六日</td><td>むい＋か</td></tr>
+    <tr><td><strong>7</strong></td><td>なのか</td><td><strong>nanoka</strong></td><td>七日</td><td>なの＋か</td></tr>
+    <tr><td><strong>8</strong></td><td>ようか</td><td><strong>youka</strong></td><td>八日</td><td>よう＋か</td></tr>
+    <tr><td><strong>9</strong></td><td>ここのか</td><td><strong>kokonoka</strong></td><td>九日</td><td>ここの＋か</td></tr>
+    <tr><td><strong>10</strong></td><td>とおか</td><td><strong>tooka</strong></td><td>十日</td><td>とお＋か</td></tr>
+    <tr><td><strong>14</strong></td><td>じゅうよっか</td><td><strong>juuyokka</strong></td><td>十四日</td><td>じゅう＋よっか (herda 4)</td></tr>
+    <tr><td><strong>20</strong></td><td>はつか</td><td><strong>hatsuka</strong></td><td>二十日</td><td>&#x1F195; Especial — はつか</td></tr>
+    <tr><td><strong>24</strong></td><td>にじゅうよっか</td><td><strong>nijuuyokka</strong></td><td>二十四日</td><td>にじゅう＋よっか (herda 4)</td></tr>
+  </tbody>
+</table>
+
+<h3>Dias Regulares</h3>
+<table>
+  <thead><tr><th>Dias</th><th>Regra</th><th>Exemplo</th></tr></thead>
+  <tbody>
+    <tr><td>11, 12, 13</td><td>じゅう＋[dia irregular 1-3]? Não — são regulares!</td><td>11 = じゅういちにち (juuichinichi)</td></tr>
+    <tr><td>15-19</td><td>[dezena]じゅう＋[número]にち</td><td>15 = じゅうごにち (juugonichi)</td></tr>
+    <tr><td>21-23, 25-31</td><td>[dezena]じゅう＋[número]にち</td><td>25 = にじゅうごにち (nijuugonichi)</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-tip">
+  <h3>&#x1F4A1; Padrão de Herança</h3>
+  <p>O dia <strong>14</strong> herda o irregular <strong>よっか</strong> do dia 4: じゅう＋よっか = じゅうよっか.</p>
+  <p>O dia <strong>24</strong> também: にじゅう＋よっか = にじゅうよっか.</p>
+  <p><strong>20</strong> (はつか) é um caso especial único — não segue ninguém. &#x1F195;</p>
+</div>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica — Dias Irregulares 1-10:</strong>
+  "<strong>Tsu</strong>itachi, <strong>Fu</strong>tsuka, <strong>Mi</strong>kka, <strong>Yo</strong>kka, <strong>I</strong>tsuka, <strong>Mu</strong>ika, <strong>Na</strong>noka, <strong>Yo</strong>uka, <strong>Ko</strong>konoka, <strong>To</strong>oka"<br>
+  Pegue as primeiras sílabas: <strong>Tsu-Fu-Mi-Yo-I-Mu-Na-Yo-Ko-To</strong>. Cante como musiquinha infantil. Em 5 repetições, gravou.
+</div>
+
+<h3>&#x1F44B; Flashcards — Dias Irregulares</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">ついたち</div><div class="romaji">tsuitachi</div><div class="pt">Dia 1</div></div>
+  <div class="flashcard"><div class="jp">ふつか</div><div class="romaji">futsuka</div><div class="pt">Dia 2</div></div>
+  <div class="flashcard"><div class="jp">みっか</div><div class="romaji">mikka</div><div class="pt">Dia 3</div></div>
+  <div class="flashcard"><div class="jp">よっか</div><div class="romaji">yokka</div><div class="pt">Dia 4</div></div>
+  <div class="flashcard"><div class="jp">いつか</div><div class="romaji">itsuka</div><div class="pt">Dia 5</div></div>
+  <div class="flashcard"><div class="jp">とおか</div><div class="romaji">tooka</div><div class="pt">Dia 10</div></div>
+  <div class="flashcard"><div class="jp">じゅうよっか</div><div class="romaji">juuyokka</div><div class="pt">Dia 14</div></div>
+  <div class="flashcard"><div class="jp">はつか</div><div class="romaji">hatsuka</div><div class="pt">Dia 20</div></div>
+  <div class="flashcard"><div class="jp">にじゅうよっか</div><div class="romaji">nijuuyokka</div><div class="pt">Dia 24</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: DIAS DA SEMANA ===== -->
+<h2 style="background: var(--accent3); color: #1A1A2E;">&#x1F319; 03. Dias da Semana — ようび (Youbi)</h2>
+
+<div class="card">
+  <h3>Os 7 Elementos + Sol e Lua</h3>
+  <p>Cada dia da semana japonesa é nomeado com um <strong>elemento da natureza</strong> + ようび (youbi = "dia da semana").</p>
+</div>
+
+<table>
+  <thead><tr><th>Elemento</th><th>Kanji</th><th>Hiragana</th><th>Romaji</th><th>Dia</th></tr></thead>
+  <tbody>
+    <tr><td>&#x1F319; Lua</td><td>月曜日</td><td>げつようび</td><td><strong>getsuyoubi</strong></td><td>Segunda-feira</td></tr>
+    <tr><td>&#x1F525; Fogo</td><td>火曜日</td><td>かようび</td><td><strong>kayoubi</strong></td><td>Terça-feira</td></tr>
+    <tr><td>&#x1F4A7; Água</td><td>水曜日</td><td>すいようび</td><td><strong>suiyoubi</strong></td><td>Quarta-feira</td></tr>
+    <tr><td>&#x1FAB5; Madeira</td><td>木曜日</td><td>もくようび</td><td><strong>mokuyoubi</strong></td><td>Quinta-feira</td></tr>
+    <tr><td>&#x1F4B0; Ouro</td><td>金曜日</td><td>きんようび</td><td><strong>kin'youbi</strong></td><td>Sexta-feira</td></tr>
+    <tr><td>&#x1FAAA; Terra</td><td>土曜日</td><td>どようび</td><td><strong>doyoubi</strong></td><td>Sábado</td></tr>
+    <tr><td>&#x2600;&#xFE0F; Sol</td><td>日曜日</td><td>にちようび</td><td><strong>nichiyoubi</strong></td><td>Domingo</td></tr>
+  </tbody>
+</table>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica Elemental:</strong>
+  "<strong>Getsu</strong> (Lua → Monday/Moon-day). <strong>Ka</strong> (Fogo → Terça quente). <strong>Sui</strong> (Água → Quarta molhada). <strong>Moku</strong> (Madeira → Quinta de árvore). <strong>Kin</strong> (Ouro → Sexta do pagamento!). <strong>Do</strong> (Terra → Sábado no chão). <strong>Nichi</strong> (Sol → Domingo de sol)."
+</div>
+
+<div class="card card-accent3">
+  <h3>&#x1F3B5; Canção dos Dias da Semana</h3>
+  <p style="text-align:center;font-size:1.1rem;line-height:2;">
+    <strong>げつ・か・すい・もく・きん・ど・にち!</strong><br>
+    <em>Getsu - Ka - Sui - Moku - Kin - Do - Nichi!</em><br>
+    &#x1F319; &#x1F525; &#x1F4A7; &#x1FAB5; &#x1F4B0; &#x1FAAA; &#x2600;&#xFE0F;
+  </p>
+  <p style="text-align:center;font-size:0.85rem;color:#555;">(Cante no ritmo de "do-re-mi-fa-sol-la-si" — 7 notas, 7 dias!)</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Dias da Semana</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">げつようび</div><div class="romaji">getsuyoubi</div><div class="pt">Segunda &#x1F319;</div></div>
+  <div class="flashcard"><div class="jp">かようび</div><div class="romaji">kayoubi</div><div class="pt">Terça &#x1F525;</div></div>
+  <div class="flashcard"><div class="jp">すいようび</div><div class="romaji">suiyoubi</div><div class="pt">Quarta &#x1F4A7;</div></div>
+  <div class="flashcard"><div class="jp">もくようび</div><div class="romaji">mokuyoubi</div><div class="pt">Quinta &#x1FAB5;</div></div>
+  <div class="flashcard"><div class="jp">きんようび</div><div class="romaji">kin'youbi</div><div class="pt">Sexta &#x1F4B0;</div></div>
+  <div class="flashcard"><div class="jp">どようび</div><div class="romaji">doyoubi</div><div class="pt">Sábado &#x1FAAA;</div></div>
+  <div class="flashcard"><div class="jp">にちようび</div><div class="romaji">nichiyoubi</div><div class="pt">Domingo &#x2600;&#xFE0F;</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: DATAS COMPLETAS E VOCABULÁRIO ===== -->
+<h2 style="background: var(--accent4); color: #fff;">&#x1F4AC; 04. Datas Completas e Vocabulário de Tempo</h2>
+
+<div class="card card-accent4">
+  <h3>Como Dizer Datas Completas</h3>
+  <p style="font-size:1.15rem;font-weight:800;text-align:center;margin:0.8rem 0;">
+    [Mês]がつ [Dia] です。
+  </p>
+  <div class="example-dialog">
+    <p class="jp-text"><strong>きょうは しがつ よっか です。</strong></p>
+    <p class="translation"><em>Kyou wa shigatsu yokka desu.</em> → Hoje é 4 de abril. &#x1F338;</p>
+  </div>
+  <div class="example-dialog">
+    <p class="jp-text"><strong>たんじょうびは くがつ はつか です。</strong></p>
+    <p class="translation"><em>Tanjoubi wa kugatsu hatsuka desu.</em> → Meu aniversário é 20 de setembro.</p>
+  </div>
+</div>
+
+<h3>Vocabulário de Tempo</h3>
+<table>
+  <thead><tr><th>Japonês</th><th>Romaji</th><th>Português</th><th>Categoria</th></tr></thead>
+  <tbody>
+    <tr><td>きょう</td><td><strong>kyou</strong></td><td>hoje</td><td>&#x1F4C5; Hoje</td></tr>
+    <tr><td>あした</td><td><strong>ashita</strong></td><td>amanhã</td><td>&#x27A1;&#xFE0F; Futuro</td></tr>
+    <tr><td>あさって</td><td><strong>asatte</strong></td><td>depois de amanhã</td><td>&#x27A1;&#xFE0F; Futuro</td></tr>
+    <tr><td>きのう</td><td><strong>kinou</strong></td><td>ontem</td><td>&#x2B05;&#xFE0F; Passado</td></tr>
+    <tr><td>おととい</td><td><strong>ototoi</strong></td><td>anteontem</td><td>&#x2B05;&#xFE0F; Passado</td></tr>
+    <tr><td>こんしゅう</td><td><strong>konshuu</strong></td><td>esta semana</td><td>&#x1F4C5; Semana</td></tr>
+    <tr><td>せんしゅう</td><td><strong>senshuu</strong></td><td>semana passada</td><td>&#x2B05;&#xFE0F; Passado</td></tr>
+    <tr><td>らいしゅう</td><td><strong>raishuu</strong></td><td>semana que vem</td><td>&#x27A1;&#xFE0F; Futuro</td></tr>
+    <tr><td>まいしゅう</td><td><strong>maishuu</strong></td><td>toda semana</td><td>&#x1F504; Frequência</td></tr>
+    <tr><td>たんじょうび</td><td><strong>tanjoubi</strong></td><td>aniversário</td><td>&#x1F382; Evento</td></tr>
+    <tr><td>いつ</td><td><strong>itsu</strong></td><td>quando</td><td>&#x2753; Pergunta</td></tr>
+    <tr><td>なんがつ</td><td><strong>nangatsu</strong></td><td>que mês</td><td>&#x2753; Pergunta</td></tr>
+    <tr><td>なんにち</td><td><strong>nannichi</strong></td><td>que dia (do mês)</td><td>&#x2753; Pergunta</td></tr>
+    <tr><td>なんようび</td><td><strong>nan'youbi</strong></td><td>que dia da semana</td><td>&#x2753; Pergunta</td></tr>
+  </tbody>
+</table>
+
+<h3>&#x1F4AC; Diálogos com Datas</h3>
+
+<div class="example-dialog">
+  <p><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">きょうは なんようびですか？</span></p>
+  <p class="translation"><em>Kyou wa nan'youbi desu ka?</em> — Que dia da semana é hoje?</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">&#x1F466; Ken:</span> <span class="jp-text">きょうは げつようびです。なんがつ なんにちですか？</span></p>
+  <p class="translation"><em>Kyou wa getsuyoubi desu. Nangatsu nannichi desu ka?</em> — Hoje é segunda. Que mês e dia?</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">しがつ ついたちです。エイプリルフール!</span></p>
+  <p class="translation"><em>Shigatsu tsuitachi desu. Eipuriru Fuuru!</em> — É 1º de abril. April Fools! &#x1F389;</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">&#x1F466; Ken:</span> <span class="jp-text">たんじょうびは いつですか？</span></p>
+  <p class="translation"><em>Tanjoubi wa itsu desu ka?</em> — Quando é seu aniversário?</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">わたしのたんじょうびは はちがつ みっかです。</span></p>
+  <p class="translation"><em>Watashi no tanjoubi wa hachigatsu mikka desu.</em> — Meu aniversário é 3 de agosto.</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Tempo</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">きょう</div><div class="romaji">kyou</div><div class="pt">hoje</div></div>
+  <div class="flashcard"><div class="jp">あした</div><div class="romaji">ashita</div><div class="pt">amanhã</div></div>
+  <div class="flashcard"><div class="jp">きのう</div><div class="romaji">kinou</div><div class="pt">ontem</div></div>
+  <div class="flashcard"><div class="jp">あさって</div><div class="romaji">asatte</div><div class="pt">depois de amanhã</div></div>
+  <div class="flashcard"><div class="jp">いつ</div><div class="romaji">itsu</div><div class="pt">quando?</div></div>
+  <div class="flashcard"><div class="jp">たんじょうび</div><div class="romaji">tanjoubi</div><div class="pt">aniversário</div></div>
+  <div class="flashcard"><div class="jp">なんがつ</div><div class="romaji">nangatsu</div><div class="pt">que mês?</div></div>
+  <div class="flashcard"><div class="jp">なんにち</div><div class="romaji">nannichi</div><div class="pt">que dia?</div></div>
+  <div class="flashcard"><div class="jp">なんようび</div><div class="romaji">nan'youbi</div><div class="pt">que dia da semana?</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: COLA RÁPIDA ===== -->
+<h2 style="background: var(--accent5); color: #fff;">&#x1F9E0; 05. Tabela Cola Rápida</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">&#x1F4C6; Meses — [número] + がつ</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>1</td><td>いちがつ</td><td>Janeiro</td></tr>
+        <tr><td>2</td><td>にがつ</td><td>Fevereiro</td></tr>
+        <tr><td>3</td><td>さんがつ</td><td>Março</td></tr>
+        <tr><td>4</td><td>&#x26A0;&#xFE0F; しがつ</td><td>Abril</td></tr>
+        <tr><td>5</td><td>ごがつ</td><td>Maio</td></tr>
+        <tr><td>6</td><td>ろくがつ</td><td>Junho</td></tr>
+        <tr><td>7</td><td>&#x26A0;&#xFE0F; しちがつ</td><td>Julho</td></tr>
+        <tr><td>8</td><td>はちがつ</td><td>Agosto</td></tr>
+        <tr><td>9</td><td>&#x26A0;&#xFE0F; くがつ</td><td>Setembro</td></tr>
+        <tr><td>10</td><td>じゅうがつ</td><td>Outubro</td></tr>
+        <tr><td>11</td><td>じゅういちがつ</td><td>Novembro</td></tr>
+        <tr><td>12</td><td>じゅうにがつ</td><td>Dezembro</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">&#x1F4C5; Dias do Mês — 14 Irregulares</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>1</td><td>ついたち</td><td>14</td><td>じゅうよっか</td></tr>
+        <tr><td>2</td><td>ふつか</td><td>20</td><td>はつか</td></tr>
+        <tr><td>3</td><td>みっか</td><td>24</td><td>にじゅうよっか</td></tr>
+        <tr><td>4</td><td>よっか</td><td></td><td></td></tr>
+        <tr><td>5</td><td>いつか</td><td></td><td></td></tr>
+        <tr><td>6</td><td>むいか</td><td></td><td></td></tr>
+        <tr><td>7</td><td>なのか</td><td></td><td></td></tr>
+        <tr><td>8</td><td>ようか</td><td></td><td></td></tr>
+        <tr><td>9</td><td>ここのか</td><td></td><td></td></tr>
+        <tr><td>10</td><td>とおか</td><td></td><td></td></tr>
+      </table>
+      <p style="margin-top:0.5rem;">Demais: [número] + にち. Ex: 15 = じゅうごにち</p>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">&#x1F319; Dias da Semana — Elemento + ようび</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>月 (Ge)</td><td>げつようび</td><td>Segunda</td></tr>
+        <tr><td>火 (Ka)</td><td>かようび</td><td>Terça</td></tr>
+        <tr><td>水 (Sui)</td><td>すいようび</td><td>Quarta</td></tr>
+        <tr><td>木 (Moku)</td><td>もくようび</td><td>Quinta</td></tr>
+        <tr><td>金 (Kin)</td><td>きんようび</td><td>Sexta</td></tr>
+        <tr><td>土 (Do)</td><td>どようび</td><td>Sábado</td></tr>
+        <tr><td>日 (Nichi)</td><td>にちようび</td><td>Domingo</td></tr>
+      </table>
+      <p style="margin-top:0.5rem;">&#x1F3B5; Cante: Getsu-Ka-Sui-Moku-Kin-Do-Nichi</p>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">&#x2753; Perguntas &amp; Vocabulário de Tempo</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>なんがつ？</td><td>Que mês?</td></tr>
+        <tr><td>なんにち？</td><td>Que dia?</td></tr>
+        <tr><td>なんようび？</td><td>Que dia da semana?</td></tr>
+        <tr><td>いつ？</td><td>Quando?</td></tr>
+        <tr><td>たんじょうびはいつ？</td><td>Quando é o aniversário?</td></tr>
+        <tr><td>きょう</td><td>hoje</td></tr>
+        <tr><td>あした</td><td>amanhã</td></tr>
+        <tr><td>きのう</td><td>ontem</td></tr>
+        <tr><td>せんしゅう</td><td>semana passada</td></tr>
+        <tr><td>らいしゅう</td><td>semana que vem</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 6: EXERCÍCIOS ===== -->
+<h2 style="background: var(--accent6); color: #fff;">&#x1F3AF; 06. Exercícios</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Traduza</h3>
+  <ol>
+    <li>Abril → ?</li>
+    <li>Dia 4 → ?</li>
+    <li>Quarta-feira → ?</li>
+    <li>Dia 20 → ?</li>
+    <li>Julho → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>しがつ</strong> (shigatsu) — NÃO é よんがつ!</li>
+      <li><strong>よっか</strong> (yokka)</li>
+      <li><strong>すいようび</strong> (suiyoubi) — Água &#x1F4A7;</li>
+      <li><strong>はつか</strong> (hatsuka) — especial!</li>
+      <li><strong>しちがつ</strong> (shichigatsu) — NÃO é なながつ!</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Complete</h3>
+  <ol>
+    <li>"Hoje é 14 de setembro" → きょうは ＿＿＿ ＿＿＿ です。</li>
+    <li>"Que dia da semana é hoje?" → きょうは ＿＿＿ ですか？</li>
+    <li>"Meu aniversário é 20 de janeiro" → たんじょうびは ＿＿＿ ＿＿＿ です。</li>
+    <li>"Amanhã é sexta-feira" → ＿＿＿は ＿＿＿です。</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>きょうは <strong>くがつ じゅうよっか</strong> です (kugatsu juuyokka)</li>
+      <li>きょうは <strong>なんようび</strong> ですか？ (nan'youbi)</li>
+      <li>たんじょうびは <strong>いちがつ はつか</strong> です (ichigatsu hatsuka)</li>
+      <li><strong>あした</strong>は <strong>きんようび</strong>です (ashita wa kin'youbi)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F30D; Nível 3 — Cultura e Raciocínio</h3>
+  <ol>
+    <li>Por que abril se diz しがつ (e não よんがつ), se し significa morte?</li>
+    <li>Qual é a lógica por trás dos dias irregulares 1-10?</li>
+    <li>Que elemento rege a sexta-feira? Por que isso é irônico para os trabalhadores?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>É uma <strong>exceção histórica</strong>. O nome しがつ é muito antigo, anterior à superstição. A tradição prevaleceu — ninguém quer mudar o nome do mês. (Mas na idade, usa-se よんさい, não しさい!)</li>
+      <li>Vêm do <strong>japonês antigo Yamato-kotoba</strong> — os mesmos radicais do contador 〜つ (hitotsu→tsuitachi, futatsu→futsuka...). É a forma nativa de contar, antes da influência chinesa. Sobreviveu apenas nos primeiros 10 dias.</li>
+      <li>Sexta = <strong>金曜日 (kin'youbi)</strong> — elemento <strong>Ouro/Dinheiro</strong> (金). Irônico porque é o <strong>dia do pagamento</strong> no Japão! &#x1F4B0; Muitas empresas japonesas pagam salário na sexta-feira.</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<h2 style="background: var(--accent1); color: #fff;">&#x1F517; Navegação</h2>
+
+<nav class="footer-nav">
+  <a href="Aula 4.html">&larr; Aula 4</a>
+  <a href="Aula 6.html">Aula 6 &rarr;</a>
+</nav>
+
+</body>
+</html>

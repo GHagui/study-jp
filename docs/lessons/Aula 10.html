@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 10 — Cores (Iro) — Japonês</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--border);
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border-left: 6px solid var(--border);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background: var(--border);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.7rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--border);
+}
+
+tbody td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  font-family: var(--font-jp);
+  vertical-align: middle;
+}
+
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+
+.flashcard {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem;
+}
+
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+
+.quiz {
+  background: var(--accent3);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.quiz h3 { border-left-color: var(--accent1); }
+
+.quiz details {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+
+.quiz summary {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+
+.cheatsheet {
+  background: #1A1A2E;
+  color: #00FF88;
+  font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88;
+  box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-weight: 600;
+}
+
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+
+.example-dialog {
+  background: #fff;
+  border: 3px dashed var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+
+.section-badge {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+
+.op-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+nav.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 1rem 1.5rem;
+  background: var(--border);
+  border: 3px solid var(--border);
+}
+
+nav.footer-nav a {
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav.footer-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TITLE ===== -->
+<h1>&#x1F38C; Aula 10 &mdash; Cores (&#12356;&#12429; / Iro)</h1>
+
+<!-- ===== TIP CALLOUT ===== -->
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem; line-height:1.8;">
+    <li>Nomear <strong>14 cores</strong> em japonês (substantivo e adjetivo)</li>
+    <li>Identificar quais <strong>6 cores viram い-adjetivos</strong> (+い)</li>
+    <li>Perguntar <strong>"de que cor é isso?"</strong> e "qual cor você gosta?"</li>
+    <li>Nomear <strong>variações de cores</strong> (claro/escuro: ふか〜, うす〜)</li>
+    <li>Aprender <strong>frutas em japonês</strong> (bônus: 22 frutas!)</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: Cores Principais (accent1) ===== -->
+<h2 style="background: var(--accent1); color: #fff;">
+  <span class="section-badge">&#x1F3A8;</span> &#12356;&#12429; &mdash; Cores Principais
+</h2>
+
+<!-- Warning callout: Color-Adjective Rule -->
+<div class="info-box info-warn">
+  <strong>&#x26A0;&#xFE0F; Regra das Cores-Adjetivo</strong><br>
+  Algumas cores podem virar <strong>adjetivos</strong> adicionando <strong>&#12356; (i)</strong> no final.<br>
+  Isso <strong>s&oacute; funciona com estas 6 cores</strong>:
+  <table>
+    <thead>
+      <tr>
+        <th>Cor</th>
+        <th>Forma Adjetivo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>aka (vermelho)</td>
+        <td><strong>akai</strong></td>
+      </tr>
+      <tr>
+        <td>shiro (branco)</td>
+        <td><strong>shiroi</strong></td>
+      </tr>
+      <tr>
+        <td>ao (azul)</td>
+        <td><strong>aoi</strong></td>
+      </tr>
+      <tr>
+        <td>kuro (preto)</td>
+        <td><strong>kuroi</strong></td>
+      </tr>
+      <tr>
+        <td>kiiro (amarelo)</td>
+        <td><strong>kiiroi</strong></td>
+      </tr>
+      <tr>
+        <td>chairo (marrom)</td>
+        <td><strong>chairoi</strong></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>As demais cores (midori, murasaki, pinku, orenji, etc.) <strong>n&atilde;o recebem o &#12356;</strong>.</p>
+</div>
+
+<!-- Flashcards: Cores Principais -->
+<h3>&#x1F4A0; Flashcards &mdash; Cores</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">&#12354;&#12363;</div><div class="romaji">aka</div><div class="pt">vermelho</div></div>
+  <div class="flashcard"><div class="jp">&#12415;&#12393;&#12426;</div><div class="romaji">midori</div><div class="pt">verde</div></div>
+  <div class="flashcard"><div class="jp">&#12375;&#12429;</div><div class="romaji">shiro</div><div class="pt">branco</div></div>
+  <div class="flashcard"><div class="jp">&#12458;&#12524;&#12531;&#12472;</div><div class="romaji">orenji</div><div class="pt">laranja</div></div>
+  <div class="flashcard"><div class="jp">&#12354;&#12362;</div><div class="romaji">ao</div><div class="pt">azul</div></div>
+  <div class="flashcard"><div class="jp">&#12367;&#12429;</div><div class="romaji">kuro</div><div class="pt">preto</div></div>
+  <div class="flashcard"><div class="jp">&#12365;&#12356;&#12429;</div><div class="romaji">kiiro</div><div class="pt">amarelo</div></div>
+  <div class="flashcard"><div class="jp">&#12416;&#12425;&#12373;&#12365;</div><div class="romaji">murasaki</div><div class="pt">roxo / lil&aacute;s</div></div>
+  <div class="flashcard"><div class="jp">&#12399;&#12356;&#12356;&#12429;</div><div class="romaji">haiiro</div><div class="pt">cinza</div></div>
+  <div class="flashcard"><div class="jp">&#12500;&#12531;&#12463;</div><div class="romaji">pinku</div><div class="pt">rosa</div></div>
+  <div class="flashcard"><div class="jp">&#12385;&#12419;&#12356;&#12429;</div><div class="romaji">chairo</div><div class="pt">marrom</div></div>
+  <div class="flashcard"><div class="jp">&#12365;&#12435;&#12356;&#12429;</div><div class="romaji">kin iro</div><div class="pt">dourado</div></div>
+  <div class="flashcard"><div class="jp">&#12366;&#12435;&#12356;&#12429;</div><div class="romaji">gin iro</div><div class="pt">prateado</div></div>
+  <div class="flashcard"><div class="jp">&#12392;&#12358;&#12417;&#12356;</div><div class="romaji">t&omacr;mei</div><div class="pt">transparente</div></div>
+</div>
+
+<!-- Flashcards: Formas Adjetivo -->
+<h3>&#x1F4A0; Flashcards &mdash; Adjetivos (+ &#12356;)</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">&#12354;&#12363;&#12356;</div><div class="romaji">akai</div><div class="pt">vermelho (adj)</div></div>
+  <div class="flashcard"><div class="jp">&#12375;&#12429;&#12356;</div><div class="romaji">shiroi</div><div class="pt">branco (adj)</div></div>
+  <div class="flashcard"><div class="jp">&#12354;&#12362;&#12356;</div><div class="romaji">aoi</div><div class="pt">azul (adj)</div></div>
+  <div class="flashcard"><div class="jp">&#12367;&#12429;&#12356;</div><div class="romaji">kuroi</div><div class="pt">preto (adj)</div></div>
+  <div class="flashcard"><div class="jp">&#12365;&#12356;&#12429;&#12356;</div><div class="romaji">kiiroi</div><div class="pt">amarelo (adj)</div></div>
+  <div class="flashcard"><div class="jp">&#12385;&#12419;&#12356;&#12429;&#12356;</div><div class="romaji">chairoi</div><div class="pt">marrom (adj)</div></div>
+</div>
+
+<!-- Tabela Completa de Cores -->
+<h3>&#x1F4CA; Tabela Completa de Cores</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Cor</th>
+      <th>Nome (JP)</th>
+      <th>Romaji</th>
+      <th>Kanji</th>
+      <th>Adjetivo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&#x1F534; Vermelho</td>
+      <td>&#12354;&#12363;</td>
+      <td><strong>aka</strong></td>
+      <td>&#36095;</td>
+      <td><strong>akai</strong></td>
+    </tr>
+    <tr>
+      <td>&#x1F7E2; Verde</td>
+      <td>&#12415;&#12393;&#12426;</td>
+      <td><strong>midori</strong></td>
+      <td>&#32227;</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>&#x2B1C; Branco</td>
+      <td>&#12375;&#12429;</td>
+      <td><strong>shiro</strong></td>
+      <td>&#30333;</td>
+      <td><strong>shiroi</strong></td>
+    </tr>
+    <tr>
+      <td>&#x1F7E0; Laranja</td>
+      <td>&#12458;&#12524;&#12531;&#12472;</td>
+      <td><strong>orenji</strong></td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>&#x1F535; Azul</td>
+      <td>&#12354;&#12362;</td>
+      <td><strong>ao</strong></td>
+      <td>&#38738;</td>
+      <td><strong>aoi</strong></td>
+    </tr>
+    <tr>
+      <td>&#x2B1B; Preto</td>
+      <td>&#12367;&#12429;</td>
+      <td><strong>kuro</strong></td>
+      <td>&#40658;</td>
+      <td><strong>kuroi</strong></td>
+    </tr>
+    <tr>
+      <td>&#x1F7E1; Amarelo</td>
+      <td>&#12365;&#12356;&#12429;</td>
+      <td><strong>kiiro</strong></td>
+      <td>&#40644;&#33394;</td>
+      <td><strong>kiiroi</strong></td>
+    </tr>
+    <tr>
+      <td>&#x1F7E3; Roxo/Lil&aacute;s</td>
+      <td>&#12416;&#12425;&#12373;&#12365;</td>
+      <td><strong>murasaki</strong></td>
+      <td>&#32043;</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>&#x1F9F6; Cinza</td>
+      <td>&#12399;&#12356;&#12356;&#12429;</td>
+      <td><strong>haiiro</strong></td>
+      <td>&#28784;&#33394;</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>&#x1FA77; Rosa</td>
+      <td>&#12500;&#12531;&#12463;</td>
+      <td><strong>pinku</strong></td>
+      <td>&mdash;</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>&#x1F7E4; Marrom</td>
+      <td>&#12385;&#12419;&#12356;&#12429;</td>
+      <td><strong>chairo</strong></td>
+      <td>&#33590;&#33394;</td>
+      <td><strong>chairoi</strong></td>
+    </tr>
+    <tr>
+      <td>&#x1F947; Dourado</td>
+      <td>&#12365;&#12435;&#12356;&#12429;</td>
+      <td><strong>kin iro</strong></td>
+      <td>&#37329;&#33394;</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>&#x1F948; Prateado</td>
+      <td>&#12366;&#12435;&#12356;&#12429;</td>
+      <td><strong>gin iro</strong></td>
+      <td>&#37508;&#33394;</td>
+      <td>&mdash;</td>
+    </tr>
+    <tr>
+      <td>&#x1FADB; Transparente</td>
+      <td>&#12392;&#12358;&#12417;&#12356;</td>
+      <td><strong>t&omacr;mei</strong></td>
+      <td>&#36879;&#26126;</td>
+      <td>&mdash;</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Info callout: Curiosidade Verde e Azul -->
+<div class="info-box info-note">
+  <strong>&#x1F4A1; Curiosidade &mdash; Verde e Azul</strong><br>
+  O kanji &#32227; (midori) tamb&eacute;m est&aacute; relacionado a <strong>fauna e floresta</strong>.<br>
+  O azul (ao &#38738;) &eacute; famoso na arte japonesa &mdash; inclusive representa verde em alguns contextos tradicionais (ex: sinal verde = ao shingou)!
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: Variações de Verde e Azul (accent2) ===== -->
+<h2 style="background: var(--accent2); color: #1A1A2E;">
+  <span class="section-badge">&#x1F33F;</span> Varia&ccedil;&otilde;es de Verde e Azul
+</h2>
+
+<div class="card card-accent2">
+  <table>
+    <thead>
+      <tr>
+        <th>Varia&ccedil;&atilde;o</th>
+        <th>Romaji</th>
+        <th>&#x1F1E7;&#x1F1F7;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&#12415;&#12393;&#12426; &#8594; <strong>&#12405;&#12363;&#12415;&#12393;&#12426;</strong></td>
+        <td>fukamidori</td>
+        <td>verde escuro &#x1F332;</td>
+      </tr>
+      <tr>
+        <td>&#12415;&#12393;&#12426; &#8594; <strong>&#12365;&#12415;&#12393;&#12426;</strong></td>
+        <td>kimidori</td>
+        <td>verde claro &#x1F49A; (tonalidade amarelo+verde)</td>
+      </tr>
+      <tr>
+        <td>&#12354;&#12362; &#8594; <strong>&#12371;&#12435;</strong></td>
+        <td>kon</td>
+        <td>azul escuro &#x1FAD0;</td>
+      </tr>
+      <tr>
+        <td>&#12354;&#12362; &#8594; <strong>&#12415;&#12378;&#12356;&#12429;</strong></td>
+        <td>mizuiro</td>
+        <td>azul claro (cor de &aacute;gua) &#x1F4A7;</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Flashcards: Variações -->
+<h3>&#x1F4A0; Flashcards &mdash; Varia&ccedil;&otilde;es</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">&#12405;&#12363;&#12415;&#12393;&#12426;</div><div class="romaji">fukamidori</div><div class="pt">verde escuro</div></div>
+  <div class="flashcard"><div class="jp">&#12365;&#12415;&#12393;&#12426;</div><div class="romaji">kimidori</div><div class="pt">verde claro</div></div>
+  <div class="flashcard"><div class="jp">&#12371;&#12435;</div><div class="romaji">kon</div><div class="pt">azul escuro</div></div>
+  <div class="flashcard"><div class="jp">&#12415;&#12378;&#12356;&#12429;</div><div class="romaji">mizuiro</div><div class="pt">azul claro</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: Frases sobre Cores (accent3) ===== -->
+<h2 style="background: var(--accent3); color: #1A1A2E;">
+  <span class="section-badge">&#x1F4AC;</span> Frases sobre Cores
+</h2>
+
+<!-- Abstract callout: Estruturas → card -->
+<div class="card card-accent3">
+  <h3>&#x1F4E6; Estruturas</h3>
+
+  <div class="example-dialog">
+    <div class="jp-text"><strong>&#12394;&#12395;&#12356;&#12429;&#12364;&#12377;&#12365;&#12391;&#12377;&#12363;&#65311;</strong></div>
+    <div><em>Nani iro ga sukidesuka?</em></div>
+    <div class="translation">&#8594; Qual cor voc&ecirc; gosta?</div>
+  </div>
+
+  <div class="example-dialog">
+    <div class="jp-text"><strong>&#12394;&#12395;&#12356;&#12429;&#12364;&#12365;&#12425;&#12356;&#12391;&#12377;&#12363;&#65311;</strong></div>
+    <div><em>Nani iro ga kiraidesuka?</em></div>
+    <div class="translation">&#8594; Qual cor voc&ecirc; n&atilde;o gosta?</div>
+  </div>
+
+  <div class="example-dialog">
+    <div class="jp-text"><strong>&#12371;&#12428;&#12399;&#12394;&#12395;&#12356;&#12429;&#12391;&#12377;&#12363;&#65311;</strong></div>
+    <div><em>Kore wa nani iro desuka?</em></div>
+    <div class="translation">&#8594; Que cor &eacute; essa?</div>
+  </div>
+
+  <div class="example-dialog">
+    <div class="jp-text"><strong>[cor]&#12364;&#12377;&#12365;&#12391;&#12377;&#12290;</strong></div>
+    <div><em>[cor] ga sukidesu.</em></div>
+    <div class="translation">&#8594; Eu gosto de [cor].</div>
+  </div>
+</div>
+
+<!-- Example dialog: Soretomo -->
+<div class="example-dialog">
+  <div class="speaker">Di&aacute;logo com &#12381;&#12428;&#12392;&#12418; (soretomo = &quot;ou&quot;)</div>
+  <div class="jp-text"><strong>&#12362;&#12385;&#12419;&#12399;&#12415;&#12393;&#12426;&#12381;&#12428;&#12392;&#12418;&#12354;&#12362;&#12391;&#12377;&#12363;&#65311;</strong></div>
+  <div><em>Ocha wa midori soretomo ao desu ka?</em></div>
+  <div class="translation">&#8594; O ch&aacute; &eacute; verde ou azul?</div>
+  <br>
+  <div class="jp-text"><strong>&#12362;&#12385;&#12419;&#12399;&#12415;&#12393;&#12426;&#12391;&#12377;&#12290;</strong></div>
+  <div><em>Ocha wa midori desu.</em></div>
+  <div class="translation">&#8594; O ch&aacute; &eacute; verde.</div>
+</div>
+
+<!-- Example dialog: Cores como Adjetivo -->
+<div class="example-dialog">
+  <div class="speaker">Usando Cores como Adjetivo</div>
+  <div>A cal&ccedil;a &eacute; vermelha:</div>
+  <div class="jp-text"><strong>&#12474;&#12508;&#12531;&#12399;&#12354;&#12363;&#12356;&#12391;&#12377;&#12290;</strong></div>
+  <div><em>Zubon wa akai desu.</em></div>
+  <br>
+  <div class="translation">Note: <strong>akai</strong> (forma adjetivo) em vez de <strong>aka</strong> (nome da cor).</div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: Parabéns em Japonês (accent4) ===== -->
+<h2 style="background: var(--accent4); color: #fff;">
+  <span class="section-badge">&#x1F382;</span> Parab&eacute;ns em Japon&ecirc;s
+</h2>
+
+<div class="info-box info-note">
+  <strong>&#x1F4DD; Frase Especial</strong><br>
+  <div style="font-family: var(--font-jp); font-size: 1.3rem; margin: 0.5rem 0;">
+    <strong>&#12362;&#12383;&#12435;&#12376;&#12423;&#12358;&#12403;&#12362;&#12417;&#12391;&#12392;&#12358;&#12372;&#12374;&#12356;&#12414;&#12377;&#65281;</strong>
+  </div>
+  <div><em>Otanjoubi omedetogozaimasu!</em></div>
+  <div class="translation">&#8594; Feliz Anivers&aacute;rio! &#x1F382;&#x1F389;</div>
+  <br>
+  <div>(Vers&atilde;o informal: <strong>&#12362;&#12417;&#12391;&#12392;&#12358;!</strong> / <em>Omedetou!</em>)</div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: Frutas em Japonês (accent5) ===== -->
+<h2 style="background: var(--accent5); color: #fff;">
+  <span class="section-badge">&#x1F34E;</span> Frutas em Japon&ecirc;s (&#12367;&#12384;&#12418;&#12398; / Kudamono)
+</h2>
+
+<p>Vocabul&aacute;rio extra coberto nesta aula:</p>
+
+<!-- Flashcards: Frutas -->
+<h3>&#x1F4A0; Flashcards &mdash; Frutas</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">&#12426;&#12435;&#12372;</div><div class="romaji">ringo</div><div class="pt">ma&ccedil;&atilde;</div></div>
+  <div class="flashcard"><div class="jp">&#12377;&#12356;&#12363;</div><div class="romaji">suika</div><div class="pt">melancia</div></div>
+  <div class="flashcard"><div class="jp">&#12406;&#12393;&#12358;</div><div class="romaji">bud&omacr;</div><div class="pt">uva</div></div>
+  <div class="flashcard"><div class="jp">&#12510;&#12473;&#12459;&#12483;&#12488;</div><div class="romaji">maskatto</div><div class="pt">uva verde</div></div>
+  <div class="flashcard"><div class="jp">&#12415;&#12363;&#12435;</div><div class="romaji">mikan</div><div class="pt">mexerica</div></div>
+  <div class="flashcard"><div class="jp">&#12496;&#12490;&#12490;</div><div class="romaji">banana</div><div class="pt">banana</div></div>
+  <div class="flashcard"><div class="jp">&#12418;&#12418;</div><div class="romaji">momo</div><div class="pt">p&ecirc;ssego</div></div>
+  <div class="flashcard"><div class="jp">&#12497;&#12452;&#12490;&#12483;&#12503;&#12523;</div><div class="romaji">painappuru</div><div class="pt">abacaxi</div></div>
+  <div class="flashcard"><div class="jp">&#12356;&#12385;&#12372;</div><div class="romaji">ichigo</div><div class="pt">morango</div></div>
+  <div class="flashcard"><div class="jp">&#12394;&#12375;</div><div class="romaji">nashi</div><div class="pt">pera</div></div>
+  <div class="flashcard"><div class="jp">&#12513;&#12525;&#12531;</div><div class="romaji">meron</div><div class="pt">mel&atilde;o</div></div>
+  <div class="flashcard"><div class="jp">&#12510;&#12531;&#12468;&#12540;</div><div class="romaji">mang&omacr;</div><div class="pt">manga</div></div>
+  <div class="flashcard"><div class="jp">&#12467;&#12467;&#12490;&#12483;&#12484;</div><div class="romaji">kokonatsu</div><div class="pt">coco</div></div>
+  <div class="flashcard"><div class="jp">&#12524;&#12514;&#12531;</div><div class="romaji">remon</div><div class="pt">lim&atilde;o</div></div>
+  <div class="flashcard"><div class="jp">&#12497;&#12497;&#12452;&#12516;</div><div class="romaji">papaiya</div><div class="pt">mam&atilde;o</div></div>
+  <div class="flashcard"><div class="jp">&#12489;&#12521;&#12468;&#12531;&#12501;&#12523;&#12540;&#12484;</div><div class="romaji">doragon furutsu</div><div class="pt">pitaya</div></div>
+  <div class="flashcard"><div class="jp">&#12461;&#12454;&#12452;</div><div class="romaji">ky&ucirc;i</div><div class="pt">kiwi</div></div>
+  <div class="flashcard"><div class="jp">&#12450;&#12508;&#12459;&#12489;</div><div class="romaji">abokado</div><div class="pt">abacate</div></div>
+  <div class="flashcard"><div class="jp">&#12464;&#12450;&#12496;</div><div class="romaji">guaba</div><div class="pt">goiaba</div></div>
+  <div class="flashcard"><div class="jp">&#12467;&#12467;&#12450;</div><div class="romaji">kokoa</div><div class="pt">cacau</div></div>
+  <div class="flashcard"><div class="jp">&#12473;&#12479;&#12540;&#12501;&#12523;&#12540;&#12484;</div><div class="romaji">staa furuutsu</div><div class="pt">carambola</div></div>
+  <div class="flashcard"><div class="jp">&#12497;&#12483;&#12471;&#12519;&#12531;&#12501;&#12523;&#12540;&#12484;</div><div class="romaji">passhon furutsu</div><div class="pt">maracuj&aacute;</div></div>
+</div>
+
+<!-- Tabela de Frutas -->
+<h3>&#x1F4CA; Tabela Completa de Frutas</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Fruta</th>
+      <th>Romaji</th>
+      <th>Katakana / Hiragana</th>
+      <th>&#x1F1E7;&#x1F1F7;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>&#x1F34E;</td><td><strong>ringo</strong></td><td>&#12426;&#12435;&#12372;</td><td>ma&ccedil;&atilde;</td></tr>
+    <tr><td>&#x1F349;</td><td><strong>suika</strong></td><td>&#12377;&#12356;&#12363;</td><td>melancia</td></tr>
+    <tr><td>&#x1F347;</td><td><strong>bud&omacr;</strong></td><td>&#12406;&#12393;&#12358;</td><td>uva</td></tr>
+    <tr><td>&#x1F347;&#x1F49A;</td><td><strong>maskatto</strong></td><td>&#12510;&#12473;&#12459;&#12483;&#12488;</td><td>uva verde</td></tr>
+    <tr><td>&#x1F34A;</td><td><strong>mikan</strong></td><td>&#12415;&#12363;&#12435;</td><td>mexerica</td></tr>
+    <tr><td>&#x1F34C;</td><td><strong>banana</strong></td><td>&#12496;&#12490;&#12490;</td><td>banana</td></tr>
+    <tr><td>&#x1F351;</td><td><strong>momo</strong></td><td>&#12418;&#12418;</td><td>p&ecirc;ssego</td></tr>
+    <tr><td>&#x1F34D;</td><td><strong>painappuru</strong></td><td>&#12497;&#12452;&#12490;&#12483;&#12503;&#12523;</td><td>abacaxi</td></tr>
+    <tr><td>&#x1F353;</td><td><strong>ichigo</strong></td><td>&#12356;&#12385;&#12372;</td><td>morango</td></tr>
+    <tr><td>&#x1F350;</td><td><strong>nashi</strong></td><td>&#12394;&#12375;</td><td>pera</td></tr>
+    <tr><td>&#x1F348;</td><td><strong>meron</strong></td><td>&#12513;&#12525;&#12531;</td><td>mel&atilde;o</td></tr>
+    <tr><td>&#x1F96D;</td><td><strong>mang&omacr;</strong></td><td>&#12510;&#12531;&#12468;&#12540;</td><td>manga</td></tr>
+    <tr><td>&#x1F965;</td><td><strong>kokonatsu</strong></td><td>&#12467;&#12467;&#12490;&#12483;&#12484;</td><td>coco</td></tr>
+    <tr><td>&#x1F34B;</td><td><strong>remon</strong></td><td>&#12524;&#12513;&#12531;</td><td>lim&atilde;o</td></tr>
+    <tr><td>&#x1FAB5;</td><td><strong>papaiya</strong></td><td>&#12497;&#12497;&#12452;&#12516;</td><td>mam&atilde;o</td></tr>
+    <tr><td>&#x1F330;</td><td><strong>doragon furutsu</strong></td><td>&#12489;&#12521;&#12468;&#12531;&#12501;&#12523;&#12540;&#12484;</td><td>pitaya</td></tr>
+    <tr><td>&#x1F95D;</td><td><strong>ky&ucirc;i</strong></td><td>&#12461;&#12454;&#12452;</td><td>kiwi</td></tr>
+    <tr><td>&#x1F951;</td><td><strong>abokado</strong></td><td>&#12450;&#12508;&#12459;&#12489;</td><td>abacate</td></tr>
+    <tr><td>&#x1F348;</td><td><strong>guaba</strong></td><td>&#12464;&#12450;&#12496;</td><td>goiaba</td></tr>
+    <tr><td>&#x1F36B;</td><td><strong>kokoa</strong></td><td>&#12467;&#12467;&#12450;</td><td>cacau</td></tr>
+    <tr><td>&#x2B50;</td><td><strong>staa furuutsu</strong></td><td>&#12473;&#12479;&#12540;&#12501;&#12523;&#12540;&#12484;</td><td>carambola</td></tr>
+    <tr><td>&#x1F33A;</td><td><strong>passhon furutsu</strong></td><td>&#12497;&#12483;&#12471;&#12520;&#12531;&#12501;&#12523;&#12540;&#12484;</td><td>maracuj&aacute;</td></tr>
+  </tbody>
+</table>
+
+<hr>
+
+<!-- ===== SECTION 6: Tabela Cola Rápida (accent6) ===== -->
+<h2 style="background: var(--accent6); color: #fff;">
+  <span class="section-badge">&#x1F9E0;</span> Tabela Cola R&aacute;pida
+</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">Cores com Adjetivo (+ い)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>赤 aka → akai</td><td>vermelho</td></tr>
+        <tr><td>白 shiro → shiroi</td><td>branco</td></tr>
+        <tr><td>青 ao → aoi</td><td>azul</td></tr>
+        <tr><td>黒 kuro → kuroi</td><td>preto</td></tr>
+        <tr><td>黄色 kiiro → kiiroi</td><td>amarelo</td></tr>
+        <tr><td>茶色 chairo → chairoi</td><td>marrom</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">Outras Cores (sem adjetivo-i)</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>midori</td><td>verde</td></tr>
+        <tr><td>murasaki</td><td>roxo</td></tr>
+        <tr><td>pinku</td><td>rosa</td></tr>
+        <tr><td>orenji</td><td>laranja</td></tr>
+        <tr><td>haiiro</td><td>cinza</td></tr>
+        <tr><td>kin iro</td><td>ouro</td></tr>
+        <tr><td>gin iro</td><td>prata</td></tr>
+        <tr><td>tōmei</td><td>transparente</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">Frases</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>何色が好きですか？</td><td>Qual cor você gosta?</td></tr>
+        <tr><td>これは何色ですか？</td><td>Que cor é essa?</td></tr>
+        <tr><td>[X]は[cor]です。</td><td>[X] é [cor].</td></tr>
+        <tr><td>[X]は[cor+i]です。</td><td>[X] é [cor] (adj).</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 7: Mini-Quiz (accent1, cycles back) ===== -->
+<h2 style="background: var(--accent1); color: #fff;">
+  <span class="section-badge">&#x1F3AF;</span> Mini-Quiz
+</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Cores Básicas</h3>
+  <ol>
+    <li>Vermelho → ?</li>
+    <li>Azul → ?</li>
+    <li>Verde → ?</li>
+    <li>Preto → ?</li>
+    <li>Branco → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>あか (aka)</strong> / あかい (akai — adj)</li>
+      <li><strong>あお (ao)</strong> / あおい (aoi — adj)</li>
+      <li><strong>みどり (midori)</strong> — sem forma adjetivo-i!</li>
+      <li><strong>くろ (kuro)</strong> / くろい (kuroi — adj)</li>
+      <li><strong>しろ (shiro)</strong> / しろい (shiroi — adj)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Adjetivos de Cor</h3>
+  <ol>
+    <li>Quais cores podem virar adjetivo com +い?</li>
+    <li>"A maçã é vermelha" (use adjetivo) → ?</li>
+    <li>"Que cor é essa?" → ?</li>
+    <li>Por que NÃO se diz みどりい (midorii)?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>あか, あお, しろ, くろ, きいろ, ちゃいろ</strong> — apenas estas 6!</li>
+      <li><strong>りんごは あかいです</strong> (ringo wa akai desu)</li>
+      <li><strong>これは なにいろですか？</strong> (kore wa nani iro desu ka?)</li>
+      <li>みどり é um substantivo que veio mais tarde para o japonês. As 6 cores com +い são as <strong>cores nativas mais antigas</strong> do japonês (Yamato-kotoba).</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F3A8; Nível 3 — Prática</h3>
+  <ol>
+    <li>"Eu gosto de azul claro" → ?</li>
+    <li>"O céu é azul" (use adjetivo) → ?</li>
+    <li>Qual cor você mais gosta? (responda em japonês!)</li>
+  </ol>
+  <details><summary>Respostas Sugeridas</summary>
+    <ol>
+      <li><strong>みずいろが すきです</strong> (mizuiro ga suki desu)</li>
+      <li><strong>そらは あおいです</strong> (sora wa aoi desu)</li>
+      <li><strong>わたしは あかが いちばん すきです</strong> / <strong>みどりが すきです</strong> (sua resposta!)</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<!-- ===== FOOTER NAVIGATION ===== -->
+<nav class="footer-nav">
+  <a href="Aula 9.html">&larr; Aula 9</a>
+  <a href="Aula 11.html">Aula 11 &rarr;</a>
+</nav>
+
+</body>
+</html>

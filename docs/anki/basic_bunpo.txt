@@ -1,0 +1,199 @@
+辞書 (じしょ) ; Dicionário
+宿題 (しゅくだい) ; Lição de casa
+えんぴつ ; Lápis
+ペン (ぺん) ; Caneta
+本 (ほん) ; Livro
+くつ ; Sapatos
+時計 (とけい) ; Relógio
+写真 (しゃしん) ; Foto / Fotografia
+お金 (おかね) ; Dinheiro
+犬 (いぬ) ; Cachorro
+猫 (ねこ) ; Gato
+鳥 (とり) ; Pássaro
+ゼロ (ぜろ) ; Zero (0)
+一 (いち) ; Um (1)
+二 (に) ; Dois (2)
+三 (さん) ; Três (3)
+四 (よん / し) ; Quatro (4)
+五 (ご) ; Cinco (5)
+六 (ろく) ; Seis (6)
+七 (なな / しち) ; Sete (7)
+八 (はち) ; Oito (8)
+九 (きゅう) ; Nove (9)
+十 (じゅう) ; Dez (10)
+十一 (じゅういち) ; Onze (11)
+十二 (じゅうに) ; Doze (12)
+十三 (じゅうさん) ; Treze (13)
+十四 (じゅうよん) ; Quatorze (14)
+十五 (じゅうご) ; Quinze (15)
+十六 (じゅうろく) ; Dezesseis (16)
+十七 (じゅうなな) ; Dezessete (17)
+十八 (じゅうはち) ; Dezoito (18)
+十九 (じゅうきゅう) ; Dezenove (19)
+季節 (きせつ) ; Estação do ano
+春 (はる) ; Primavera
+夏 (なつ) ; Verão
+秋 (あき) ; Outono
+冬 (ふゆ) ; Inverno
+一月 (いちがつ) ; Janeiro
+二月 (にがつ) ; Fevereiro
+三月 (さんがつ) ; Março
+四月 (しがつ) ; Abril
+五月 (ごがつ) ; Maio
+六月 (ろくがつ) ; Junho
+七月 (しちがつ) ; Julho
+八月 (はちがつ) ; Agosto
+九月 (くがつ) ; Setembro
+十月 (じゅうがつ) ; Outubro
+十一月 (じゅういちがつ) ; Novembro
+十二月 (じゅうにがつ) ; Dezembro
+日曜日 (にちようび) ; Domingo
+月曜日 (げつようび) ; Segunda-feira
+火曜日 (かようび) ; Terça-feira
+水曜日 (すいようび) ; Quarta-feira
+木曜日 (もくようび) ; Quinta-feira
+金曜日 (きんようび) ; Sexta-feira
+土曜日 (どようび) ; Sábado
+朝 (あさ) ; Manhã
+昼 (ひる) ; Tarde / Meio-dia
+夜 (よる) ; Noite
+いつ ; Quando
+昨日 (きのう) ; Ontem
+今日 (きょう) ; Hoje
+明日 (あした) ; Amanhã
+明後日 (あさって) ; Depois de amanhã
+先週 (せんしゅう) ; Semana passada
+今週 (こんしゅう) ; Esta semana
+来週 (らいしゅう) ; Próxima semana
+先月 (せんげつ) ; Mês passado
+今月 (こんげつ) ; Este mês
+来月 (らいげつ) ; Próximo mês
+去年 (きょねん) ; Ano passado
+今年 (ことし) ; Este ano
+来年 (らいねん) ; Próximo ano
+わたし ; Eu
+あなた ; Você
+かれ ; Ele
+かのじょ ; Ela
+わたしたち ; Nós
+あなたたち ; Vocês (Plural)
+彼ら (かれら) ; Eles
+彼女ら (かのじょら) ; Elas
+女の人 (おんなのひと) ; Mulher
+男の人 (おとこのひと) ; Homem
+女の子 (おんなのこ) ; Menina
+男の子 (おとこのこ) ; Menino
+人 (ひと) ; Pessoa
+子ども (こども) ; Criança
+大人 (おとな) ; Adulto
+友達 (ともだち) ; Amigo(a)
+家族 (かぞく) ; Família
+お母さん (おかあさん) ; Mãe
+お父さん (おとうさん) ; Pai
+お姉さん (おねえさん) ; Irmã mais velha
+お兄さん (おにいさん) ; Irmão mais velho
+妹 (いもうと) ; Irmã mais nova
+弟 (おとうと) ; Irmão mais novo
+おはよう ; Bom dia
+こんにちは ; Boa tarde / Olá
+こんばんは ; Boa noite (ao chegar/encontrar)
+さようなら ; Tchau / Adeus
+おやすみ ; Boa noite (ao se despedir para dormir)
+ありがとう ; Obrigado(a)
+すみません ; Com licença / Desculpe
+いってきます ; Estou saindo (literalmente: vou e volto)
+いってらっしゃい ; Vá com Deus / Tenha um bom dia (resposta para quem sai)
+ただいま ; Cheguei
+おかえり ; Bem-vindo(a) de volta
+いただきます ; Expressão de gratidão dita antes das refeições
+ごちそうさま ; Expressão de gratidão dita após as refeições
+はじめまして ; Prazer em conhecê-lo(a)
+よろしく ; Conto com você / Prazer (ao fim de uma apresentação)
+そうです ; É isso mesmo / Exatamente
+そうですか ; Ah é? / Entendo
+はい ; Sim
+いいえ ; Não
+おねがいします ; Por favor (ao pedir um favor)
+ください ; Por favor (me dê / faça para mim)
+どうぞ ; Aqui está / Por favor (ao oferecer algo ou dar passagem)
+どうも ; Muito obrigado / Olá (informal)
+じゃあ ; Então / Até logo
+おふろ ; Banheira / Banho
+窓 (まど) ; Janela
+ドア (どあ) ; Porta
+部屋 (へや) ; Quarto / Sala
+台所 (だいどころ) ; Cozinha
+机 (つくえ) ; Escrivaninha / Mesa
+いす ; Cadeira
+かばん ; Bolsa / Mochila
+教科書 (きょうかしょ) ; Livro didático
+国 (くに) ; País
+アメリカ (あめりか) ; EUA
+イギリス (いぎりす) ; Reino Unido
+カナダ (かなだ) ; Canadá
+フランス (ふらんす) ; França
+中国 (ちゅうごく) ; China
+韓国 (かんこく) ; Coreia do Sul
+日本 (にほん) ; Japão
+学生 (がくせい) ; Estudante
+大学生 (だいがくせい) ; Estudante universitário
+留学生 (りゅうがくせい) ; Estudante internacional (Intercambista)
+先生 (せんせい) ; Professor(a)
+仕事 (しごと) ; Trabalho
+会社員 (かいしゃいん) ; Funcionário(a) de empresa
+社長 (しゃちょう) ; Presidente da empresa
+医者 (いしゃ) ; Médico(a)
+警察 (けいさつ) ; Polícia
+歌手 (かしゅ) ; Cantor(a)
+家 (いえ / うち) ; Casa
+学校 (がっこう) ; Escola
+大学 (だいがく) ; Universidade
+まち ; Cidade
+スーパー (すーぱー) ; Supermercado
+レストラン (れすとらん) ; Restaurante
+公園 (こうえん) ; Parque
+銀行 (ぎんこう) ; Banco
+郵便局 (ゆうびんきょく) ; Correios
+図書館 (としょかん) ; Biblioteca
+病院 (びょういん) ; Hospital
+お寺 (おてら) ; Templo budista
+ホテル (ほてる) ; Hotel
+アパート (あぱーと) ; Apartamento
+山 (やま) ; Montanha
+海 (うみ) ; Mar / Oceano
+川 (かわ) ; Rio
+自転車 (じてんしゃ) ; Bicicleta
+車 (くるま) ; Carro
+バス (ばす) ; Ônibus
+電車 (でんしゃ) ; Trem
+地下鉄 (ちかてつ) ; Metrô
+駅 (えき) ; Estação (de trem/metrô)
+空港 (くうこう) ; Aeroporto
+音楽 (おんがく) ; Música
+映画 (えいが) ; Filme
+テレビ (てれび) ; Televisão
+スポーツ (すぽーつ) ; Esportes
+買い物 (かいもの) ; Compras
+夢 (ゆめ) ; Sonho
+デート (でーと) ; Encontro (romântico)
+休み (やすみ) ; Descanso / Folga / Feriado
+旅行 (りょこう) ; Viagem
+天気 (てんき) ; Tempo (clima)
+晴れ (はれ) ; Ensolarado / Tempo limpo
+くもり ; Nublado
+雨 (あめ) ; Chuva
+かさ ; Guarda-chuva
+朝ご飯 (あさごはん) ; Café da manhã
+昼ご飯 (ひるごはん) ; Almoço
+晩ご飯 (ばんごはん) ; Jantar
+水 (みず) ; Água
+お茶 (おちゃ) ; Chá (geralmente chá verde)
+コーヒー (こーひー) ; Café
+牛乳 (ぎゅうにゅう) ; Leite
+ビール (びーる) ; Cerveja
+お酒 (おさけ) ; Bebida alcoólica / Saquê
+米 (こめ) ; Arroz (cru)
+パン (ぱん) ; Pão
+魚 (さかな) ; Peixe
+肉 (にく) ; Carne
+野菜 (やさい) ; Legumes / Verduras

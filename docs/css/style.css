@@ -1,0 +1,476 @@
+/* ============================================================
+   NIHON STUDY — Neobrutalism + Japanese Colors
+   ============================================================ */
+
+:root {
+  /* Japanese palette */
+  --jp-indigo:    #1B2D4F;
+  --jp-vermillion:#D4473A;
+  --jp-gold:      #C9A84C;
+  --jp-matcha:    #7A8B4E;
+  --jp-sakura:    #F0C9C0;
+  --jp-rice:      #FFFDF7;
+  --jp-ink:       #1A1A2E;
+  --jp-charcoal:  #2D2D2D;
+
+  /* Neobrutalism tokens */
+  --border:       3px solid var(--jp-ink);
+  --border-thick: 5px solid var(--jp-ink);
+  --shadow:       6px 6px 0 var(--jp-ink);
+  --shadow-sm:    4px 4px 0 var(--jp-ink);
+  --radius:       0px;
+
+  /* Surfaces */
+  --bg:           var(--jp-rice);
+  --card-bg:      #FFFFFF;
+  --accent-box:   var(--jp-sakura);
+
+  /* Typography */
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body:    'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp:      'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+  --font-mono:    'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ---- Body ---- */
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #d4d4d4 1px, transparent 1px);
+  background-size: 20px 20px;
+  font-family: var(--font-body);
+  color: var(--jp-ink);
+  line-height: 1.7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.2rem); }
+h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+h3 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+
+a {
+  color: var(--jp-indigo);
+  font-weight: 700;
+  text-underline-offset: 3px;
+}
+a:hover { color: var(--jp-vermillion); }
+
+/* ---- Layout ---- */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* ---- Nav Bar ---- */
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: #fff;
+  border-bottom: var(--border-thick);
+}
+.navbar .logo {
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--jp-ink);
+  letter-spacing: -1px;
+}
+.navbar .logo span { color: var(--jp-vermillion); }
+.navbar nav { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  background: #fff;
+  color: var(--jp-ink);
+  font-family: var(--font-heading);
+}
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--jp-ink);
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--jp-ink);
+}
+
+.btn--primary   { background: var(--jp-vermillion); color: #fff; }
+.btn--secondary { background: var(--jp-indigo);    color: #fff; }
+.btn--gold      { background: var(--jp-gold);      color: var(--jp-ink); }
+.btn--matcha    { background: var(--jp-matcha);    color: #fff; }
+.btn--outline   { background: transparent; }
+
+.btn--lg {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* ---- Cards ---- */
+.card {
+  background: #fff;
+  border: var(--border);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--jp-ink);
+}
+
+/* ---- Hero Block ---- */
+.hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+}
+.hero h1 {
+  display: inline-block;
+  background: var(--jp-vermillion);
+  color: #fff;
+  padding: 1rem 2rem;
+  border: var(--border-thick);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  -webkit-text-stroke: 2px var(--jp-ink);
+}
+.hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+/* ---- Block grid (homepage) ---- */
+.block-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.block-card {
+  background: #fff;
+  border: var(--border-thick);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.block-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--jp-ink);
+}
+.block-card .icon {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.block-card h2 {
+  margin-bottom: 0.75rem;
+}
+.block-card p {
+  margin-bottom: 1.5rem;
+  color: var(--jp-charcoal);
+  font-weight: 500;
+}
+
+/* ---- Deck / Lesson cards ---- */
+.deck-list, .lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.deck-card, .lesson-card {
+  background: #fff;
+  border: var(--border);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.deck-card:hover, .lesson-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 10px 10px 0 var(--jp-ink);
+}
+
+.deck-card .meta, .lesson-card .meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--jp-ink);
+  background: var(--jp-gold);
+  color: var(--jp-ink);
+}
+.badge--indigo    { background: var(--jp-indigo); color: #fff; }
+.badge--vermillion { background: var(--jp-vermillion); color: #fff; }
+.badge--matcha    { background: var(--jp-matcha); color: #fff; }
+.badge--sakura    { background: var(--jp-sakura); }
+
+.deck-card .actions, .lesson-card .actions {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ---- Tutorial steps ---- */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.step {
+  display: flex;
+  gap: 1.5rem;
+  background: #fff;
+  border: var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  align-items: flex-start;
+}
+.step-num {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--jp-indigo);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 900;
+  border: 3px solid var(--jp-ink);
+}
+.step-body h3 { text-transform: none; margin-bottom: 0.4rem; }
+.step-body code {
+  background: var(--jp-ink);
+  color: #fff;
+  padding: 0.15rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+.step-body .tip {
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #FFF9E6;
+  border-left: 4px solid var(--jp-gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* ---- Footer ---- */
+.footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  margin-top: 3rem;
+  border-top: var(--border-thick);
+  background: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--jp-charcoal);
+}
+
+/* ---- Page header ---- */
+.page-header {
+  margin-bottom: 2rem;
+}
+.page-header h1 {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: var(--border-thick);
+  box-shadow: var(--shadow);
+  margin-bottom: 0.75rem;
+}
+.page-header--vermillion h1 { background: var(--jp-vermillion); color: #fff; -webkit-text-stroke: 2px var(--jp-ink); }
+.page-header--indigo h1     { background: var(--jp-indigo);     color: #fff; -webkit-text-stroke: 2px var(--jp-ink); }
+.page-header--matcha h1     { background: var(--jp-matcha);     color: #fff; -webkit-text-stroke: 2px var(--jp-ink); }
+.page-header--gold h1       { background: var(--jp-gold);       color: var(--jp-ink); }
+.page-header p { font-weight: 600; font-size: 1.1rem; }
+
+/* ---- Back link ---- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* ---- Cheatsheet Components ---- */
+.cheatsheet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.cheatsheet-card {
+  background: #fff;
+  border: 3px solid var(--jp-ink);
+  box-shadow: 4px 4px 0 var(--jp-ink);
+  overflow: hidden;
+}
+.cheatsheet-card__header {
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 3px solid var(--jp-ink);
+  font-family: var(--font-heading);
+}
+.cheatsheet-card__header--vermillion { background: var(--jp-vermillion); color: #fff; }
+.cheatsheet-card__header--indigo     { background: var(--jp-indigo);     color: #fff; }
+.cheatsheet-card__header--matcha     { background: var(--jp-matcha);     color: #fff; }
+.cheatsheet-card__header--gold       { background: var(--jp-gold);       color: var(--jp-ink); }
+.cheatsheet-card__header--sakura     { background: var(--jp-sakura);     color: var(--jp-ink); }
+.cheatsheet-card__body {
+  padding: 0.6rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.cheatsheet-card__body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.cheatsheet-card__body table td {
+  padding: 0.2rem 0.4rem;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+}
+.cheatsheet-card__body table td:first-child {
+  font-family: var(--font-jp);
+  font-weight: 700;
+  white-space: nowrap;
+  padding-right: 0.6rem;
+}
+.cheatsheet-card__body table tr:last-child td { border-bottom: none; }
+
+/* ---- Cheatsheet: stacked rows ---- */
+.cheatsheet-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 1.5rem 0;
+}
+.cheatsheet-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 0.8rem;
+  background: #fff;
+  border: 2px solid var(--jp-ink);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+}
+.cheatsheet-row .jp { font-family: var(--font-jp); font-weight: 700; font-size: 1rem; }
+.cheatsheet-row .romaji { color: #555; font-size: 0.8rem; }
+.cheatsheet-row .pt { font-weight: 700; margin-left: auto; }
+.cheatsheet-row .label {
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border: 2px solid var(--jp-ink);
+  margin-right: 0.5rem;
+  white-space: nowrap;
+}
+
+/* ---- Cheatsheet: 50-50 pairs ---- */
+.cheatsheet-pairs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+.cheatsheet-pair {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border: 2px solid var(--jp-ink);
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+}
+.cheatsheet-pair .left  { font-family: var(--font-jp); font-weight: 700; }
+.cheatsheet-pair .right { font-weight: 700; text-align: right; }
+.cheatsheet-pair .arrow { color: var(--jp-vermillion); font-weight: 900; margin: 0 0.5rem; }
+
+@media (max-width: 600px) {
+  .cheatsheet-grid { grid-template-columns: 1fr; }
+  .cheatsheet-pairs { grid-template-columns: 1fr; }
+}
+
+/* ---- Coming soon ---- */
+.coming-soon {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.coming-soon .badge--vermillion {
+  background: var(--jp-charcoal);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  .container { padding: 1rem; }
+  .hero { padding: 2rem 0.5rem 1rem; }
+  .hero h1 { padding: 0.75rem 1rem; font-size: 1.5rem; -webkit-text-stroke: 1px var(--jp-ink); }
+  .block-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  .deck-list, .lesson-grid { grid-template-columns: 1fr; }
+  .step { flex-direction: column; gap: 0.75rem; }
+  .navbar { padding: 0.75rem 0.5rem; gap: 0.35rem; }
+  .navbar .logo { font-size: 1rem; }
+  .navbar .btn { padding: 0.4rem 0.6rem; font-size: 0.7rem; }
+}

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 4 — Números e Idade</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body); color: var(--text); line-height: 1.6;
+  padding: 2rem; max-width: 1100px; margin: 0 auto;
+}
+h1 {
+  font-size: 2.8rem; font-weight: 900; text-transform: uppercase; letter-spacing: -1px;
+  background: var(--accent1); color: #fff; padding: 1rem 1.5rem;
+  border: 4px solid var(--border); box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem; text-align: center; -webkit-text-stroke: 2px var(--border);
+}
+h2 {
+  font-size: 1.8rem; font-weight: 800; margin: 2rem 0 1rem; padding: 0.5rem 1rem;
+  border: 3px solid var(--border); box-shadow: 5px 5px 0 var(--shadow); display: inline-block;
+}
+h3 { font-size: 1.3rem; font-weight: 700; margin: 1.2rem 0 0.6rem; padding: 0.3rem 0.8rem; border-left: 6px solid var(--border); }
+.card {
+  background: var(--card-bg); border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow); padding: 1.5rem; margin: 1.5rem 0; border-radius: 2px;
+}
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border: 4px solid var(--border); box-shadow: 5px 5px 0 var(--shadow); margin: 1rem 0; font-size: 0.95rem;
+}
+thead th {
+  background: var(--border); color: #fff; font-weight: 800; padding: 0.7rem 0.8rem;
+  text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; border-bottom: 3px solid var(--border);
+}
+tbody td {
+  padding: 0.6rem 0.8rem; border-bottom: 2px solid #ddd; border-right: 2px solid #ddd;
+  font-family: var(--font-jp); vertical-align: middle;
+}
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+.flashcard {
+  display: inline-block; background: var(--card-bg); border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow); padding: 0.5rem 1rem; margin: 0.3rem;
+  font-family: var(--font-jp); font-size: 1.1rem; font-weight: 600;
+  transition: transform 0.1s; cursor: pointer; user-select: none;
+}
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+.tag {
+  display: inline-block; padding: 0.2rem 0.7rem; border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow); font-size: 0.75rem; font-weight: 700;
+  text-transform: uppercase; margin: 0.2rem;
+}
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+.quiz {
+  background: var(--accent3); border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow); padding: 1.5rem; margin: 1.5rem 0;
+}
+.quiz h3 { border-left-color: var(--accent1); }
+.quiz details { margin: 0.5rem 0; padding: 0.5rem 1rem; background: #fff; border: 2px solid var(--border); }
+.quiz summary { font-weight: 700; cursor: pointer; padding: 0.3rem 0; }
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+.cheatsheet {
+  background: #1A1A2E; color: #00FF88; font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88; box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem; margin: 1.5rem 0; font-size: 0.9rem; white-space: pre-wrap; line-height: 1.5;
+}
+.info-box { padding: 1rem 1.5rem; margin: 1rem 0; border: 3px solid var(--border); box-shadow: 4px 4px 0 var(--shadow); font-weight: 600; }
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+.example-dialog {
+  background: #fff; border: 3px dashed var(--border); padding: 1rem 1.5rem; margin: 0.8rem 0; font-size: 0.95rem;
+}
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+.section-badge { display: inline-block; font-size: 1.8rem; margin-right: 0.5rem; vertical-align: middle; }
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+.op-words { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1rem 0; }
+nav.footer-nav {
+  display: flex; justify-content: space-between; margin-top: 3rem;
+  padding: 1rem 1.5rem; background: var(--border); border: 3px solid var(--border);
+}
+nav.footer-nav a { color: #fff; font-weight: 800; text-decoration: none; font-size: 1.1rem; }
+nav.footer-nav a:hover { text-decoration: underline; }
+.mnemonic {
+  background: #FFF9E6; border: 2px dashed var(--accent5);
+  padding: 0.5rem 1rem; margin: 0.5rem 0; font-size: 0.9rem; border-radius: 4px;
+}
+.mnemonic strong { color: var(--accent5); }
+.num-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin: 1rem 0;
+  text-align: center;
+}
+.num-cell {
+  background: #fff; border: 3px solid var(--border); box-shadow: 3px 3px 0 var(--shadow);
+  padding: 0.8rem 0.3rem; font-weight: 800;
+}
+.num-cell .digit { font-size: 2rem; color: var(--accent1); display: block; }
+.num-cell .jp-read { font-size: 1rem; font-family: var(--font-jp); }
+.num-cell .romaji-read { font-size: 0.75rem; color: #555; }
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+  .num-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.info-box h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.info-box h4 { margin-bottom: 0.3rem; }
+.card h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.example-dialog h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.example-dialog h4 { margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<h1>&#x1F522; Aula 4 — Números e Idade (数字・年齢)</h1>
+
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.8;">
+    <li>Contar de <strong>0 a 100</strong> em japonês</li>
+    <li>Formar <strong>números compostos</strong> (dezenas, centenas)</li>
+    <li>Dizer sua <strong>idade</strong> e perguntar a idade de outros</li>
+    <li>Usar o <strong>contador genérico 〜つ (tsu)</strong> para contar objetos</li>
+    <li>Ler <strong>números de telefone</strong> em japonês</li>
+    <li>Entender por que <strong>4 e 9</strong> são números de azar no Japão</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: NÚMEROS 0-10 ===== -->
+<h2 style="background:var(--accent1); color:#fff;">&#x1F51F; Números de 0 a 10</h2>
+
+<div class="num-grid">
+  <div class="num-cell"><span class="digit">0</span><span class="jp-read">ゼロ/れい</span><span class="romaji-read">zero / rei</span></div>
+  <div class="num-cell"><span class="digit">1</span><span class="jp-read">いち</span><span class="romaji-read">ichi</span></div>
+  <div class="num-cell"><span class="digit">2</span><span class="jp-read">に</span><span class="romaji-read">ni</span></div>
+  <div class="num-cell"><span class="digit">3</span><span class="jp-read">さん</span><span class="romaji-read">san</span></div>
+  <div class="num-cell"><span class="digit">4</span><span class="jp-read">し/よん</span><span class="romaji-read">shi / yon</span></div>
+  <div class="num-cell"><span class="digit">5</span><span class="jp-read">ご</span><span class="romaji-read">go</span></div>
+  <div class="num-cell"><span class="digit">6</span><span class="jp-read">ろく</span><span class="romaji-read">roku</span></div>
+  <div class="num-cell"><span class="digit">7</span><span class="jp-read">しち/なな</span><span class="romaji-read">shichi / nana</span></div>
+  <div class="num-cell"><span class="digit">8</span><span class="jp-read">はち</span><span class="romaji-read">hachi</span></div>
+  <div class="num-cell"><span class="digit">9</span><span class="jp-read">く/きゅう</span><span class="romaji-read">ku / kyuu</span></div>
+  <div class="num-cell"><span class="digit">10</span><span class="jp-read">じゅう</span><span class="romaji-read">jyuu</span></div>
+</div>
+
+<table>
+  <thead><tr><th>Nº</th><th>Kanji</th><th>Leitura Principal</th><th>Alternativa</th><th>Quando usar alternativa</th></tr></thead>
+  <tbody>
+    <tr><td>0</td><td>零</td><td><strong>zero</strong> (ゼロ)</td><td><strong>rei</strong> (れい)</td><td>れい = formal/telefone. ゼロ = cotidiano</td></tr>
+    <tr><td>1</td><td>一</td><td><strong>ichi</strong></td><td>—</td><td></td></tr>
+    <tr><td>2</td><td>二</td><td><strong>ni</strong></td><td>—</td><td></td></tr>
+    <tr><td>3</td><td>三</td><td><strong>san</strong></td><td>—</td><td></td></tr>
+    <tr><td>4</td><td>四</td><td><strong>shi</strong></td><td><strong>yon</strong></td><td>Evitar "shi" = morte (死). Idade, andares, meses.</td></tr>
+    <tr><td>5</td><td>五</td><td><strong>go</strong></td><td>—</td><td></td></tr>
+    <tr><td>6</td><td>六</td><td><strong>roku</strong></td><td>—</td><td></td></tr>
+    <tr><td>7</td><td>七</td><td><strong>shichi</strong></td><td><strong>nana</strong></td><td>なな evita confusão com いち (1). Idade: sempre なな.</td></tr>
+    <tr><td>8</td><td>八</td><td><strong>hachi</strong></td><td>—</td><td></td></tr>
+    <tr><td>9</td><td>九</td><td><strong>ku</strong></td><td><strong>kyuu</strong></td><td>く = "sofrimento" (苦). Idade: sempre きゅう.</td></tr>
+    <tr><td>10</td><td>十</td><td><strong>jyuu</strong></td><td>—</td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-danger">
+  <h3>&#x1F534; Números de Azar no Japão — 4 e 9</h3>
+  <p><strong>4 (し / shi)</strong> = som idêntico a <strong>死 (し)</strong> = "morte". Hospitais e hotéis frequentemente <strong>pulam o 4º andar</strong> e quartos com número 4.</p>
+  <p style="margin-top:0.5rem;"><strong>9 (く / ku)</strong> = som idêntico a <strong>苦 (く)</strong> = "sofrimento, agonia". Evitado em presentes e contextos felizes.</p>
+  <p style="margin-top:0.5rem;"><strong>&#x2705; Regra prática:</strong> Use <strong>よん (yon)</strong> e <strong>きゅう (kyuu)</strong> para idade e situações sociais.</p>
+</div>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica — Ritmo 1-10:</strong> Cante no ritmo de uma marcha:<br>
+  <em>Ichi! Ni! San! Shi! — Go! Roku! Shichi! Hachi! — Ku! Jyuu!</em><br>
+  Bata palma em cada número. Seu cérebro grava ritmo + som. Em 3 repetições você nunca mais esquece.
+</div>
+
+<h3>&#x1F44B; Flashcards — 1 a 10</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">一</div><div class="romaji">ichi</div><div class="pt">1</div></div>
+  <div class="flashcard"><div class="jp">二</div><div class="romaji">ni</div><div class="pt">2</div></div>
+  <div class="flashcard"><div class="jp">三</div><div class="romaji">san</div><div class="pt">3</div></div>
+  <div class="flashcard"><div class="jp">四</div><div class="romaji">shi / yon</div><div class="pt">4</div></div>
+  <div class="flashcard"><div class="jp">五</div><div class="romaji">go</div><div class="pt">5</div></div>
+  <div class="flashcard"><div class="jp">六</div><div class="romaji">roku</div><div class="pt">6</div></div>
+  <div class="flashcard"><div class="jp">七</div><div class="romaji">shichi / nana</div><div class="pt">7</div></div>
+  <div class="flashcard"><div class="jp">八</div><div class="romaji">hachi</div><div class="pt">8</div></div>
+  <div class="flashcard"><div class="jp">九</div><div class="romaji">ku / kyuu</div><div class="pt">9</div></div>
+  <div class="flashcard"><div class="jp">十</div><div class="romaji">jyuu</div><div class="pt">10</div></div>
+  <div class="flashcard"><div class="jp">ゼロ</div><div class="romaji">zero</div><div class="pt">0</div></div>
+  <div class="flashcard"><div class="jp">れい</div><div class="romaji">rei</div><div class="pt">0 (formal)</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: NÚMEROS COMPOSTOS ===== -->
+<h2 style="background:var(--accent2); color:#1A1A2E;">&#x1F9EE; Números Compostos — Como Formar</h2>
+
+<div class="card card-accent2">
+  <h3>Regra de Ouro</h3>
+  <p style="font-size:1.2rem; font-weight:800; text-align:center; padding:0.8rem; background:#F0FFFE; border:2px solid var(--border); margin:0.8rem 0;">
+    [dezena] + じゅう (jyuu) + [unidade]
+  </p>
+  <p><strong>Multiplicação:</strong> Xじゅう = X × 10 &nbsp;|&nbsp; <strong>Adição:</strong> じゅうY = 10 + Y</p>
+</div>
+
+<table>
+  <thead><tr><th>Japonês</th><th>Romaji</th><th>Número</th><th>Lógica</th></tr></thead>
+  <tbody>
+    <tr><td>じゅういち</td><td><strong>jyuu ichi</strong></td><td>11</td><td>10 + 1</td></tr>
+    <tr><td>じゅうに</td><td><strong>jyuu ni</strong></td><td>12</td><td>10 + 2</td></tr>
+    <tr><td>じゅうきゅう</td><td><strong>jyuu kyuu</strong></td><td>19</td><td>10 + 9</td></tr>
+    <tr><td>にじゅう</td><td><strong>nijyuu</strong></td><td>20</td><td>2 × 10</td></tr>
+    <tr><td>にじゅういち</td><td><strong>nijyuu ichi</strong></td><td>21</td><td>2 × 10 + 1</td></tr>
+    <tr><td>さんじゅうよん</td><td><strong>sanjyuu yon</strong></td><td>34</td><td>3 × 10 + 4 (usa yon!)</td></tr>
+    <tr><td>よんじゅうなな</td><td><strong>yonjyuu nana</strong></td><td>47</td><td>4 × 10 + 7 (usa yon + nana!)</td></tr>
+    <tr><td>ごじゅうはち</td><td><strong>gojyuu hachi</strong></td><td>58</td><td>5 × 10 + 8</td></tr>
+    <tr><td>ろくじゅうに</td><td><strong>rokujyuu ni</strong></td><td>62</td><td>6 × 10 + 2</td></tr>
+    <tr><td>ななじゅうさん</td><td><strong>nanajyuu san</strong></td><td>73</td><td>7 × 10 + 3 (usa nana!)</td></tr>
+    <tr><td>はちじゅうはち</td><td><strong>hachijyuu hachi</strong></td><td>88</td><td>8 × 10 + 8</td></tr>
+    <tr><td>きゅうじゅうきゅう</td><td><strong>kyuujyuu kyuu</strong></td><td>99</td><td>9 × 10 + 9 (usa kyuu!)</td></tr>
+    <tr><td>ひゃく</td><td><strong>hyaku</strong></td><td>100</td><td>Número especial ✨</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-note">
+  <h3>&#x1F4A1; Padrão 100% Regular</h3>
+  <p>Diferente do português ("onze", "doze", "vinte" — formas irregulares), o japonês é <strong>perfeitamente lógico</strong>. Sabendo 1-10 e a regra de composição, você conta até 99 sem decorar mais nada.</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Compostos</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">じゅういち</div><div class="romaji">jyuu ichi</div><div class="pt">11</div></div>
+  <div class="flashcard"><div class="jp">にじゅう</div><div class="romaji">nijyuu</div><div class="pt">20</div></div>
+  <div class="flashcard"><div class="jp">さんじゅうよん</div><div class="romaji">sanjyuu yon</div><div class="pt">34</div></div>
+  <div class="flashcard"><div class="jp">よんじゅうなな</div><div class="romaji">yonjyuu nana</div><div class="pt">47</div></div>
+  <div class="flashcard"><div class="jp">きゅうじゅうきゅう</div><div class="romaji">kyuujyuu kyuu</div><div class="pt">99</div></div>
+  <div class="flashcard"><div class="jp">ひゃく</div><div class="romaji">hyaku</div><div class="pt">100</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: TABELA 1-100 ===== -->
+<h2 style="background:var(--accent3); color:#1A1A2E;">&#x1F4CA; Tabela de Referência 1-100</h2>
+
+<div class="card card-accent3">
+  <table>
+    <thead><tr><th></th><th>+0</th><th>+1</th><th>+2</th><th>+3</th><th>+4</th><th>+5</th><th>+6</th><th>+7</th><th>+8</th><th>+9</th></tr></thead>
+    <tbody>
+      <tr><td><strong>0</strong></td><td>—</td><td>ichi</td><td>ni</td><td>san</td><td>yon</td><td>go</td><td>roku</td><td>nana</td><td>hachi</td><td>kyuu</td></tr>
+      <tr><td><strong>10</strong></td><td>jyuu</td><td>jyuu ichi</td><td>jyuu ni</td><td>jyuu san</td><td>jyuu yon</td><td>jyuu go</td><td>jyuu roku</td><td>jyuu nana</td><td>jyuu hachi</td><td>jyuu kyuu</td></tr>
+      <tr><td><strong>20</strong></td><td>nijyuu</td><td>nijyuu ichi</td><td>nijyuu ni</td><td>nijyuu san</td><td>nijyuu yon</td><td>nijyuu go</td><td>nijyuu roku</td><td>nijyuu nana</td><td>nijyuu hachi</td><td>nijyuu kyuu</td></tr>
+      <tr><td><strong>30</strong></td><td>sanjyuu</td><td>sanjyuu ichi</td><td>sanjyuu ni</td><td>sanjyuu san</td><td>sanjyuu yon</td><td>sanjyuu go</td><td>sanjyuu roku</td><td>sanjyuu nana</td><td>sanjyuu hachi</td><td>sanjyuu kyuu</td></tr>
+      <tr><td><strong>40</strong></td><td>yonjyuu</td><td colspan="9" style="text-align:center;">... mesmo padrão ...</td></tr>
+      <tr><td><strong>50</strong></td><td>gojyuu</td><td colspan="9" style="text-align:center;">... mesmo padrão ...</td></tr>
+      <tr><td><strong>90</strong></td><td>kyuujyuu</td><td>kyuujyuu ichi</td><td colspan="8" style="text-align:center;">... até kyuujyuu kyuu (99)</td></tr>
+      <tr><td><strong>100</strong></td><td colspan="9"><strong>ひゃく (hyaku)</strong></td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: IDADE ===== -->
+<h2 style="background:var(--accent4); color:#fff;">&#x1F382; Idade — とし (Toshi) / さい (Sai)</h2>
+
+<div class="card card-accent4">
+  <h3>Perguntar e Dizer a Idade</h3>
+
+  <div style="background:#f0f4ff; padding:0.8rem; border:2px solid var(--accent4); margin:0.8rem 0;">
+    <p style="font-family:var(--font-jp); font-size:1.2rem; font-weight:700;">なんさいですか？ / おいくつですか？</p>
+    <p><em>Nansai desu ka?</em> (normal) / <em>O-ikutsu desu ka?</em> (polido)</p>
+    <p>= "Quantos anos você tem?"</p>
+  </div>
+
+  <div style="background:#e8f5e9; padding:0.8rem; border:2px solid var(--accent6); margin:0.8rem 0;">
+    <p style="font-family:var(--font-jp); font-size:1.2rem; font-weight:700;">[número] さいです。</p>
+    <p><em>[número] sai desu.</em></p>
+    <p>= "Tenho [número] anos."</p>
+  </div>
+</div>
+
+<!-- CRITICAL: Idade Exceções -->
+<div class="info-box info-warn">
+  <h3>&#x26A0;&#xFE0F; ATENÇÃO: Exceções de Idade!</h3>
+  <p>Algumas idades têm <strong>pronúncia irregular</strong>. Não basta juntar número + さい:</p>
+</div>
+
+<table>
+  <thead><tr><th>Idade</th><th>&#x274C; ERRADO</th><th>&#x2705; CERTO</th><th>Motivo</th></tr></thead>
+  <tbody>
+    <tr><td>1 ano</td><td>いちさい</td><td><strong>いっさい (issai)</strong></td><td>ち + さ → っさ (geminação)</td></tr>
+    <tr><td>8 anos</td><td>はちさい</td><td><strong>はっさい (hassai)</strong></td><td>ち + さ → っさ (geminação)</td></tr>
+    <tr><td>10 anos</td><td>じゅうさい</td><td><strong>じゅっさい / じっさい (jussai / jissai)</strong></td><td>じゅう encurta para じゅっ</td></tr>
+    <tr><td>20 anos</td><td>にじゅうさい</td><td><strong>はたち (hatachi)</strong></td><td>Palavra especial! (成人の日 = dia do adulto)</td></tr>
+  </tbody>
+</table>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica para idades irregulares:</strong>
+  "<strong>I</strong>ssai, <strong>Ha</strong>ssai, <strong>Ju</strong>ssai, <strong>Ha</strong>tachi" → <strong>I-Ha-Ju-Ha</strong> (イハジュハ). Decore como se fosse um nome: "Irajuhá".<br>
+  1 = issai (い<strong>っ</strong>さい), 8 = hassai (は<strong>っ</strong>さい), 10 = jussai (じゅ<strong>っ</strong>さい), 20 = hatachi (はたち — completamente diferente!)
+</div>
+
+<div class="example-dialog">
+  <h3>&#x1F4AC; Diálogo: Idade</h3>
+  <p><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">なんさいですか？</span></p>
+  <p class="translation"><em>Nansai desu ka?</em> — Quantos anos você tem?</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F466; Ken:</span> <span class="jp-text">にじゅうごさいです。あなたは？</span></p>
+  <p class="translation"><em>Nijyuu go sai desu. Anata wa?</em> — Tenho 25 anos. E você?</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">わたしは はたちです。</span></p>
+  <p class="translation"><em>Watashi wa hatachi desu.</em> — Eu tenho 20 anos.</p>
+</div>
+
+<div class="info-box info-note">
+  <h3>&#x1F3AF; はたち (Hatachi) — A Idade Especial</h3>
+  <p>20 anos = はたち (hatachi) é a <strong>maioridade no Japão</strong> (成人 = seijin = adulto). A palavra é tão importante que tem forma própria — não se diz にじゅうさい para 20 anos.</p>
+  <p>A segunda segunda-feira de janeiro é o <strong>成人の日 (Seijin no Hi)</strong> — feriado nacional onde todos que fazem 20 anos se vestem com quimono e celebram!</p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Idade</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">なんさい</div><div class="romaji">nansai</div><div class="pt">quantos anos?</div></div>
+  <div class="flashcard"><div class="jp">おいくつ</div><div class="romaji">o-ikutsu</div><div class="pt">quantos anos? (polido)</div></div>
+  <div class="flashcard"><div class="jp">いっさい</div><div class="romaji">issai</div><div class="pt">1 ano</div></div>
+  <div class="flashcard"><div class="jp">はっさい</div><div class="romaji">hassai</div><div class="pt">8 anos</div></div>
+  <div class="flashcard"><div class="jp">じゅっさい</div><div class="romaji">jussai</div><div class="pt">10 anos</div></div>
+  <div class="flashcard"><div class="jp">はたち</div><div class="romaji">hatachi</div><div class="pt">20 anos</div></div>
+  <div class="flashcard"><div class="jp">にじゅうごさい</div><div class="romaji">nijyuu go sai</div><div class="pt">25 anos</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: CONTADOR GENÉRICO 〜つ ===== -->
+<h2 style="background:var(--accent5); color:#fff;">&#x1F4E6; Contador Genérico — 〜つ (tsu)</h2>
+
+<div class="card card-accent5">
+  <h3>Para contar objetos em geral</h3>
+  <p>O japonês tem <strong>dezenas de contadores</strong> (classificadores numéricos), um para cada tipo de objeto. Mas o <strong>contador genérico 〜つ</strong> funciona para quase tudo.</p>
+</div>
+
+<table>
+  <thead><tr><th>Quantos?</th><th>Japonês</th><th>Romaji</th><th>Uso</th></tr></thead>
+  <tbody>
+    <tr><td>1 objeto</td><td>ひとつ</td><td><strong>hitotsu</strong></td><td>Um (qualquer coisa)</td></tr>
+    <tr><td>2 objetos</td><td>ふたつ</td><td><strong>futatsu</strong></td><td>Dois</td></tr>
+    <tr><td>3 objetos</td><td>みっつ</td><td><strong>mittsu</strong></td><td>Três</td></tr>
+    <tr><td>4 objetos</td><td>よっつ</td><td><strong>yottsu</strong></td><td>Quatro</td></tr>
+    <tr><td>5 objetos</td><td>いつつ</td><td><strong>itsutsu</strong></td><td>Cinco</td></tr>
+    <tr><td>6 objetos</td><td>むっつ</td><td><strong>muttsu</strong></td><td>Seis</td></tr>
+    <tr><td>7 objetos</td><td>ななつ</td><td><strong>nanatsu</strong></td><td>Sete</td></tr>
+    <tr><td>8 objetos</td><td>やっつ</td><td><strong>yattsu</strong></td><td>Oito</td></tr>
+    <tr><td>9 objetos</td><td>ここのつ</td><td><strong>kokonotsu</strong></td><td>Nove</td></tr>
+    <tr><td>10 objetos</td><td>とお</td><td><strong>too</strong></td><td>Dez (sem つ!)</td></tr>
+  </tbody>
+</table>
+
+<div class="info-box info-tip">
+  <h3>&#x1F4A1; Quando usar 〜つ</h3>
+  <p>Use 〜つ para objetos que <strong>não têm um contador específico</strong>: maçãs, cadeiras, ideias, problemas, etc. Para contar pessoas, animais, livros, veículos — existem contadores próprios (aulas futuras!).</p>
+</div>
+
+<div class="example-dialog">
+  <p class="jp-text"><strong>りんごを ふたつ ください。</strong></p>
+  <p class="translation"><em>Ringo wo futatsu kudasai.</em> — Duas maçãs, por favor. &#x1F34E;&#x1F34E;</p>
+</div>
+
+<div class="mnemonic">
+  <strong>&#x1F9E0; Mnemônica 〜つ:</strong>
+  "<strong>Hi</strong>totsu, <strong>Fu</strong>tatsu, <strong>Mi</strong>ttsu" → lembra <strong>Hi-Fu-Mi</strong> (一二三 em leitura japonesa antiga). Cante: "Hitotsu, futatsu, mittsu, yottsu, itsutsu, muttsu, nanatsu, yattsu, kokonotsu, too!" — 10 sílabas, 10 objetos.
+</div>
+
+<hr>
+
+<!-- ===== SECTION 6: TELEFONE ===== -->
+<h2 style="background:var(--accent6); color:#fff;">&#x1F4DE; Números de Telefone</h2>
+
+<div class="card card-accent6">
+  <h3>Como ler números de telefone</h3>
+  <p>O hífen é lido como <strong>の (no)</strong>. Cada dígito é lido individualmente:</p>
+  <div style="background:#f0fff4; padding:1rem; border:2px solid var(--accent6); margin:0.8rem 0; text-align:center;">
+    <p style="font-family:var(--font-jp); font-size:1.3rem; font-weight:700;">090-1234-5678</p>
+    <p style="font-size:1.1rem;"><strong>ゼロ きゅう ゼロ の いち に さん よん の ご ろく なな はち</strong></p>
+    <p><em>Zero kyuu zero no ichi ni san yon no go roku nana hachi</em></p>
+  </div>
+</div>
+
+<div class="example-dialog">
+  <h3>&#x1F4AC; Diálogo: Trocando Números</h3>
+  <p><span class="speaker">&#x1F467; Yuki:</span> <span class="jp-text">でんわばんごうは なんですか？</span></p>
+  <p class="translation"><em>Denwa bangou wa nan desu ka?</em> — Qual é o seu número de telefone?</p>
+
+  <p style="margin-top:0.5rem;"><span class="speaker">&#x1F466; Ken:</span> <span class="jp-text">090の1234の5678です。</span></p>
+  <p class="translation"><em>Zero kyuu zero no ichi ni san yon no go roku nana hachi desu.</em></p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Telefone</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">でんわばんごう</div><div class="romaji">denwa bangou</div><div class="pt">número de telefone</div></div>
+  <div class="flashcard"><div class="jp">なんばん</div><div class="romaji">nanban</div><div class="pt">qual número?</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 7: COLA RÁPIDA ===== -->
+<h2 style="background:var(--accent8); color:#fff;">&#x1F9E0; Tabela Cola Rápida</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">&#x1F522; Números 0-10</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>0</td><td>ゼロ / れい (zero / rei)</td></tr>
+        <tr><td>1</td><td>いち (ichi)</td></tr>
+        <tr><td>2</td><td>に (ni)</td></tr>
+        <tr><td>3</td><td>さん (san)</td></tr>
+        <tr><td>4</td><td>し / よん (shi / yon)</td></tr>
+        <tr><td>5</td><td>ご (go)</td></tr>
+        <tr><td>6</td><td>ろく (roku)</td></tr>
+        <tr><td>7</td><td>しち / なな (shichi / nana)</td></tr>
+        <tr><td>8</td><td>はち (hachi)</td></tr>
+        <tr><td>9</td><td>く / きゅう (ku / kyuu)</td></tr>
+        <tr><td>10</td><td>じゅう (jyuu)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">&#x1F9EE; Composição: [dezena] + じゅう + [unidade]</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>34</td><td>さんじゅうよん</td></tr>
+        <tr><td>99</td><td>きゅうじゅうきゅう</td></tr>
+        <tr><td>100</td><td>ひゃく</td></tr>
+      </table>
+      <p style="margin-top:0.5rem;">&#x26A0;&#xFE0F; Use <strong>yon</strong> (não shi) e <strong>kyuu</strong> (não ku) para idade!</p>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">&#x1F382; Idade (さい) — Exceções</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>1 ano</td><td>いっさい (issai)</td></tr>
+        <tr><td>8 anos</td><td>はっさい (hassai)</td></tr>
+        <tr><td>10 anos</td><td>じゅっさい (jussai)</td></tr>
+        <tr><td>20 anos</td><td>はたち (hatachi) &#x2728;</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">&#x1F4E6; Contador Genérico (〜つ) &amp; Telefone</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>1</td><td>ひとつ</td><td>6</td><td>むっつ</td></tr>
+        <tr><td>2</td><td>ふたつ</td><td>7</td><td>ななつ</td></tr>
+        <tr><td>3</td><td>みっつ</td><td>8</td><td>やっつ</td></tr>
+        <tr><td>4</td><td>よっつ</td><td>9</td><td>ここのつ</td></tr>
+        <tr><td>5</td><td>いつつ</td><td>10</td><td>とお</td></tr>
+      </table>
+      <p style="margin-top:0.5rem;">&#x1F4DE; Telefone: <strong>の</strong> = hífen. Ex: 090の1234の5678</p>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 8: EXERCÍCIOS ===== -->
+<h2 style="background:var(--accent1); color:#fff;">&#x1F3AF; Exercícios</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Escreva em Japonês</h3>
+  <ol>
+    <li>34 → ?</li>
+    <li>58 → ?</li>
+    <li>73 → ?</li>
+    <li>99 → ?</li>
+    <li>100 → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>さんじゅうよん</strong> (sanjyuu yon)</li>
+      <li><strong>ごじゅうはち</strong> (gojyuu hachi)</li>
+      <li><strong>ななじゅうさん</strong> (nanajyuu san)</li>
+      <li><strong>きゅうじゅうきゅう</strong> (kyuujyuu kyuu)</li>
+      <li><strong>ひゃく</strong> (hyaku)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Idades Irregulares</h3>
+  <ol>
+    <li>1 ano → ?</li>
+    <li>8 anos → ?</li>
+    <li>10 anos → ?</li>
+    <li>20 anos → ? (forma especial!)</li>
+    <li>"Tenho 25 anos" (masculino) → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>いっさい</strong> (issai) — NÃO é いちさい!</li>
+      <li><strong>はっさい</strong> (hassai) — NÃO é はちさい!</li>
+      <li><strong>じゅっさい</strong> (jussai) — encurta de じゅう</li>
+      <li><strong>はたち</strong> (hatachi) — palavra especial da maioridade</li>
+      <li><strong>ぼくは にじゅうごさいです</strong> (boku wa nijyuu go sai desu)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F30D; Nível 3 — Prática</h3>
+  <ol>
+    <li>Leia este telefone: 080-9876-5432</li>
+    <li>"Três maçãs, por favor" (use 〜つ)</li>
+    <li>Por que 4 e 9 são evitados em hospitais?</li>
+    <li>"Quantos anos você tem?" (forma polida)</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>ゼロはちゼロ の きゅうはちななろく の ごよんさんに</strong> (zero hachi zero no kyuu hachi nana roku no go yon san ni)</li>
+      <li><strong>りんごを みっつ ください</strong> (ringo wo mittsu kudasai)</li>
+      <li>4 (し) = morte (死), 9 (く) = sofrimento (苦). Superstição cultural — como o 13 no Ocidente.</li>
+      <li><strong>おいくつですか？</strong> (o-ikutsu desu ka?)</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<h2 style="background:var(--accent2); color:#1A1A2E;">&#x1F517; Navegação</h2>
+
+<nav class="footer-nav">
+  <a href="Aula 3.html">&larr; Aula 3</a>
+  <a href="Aula 5.html">Aula 5 &rarr;</a>
+</nav>
+
+</body>
+</html>

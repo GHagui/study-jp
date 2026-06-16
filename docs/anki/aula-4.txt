@@ -1,0 +1,44 @@
+Frente	Verso
+ゼロ / れい	<b>zero / rei</b><br>0 (zero)<br><br>ゼロ (zero) = cotidiano<br>れい (rei) = formal / telefone
+いち	<b>ichi</b><br>1 (um)
+に	<b>ni</b><br>2 (dois)
+さん	<b>san</b><br>3 (três)
+し / よん	<b>shi / yon</b><br>4 (quatro)<br><br>⚠️ し (shi) = som de "morte" (死).<br>Use よん (yon) para idade e situações sociais.
+ご	<b>go</b><br>5 (cinco)
+ろく	<b>roku</b><br>6 (seis)
+しち / なな	<b>shichi / nana</b><br>7 (sete)<br><br>⚠️ なな (nana) evita confusão com いち (1).<br>Idade: use sempre なな.
+はち	<b>hachi</b><br>8 (oito)
+く / きゅう	<b>ku / kyuu</b><br>9 (nove)<br><br>⚠️ く (ku) = som de "sofrimento" (苦).<br>Idade: use sempre きゅう (kyuu).
+じゅう	<b>jyuu</b><br>10 (dez)
+じゅういち	<b>jyuu ichi</b><br>11 (10 + 1)
+にじゅう	<b>nijyuu</b><br>20 (2 x 10)
+さんじゅうよん	<b>sanjyuu yon</b><br>34 (3 x 10 + 4 — usa yon!)
+よんじゅうなな	<b>yonjyuu nana</b><br>47 (4 x 10 + 7 — usa yon + nana!)
+きゅうじゅうきゅう	<b>kyuujyuu kyuu</b><br>99 (9 x 10 + 9 — usa kyuu!)
+ひゃく	<b>hyaku</b><br>100 (cem) — número especial ✨
+なんさい / おいくつ	<b>nansai</b> (normal)<br><b>o-ikutsu</b> (polido)<br><br>"Quantos anos você tem?"
+なんさいですか？ / おいくつですか？	<b>Nansai desu ka?</b> (normal)<br><b>O-ikutsu desu ka?</b> (polido)<br><br>="Quantos anos você tem?"
+〜さい (です)	<b>[número] sai desu.</b><br>"Tenho [número] anos."<br><br>Ex: にじゅうごさいです = Tenho 25 anos.
+いっさい (⚠️)	<b>issai</b><br>1 ano<br><br>⚠️ Exceção! NÃO é いちさい.<br>ち + さ → っさ (geminação).
+はっさい (⚠️)	<b>hassai</b><br>8 anos<br><br>⚠️ Exceção! NÃO é はちさい.<br>ち + さ → っさ (geminação).
+じゅっさい / じっさい (⚠️)	<b>jussai / jissai</b><br>10 anos<br><br>⚠️ Exceção! じゅう encurta para じゅっ.
+はたち (⚠️)	<b>hatachi</b><br>20 anos (maioridade)<br><br>⚠️ Palavra especial! NÃO se diz にじゅうさい.<br>20 anos = maioridade no Japão (成人).
+にじゅうごさい	<b>nijyuu go sai</b><br>25 anos<br><br>Padrão: número + さい (sem alteração para 5).
+でんわばんごう	<b>denwa bangou</b><br>Número de telefone
+なんばん	<b>nanban</b><br>Qual número?
+でんわばんごうは なんですか？	<b>Denwa bangou wa nan desu ka?</b><br>"Qual é o seu número de telefone?"<br><br>でんわばんごう = telefone + número
+りんごを ふたつ ください	<b>Ringo wo futatsu kudasai.</b><br>"Duas maçãs, por favor." 🍎🍎<br><br>ふたつ (futatsu) = contador genérico para 2 objetos.
+０９０の１２３４の５６７８	<b>Zero kyuu zero NO ichi ni san yon NO go roku nana hachi</b><br><br>Em telefones, o hífen (-) lê-se の (no).<br>Cada dígito é lido individualmente.
+Rule: [dezena] + じゅう + [unidade]	<b>Regra de ouro para números compostos:</b><br><br>Multiplicação: X + じゅう = X x 10<br>Adição: じゅう + Y = 10 + Y<br><br>Ex: にじゅういち = 2x10+1 = 21<br>Ex: さんじゅうよん = 3x10+4 = 34
+ひとつ	<b>hitotsu</b><br>1 objeto (contador genérico 〜つ)
+ふたつ	<b>futatsu</b><br>2 objetos
+みっつ	<b>mittsu</b><br>3 objetos
+よっつ	<b>yottsu</b><br>4 objetos
+いつつ	<b>itsutsu</b><br>5 objetos
+むっつ	<b>muttsu</b><br>6 objetos
+ななつ	<b>nanatsu</b><br>7 objetos
+やっつ	<b>yattsu</b><br>8 objetos
+ここのつ	<b>kokonotsu</b><br>9 objetos
+とお	<b>too</b><br>10 objetos (sem つ!)
+４ = し (shi) = morte (死)	⚠️ <b>Número de azar no Japão!</b><br><br>4 (し / shi) tem o mesmo som de 死 (morte).<br>Hospitais e hotéis pulam o 4º andar.<br>Use よん (yon) para idade e situações sociais.
+９ = く (ku) = sofrimento (苦)	⚠️ <b>Número de azar no Japão!</b><br><br>9 (く / ku) tem o mesmo som de 苦 (sofrimento).<br>Evitado em presentes e contextos felizes.<br>Use きゅう (kyuu) para idade e situações sociais.

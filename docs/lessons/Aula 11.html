@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 11 — Sabores, Frutas e Bebidas (たべもの・のみもの)</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--border);
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border-left: 6px solid var(--border);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background: var(--border);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.7rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--border);
+}
+
+tbody td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  font-family: var(--font-jp);
+  vertical-align: middle;
+}
+
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+
+.flashcard {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem;
+}
+
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+
+.quiz {
+  background: var(--accent3);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.quiz h3 { border-left-color: var(--accent1); }
+
+.quiz details {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+
+.quiz summary {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+
+.cheatsheet {
+  background: #1A1A2E;
+  color: #00FF88;
+  font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88;
+  box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-weight: 600;
+}
+
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+
+.example-dialog {
+  background: #fff;
+  border: 3px dashed var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+
+.section-badge {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+
+.op-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+nav.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 1rem 1.5rem;
+  background: var(--border);
+  border: 3px solid var(--border);
+}
+
+nav.footer-nav a {
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav.footer-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TITLE ===== -->
+<h1><span class="section-badge">🎌</span>Aula 11<br>Sabores, Frutas e Bebidas<br><span style="font-size:1.6rem;font-family:var(--font-jp)">たべもの・のみもの</span></h1>
+
+<!-- ===== TIP CALLOUT ===== -->
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem; line-height:1.8;">
+    <li>Descrever <strong>10 sabores</strong> em japonês (doce, salgado, amargo...)</li>
+    <li>Nomear <strong>17 frutas</strong> e <strong>6 bebidas</strong> comuns</li>
+    <li>Dizer se algo está <strong>gostoso (おいしい) ou ruim (まずい)</strong></li>
+    <li>Entender a diferença entre <strong>あつい (quente) e つめたい (gelado)</strong></li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: SABORES ===== -->
+<h2 style="background:var(--accent1);color:#fff;"><span class="section-badge">😋</span>Sabores — Tabemono <span style="font-family:var(--font-jp);font-weight:400;">(たべもの)</span></h2>
+
+<!-- Subsection: Gostoso e Ruim -->
+<div class="card">
+  <h3 style="border-left-color:var(--accent1);">Gostoso e Ruim</h3>
+  <table>
+    <thead>
+      <tr><th>Kana</th><th>Kanji</th><th>Romaji</th><th>Portugues</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>おいしい</td><td>美味しい</td><td><strong>oishii</strong></td><td>gostoso / delicioso <span style="color:var(--accent1);">😋</span></td></tr>
+      <tr><td>まずい</td><td>不味い</td><td><strong>mazui</strong></td><td>ruim / sem gosto <span style="font-size:1.2rem;">🤢</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="op-words">
+    <div class="flashcard">
+      <div class="jp">おいしい</div>
+      <div class="romaji">oishii</div>
+      <div class="pt">gostoso / delicioso</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">まずい</div>
+      <div class="romaji">mazui</div>
+      <div class="pt">ruim / sem gosto</div>
+    </div>
+  </div>
+
+  <div class="info-box info-note">
+    <strong>Negativo de おいしい</strong><br>
+    A negacao formal de <span style="font-family:var(--font-jp);">おいしい</span> e <strong><span style="font-family:var(--font-jp);">おいしくない</span></strong> (oishikunai) = nao e gostoso
+  </div>
+</div>
+
+<!-- Subsection: Doce, Apimentado, Salgado, Azedo -->
+<div class="card card-accent1">
+  <h3 style="border-left-color:var(--accent5);">Sabores Doce, Apimentado, Salgado e Azedo</h3>
+  <table>
+    <thead>
+      <tr><th>Kana</th><th>Kanji</th><th>Romaji</th><th>Portugues</th><th>Emoji</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>あまい</td><td>甘い</td><td><strong>amai</strong></td><td>doce</td><td style="text-align:center;font-size:1.4rem;">🍫</td></tr>
+      <tr><td>からい</td><td>辛い</td><td><strong>karai</strong></td><td>apimentado / ardido</td><td style="text-align:center;font-size:1.4rem;">🌶️</td></tr>
+      <tr><td>しょっぱい</td><td>塩っぱい</td><td><strong>shoppai</strong></td><td>salgado</td><td style="text-align:center;font-size:1.4rem;">🥨</td></tr>
+      <tr><td>すっぱい</td><td>酸っぱい</td><td><strong>suppai</strong></td><td>azedo</td><td style="text-align:center;font-size:1.4rem;">🍋</td></tr>
+    </tbody>
+  </table>
+
+  <div class="op-words">
+    <div class="flashcard">
+      <div class="jp">あまい</div>
+      <div class="romaji">amai</div>
+      <div class="pt">doce</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">からい</div>
+      <div class="romaji">karai</div>
+      <div class="pt">apimentado</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">しょっぱい</div>
+      <div class="romaji">shoppai</div>
+      <div class="pt">salgado</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">すっぱい</div>
+      <div class="romaji">suppai</div>
+      <div class="pt">azedo</div>
+    </div>
+  </div>
+
+  <div class="info-box info-note">
+    <strong><span style="font-family:var(--font-jp);">からし</span> (karashi)</strong><br>
+    <strong><span style="font-family:var(--font-jp);">からし</span></strong> = mostarda / pimenta — a raiz da palavra <span style="font-family:var(--font-jp);">からい</span> (karai/apimentado)
+  </div>
+</div>
+
+<!-- Subsection: Amargo, Quente, Refrescante, Gelado -->
+<div class="card card-accent5">
+  <h3 style="border-left-color:var(--accent2);">Sabores Amargo, Quente, Refrescante e Gelado</h3>
+  <table>
+    <thead>
+      <tr><th>Kana</th><th>Kanji</th><th>Romaji</th><th>Portugues</th><th>Emoji</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>にがい</td><td>苦い</td><td><strong>nigai</strong></td><td>amargo</td><td style="text-align:center;font-size:1.4rem;">☕</td></tr>
+      <tr><td>あつい</td><td>熱い</td><td><strong>atsui</strong></td><td>quente (temperatura da comida)</td><td style="text-align:center;font-size:1.4rem;">🍲</td></tr>
+      <tr><td>さわやか</td><td>爽やか</td><td><strong>sawayaka</strong></td><td>refrescante</td><td style="text-align:center;font-size:1.4rem;">🥤</td></tr>
+      <tr><td>つめたい</td><td>冷たい</td><td><strong>tsumetai</strong></td><td>gelado (ao toque/comer)</td><td style="text-align:center;font-size:1.4rem;">🍦</td></tr>
+    </tbody>
+  </table>
+
+  <div class="op-words">
+    <div class="flashcard">
+      <div class="jp">にがい</div>
+      <div class="romaji">nigai</div>
+      <div class="pt">amargo</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">あつい</div>
+      <div class="romaji">atsui</div>
+      <div class="pt">quente (comida)</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">さわやか</div>
+      <div class="romaji">sawayaka</div>
+      <div class="pt">refrescante</div>
+    </div>
+    <div class="flashcard">
+      <div class="jp">つめたい</div>
+      <div class="romaji">tsumetai</div>
+      <div class="pt">gelado</div>
+    </div>
+  </div>
+
+  <div class="info-box info-note">
+    <strong><span style="font-family:var(--font-jp);">さわやか</span> (Sawayaka)</strong><br>
+    Alem de <strong>refrescante</strong> para comidas e bebidas, <span style="font-family:var(--font-jp);">さわやか</span> tambem pode descrever <strong>pessoas extrovertidas e de bom coracao</strong> — uma pessoa alegre e animada!
+  </div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: FRUTAS ===== -->
+<h2 style="background:var(--accent2);color:#1A1A2E;"><span class="section-badge">🍎</span>Frutas — <span style="font-family:var(--font-jp);font-weight:400;">くだもの</span> (Kudamono)</h2>
+
+<div class="card card-accent2">
+  <table>
+    <thead>
+      <tr><th>Emoji</th><th>Romaji</th><th>Kana</th><th>Portugues</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍎</td><td><strong>ringo</strong></td><td>りんご</td><td>maca</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍓</td><td><strong>ichigo</strong></td><td>いちご</td><td>morango</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍊</td><td><strong>orenji</strong></td><td>オレンジ</td><td>laranja</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍌</td><td><strong>banana</strong></td><td>バナナ</td><td>banana</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍉</td><td><strong>suika</strong></td><td>すいか</td><td>melancia</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍇</td><td><strong>budou</strong></td><td>ぶどう</td><td>uva</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍈</td><td><strong>meron</strong></td><td>メロン</td><td>melao</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍒</td><td><strong>sakuranbo</strong></td><td>さくらんぼ</td><td>cereja</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🫐</td><td><strong>kiichigo</strong></td><td>きいちご</td><td>framboesa</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍐</td><td><strong>nashi</strong></td><td>なし</td><td>pera</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🫐</td><td><strong>burūberī</strong></td><td>ブルーベリー</td><td>mirtilo (blueberry)</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;color:purple;">🟣</td><td><strong>ume</strong></td><td>うめ</td><td>ameixa / umeboshi</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍑</td><td><strong>momo</strong></td><td>もも</td><td>pessego</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍍</td><td><strong>painappuru</strong></td><td>パイナップル</td><td>abacaxi</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍋</td><td><strong>remon</strong></td><td>レモン</td><td>limao</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🟢</td><td><strong>raimu</strong></td><td>ライム</td><td>limao verde (lime)</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🥥</td><td><strong>kokonattsu</strong></td><td>ココナッツ</td><td>coco</td></tr>
+    </tbody>
+  </table>
+
+  <div class="op-words">
+    <div class="flashcard"><div class="jp">りんご</div><div class="romaji">ringo</div><div class="pt">maca</div></div>
+    <div class="flashcard"><div class="jp">いちご</div><div class="romaji">ichigo</div><div class="pt">morango</div></div>
+    <div class="flashcard"><div class="jp">オレンジ</div><div class="romaji">orenji</div><div class="pt">laranja</div></div>
+    <div class="flashcard"><div class="jp">バナナ</div><div class="romaji">banana</div><div class="pt">banana</div></div>
+    <div class="flashcard"><div class="jp">すいか</div><div class="romaji">suika</div><div class="pt">melancia</div></div>
+    <div class="flashcard"><div class="jp">ぶどう</div><div class="romaji">budou</div><div class="pt">uva</div></div>
+    <div class="flashcard"><div class="jp">メロン</div><div class="romaji">meron</div><div class="pt">melao</div></div>
+    <div class="flashcard"><div class="jp">さくらんぼ</div><div class="romaji">sakuranbo</div><div class="pt">cereja</div></div>
+    <div class="flashcard"><div class="jp">きいちご</div><div class="romaji">kiichigo</div><div class="pt">framboesa</div></div>
+    <div class="flashcard"><div class="jp">なし</div><div class="romaji">nashi</div><div class="pt">pera</div></div>
+    <div class="flashcard"><div class="jp">ブルーベリー</div><div class="romaji">buruubelii</div><div class="pt">mirtilo</div></div>
+    <div class="flashcard"><div class="jp">うめ</div><div class="romaji">ume</div><div class="pt">ameixa</div></div>
+    <div class="flashcard"><div class="jp">もも</div><div class="romaji">momo</div><div class="pt">pessego</div></div>
+    <div class="flashcard"><div class="jp">パイナップル</div><div class="romaji">painappuru</div><div class="pt">abacaxi</div></div>
+    <div class="flashcard"><div class="jp">レモン</div><div class="romaji">remon</div><div class="pt">limao</div></div>
+    <div class="flashcard"><div class="jp">ライム</div><div class="romaji">raimu</div><div class="pt">limao verde</div></div>
+    <div class="flashcard"><div class="jp">ココナッツ</div><div class="romaji">kokonattsu</div><div class="pt">coco</div></div>
+  </div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: BEBIDAS ===== -->
+<h2 style="background:var(--accent3);color:#1A1A2E;"><span class="section-badge">🥤</span>Bebidas — <span style="font-family:var(--font-jp);font-weight:400;">のみもの</span> (Nomimono)</h2>
+
+<div class="card card-accent3">
+  <table>
+    <thead>
+      <tr><th>Emoji</th><th>Romaji</th><th>Kana</th><th>Portugues</th></tr>
+    </thead>
+    <tbody>
+      <tr><td style="text-align:center;font-size:1.4rem;">💧</td><td><strong>mizu</strong></td><td>みず (水)</td><td>agua</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🥛</td><td><strong>gyuunyuu</strong></td><td>ぎゅうにゅう (牛乳)</td><td>leite de vaca</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🧃</td><td><strong>juusu</strong></td><td>ジュース</td><td>suco</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🥤</td><td><strong>sooda</strong></td><td>ソーダ</td><td>refrigerante / soda</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">☕</td><td><strong>kokoa</strong></td><td>ココア</td><td>chocolate quente</td></tr>
+      <tr><td style="text-align:center;font-size:1.4rem;">🍵</td><td><strong>mirukushēku</strong></td><td>ミルクシェーク</td><td>milkshake</td></tr>
+    </tbody>
+  </table>
+
+  <div class="op-words">
+    <div class="flashcard"><div class="jp">みず</div><div class="romaji">mizu</div><div class="pt">agua</div></div>
+    <div class="flashcard"><div class="jp">ぎゅうにゅう</div><div class="romaji">gyuunyuu</div><div class="pt">leite de vaca</div></div>
+    <div class="flashcard"><div class="jp">ジュース</div><div class="romaji">juusu</div><div class="pt">suco</div></div>
+    <div class="flashcard"><div class="jp">ソーダ</div><div class="romaji">sooda</div><div class="pt">refrigerante</div></div>
+    <div class="flashcard"><div class="jp">ココア</div><div class="romaji">kokoa</div><div class="pt">chocolate quente</div></div>
+    <div class="flashcard"><div class="jp">ミルクシェーク</div><div class="romaji">mirukusheeku</div><div class="pt">milkshake</div></div>
+  </div>
+
+  <div class="info-box info-note">
+    <strong>Leite em Japones</strong><br>
+    - <strong><span style="font-family:var(--font-jp);">ぎゅうにゅう</span> (gyuunyuu)</strong> = leite de vaca especificamente (牛 = boi/vaca)<br>
+    - <strong><span style="font-family:var(--font-jp);">ミルク</span> (miruku)</strong> = termo geral para leite (emprestado do ingles)
+  </div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: COLA RAPIDA ===== -->
+<h2 style="background:var(--accent4);color:#fff;"><span class="section-badge">🧠</span>Tabela Cola Rapida</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">Sabores</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>おいしい (oishii)</td><td>gostoso 😋</td></tr>
+        <tr><td>まずい (mazui)</td><td>ruim 🤢</td></tr>
+        <tr><td>あまい (amai)</td><td>doce 🍫</td></tr>
+        <tr><td>からい (karai)</td><td>apimentado 🌶️</td></tr>
+        <tr><td>しょっぱい (shoppai)</td><td>salgado 🥨</td></tr>
+        <tr><td>すっぱい (suppai)</td><td>azedo 🍋</td></tr>
+        <tr><td>にがい (nigai)</td><td>amargo ☕</td></tr>
+        <tr><td>あつい (atsui)</td><td>quente (comida) 🍲</td></tr>
+        <tr><td>つめたい (tsumetai)</td><td>gelado 🍦</td></tr>
+        <tr><td>さわやか (sawayaka)</td><td>refrescante 🥤</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">Frutas Essenciais</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>ringo</td><td>maçã</td></tr>
+        <tr><td>ichigo</td><td>morango</td></tr>
+        <tr><td>meron</td><td>melão</td></tr>
+        <tr><td>suika</td><td>melancia</td></tr>
+        <tr><td>budou</td><td>uva</td></tr>
+        <tr><td>momo</td><td>pêssego</td></tr>
+        <tr><td>nashi</td><td>pera</td></tr>
+        <tr><td>banana</td><td>banana</td></tr>
+        <tr><td>remon</td><td>limão</td></tr>
+        <tr><td>painappuru</td><td>abacaxi</td></tr>
+        <tr><td>kokonattsu</td><td>coco</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">Bebidas</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>mizu</td><td>água</td></tr>
+        <tr><td>gyuunyuu</td><td>leite</td></tr>
+        <tr><td>juusu</td><td>suco</td></tr>
+        <tr><td>sooda</td><td>refrigerante</td></tr>
+        <tr><td>kokoa</td><td>choc. quente</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: MINI-QUIZ ===== -->
+<h2 style="background:var(--accent5);color:#fff;"><span class="section-badge">🎯</span>Mini-Quiz</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Traduza os Sabores</h3>
+  <ol>
+    <li>Doce → ?</li>
+    <li>Salgado → ?</li>
+    <li>Amargo → ?</li>
+    <li>Apimentado → ?</li>
+    <li>Azedo → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li><strong>あまい (amai)</strong> &#x1F36B;</li>
+      <li><strong>しょっぱい (shoppai)</strong> &#x1F968;</li>
+      <li><strong>にがい (nigai)</strong> &#x2615;</li>
+      <li><strong>からい (karai)</strong> &#x1F336;&#xFE0F;</li>
+      <li><strong>すっぱい (suppai)</strong> &#x1F34B;</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Complete</h3>
+  <ol>
+    <li>"Este morango está gostoso" → このいちごは ＿＿＿ です。</li>
+    <li>"A água está gelada" → みずは ＿＿＿ です。</li>
+    <li>"Eu como maçã" → りんごを ＿＿＿。</li>
+    <li>Diferença entre さわやか e つめたい?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>このいちごは <strong>おいしい</strong> です (oishii)</li>
+      <li>みずは <strong>つめたい</strong> です (tsumetai — gelado ao toque)</li>
+      <li>りんごを <strong>たべます</strong> (tabemasu — como)</li>
+      <li><strong>さわやか</strong> = refrescante (sensação). <strong>つめたい</strong> = gelado (temperatura física). São sensações diferentes!</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="footer-nav">
+  <a href="Aula 10.html">&larr; Aula 10</a>
+  <a href="Aula 12.html">Aula 12 &rarr;</a>
+</nav>
+
+</body>
+</html>

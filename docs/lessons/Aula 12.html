@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 12 — Gramática SOV, Frequência e Verbos de Comer/Beber</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--border);
+}
+
+h1 .jp-sub {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 600;
+  -webkit-text-stroke: 0;
+  font-family: var(--font-jp);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 0.3rem;
+  color: #fff;
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  display: inline-block;
+}
+
+h2.color-1 { background: var(--accent1); color: #fff; }
+h2.color-2 { background: var(--accent2); color: #1A1A2E; }
+h2.color-3 { background: var(--accent3); color: #1A1A2E; }
+h2.color-4 { background: var(--accent4); color: #fff; }
+h2.color-5 { background: var(--accent5); color: #fff; }
+h2.color-6 { background: var(--accent6); color: #fff; }
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border-left: 6px solid var(--border);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background: var(--border);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.7rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--border);
+}
+
+tbody td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  font-family: var(--font-jp);
+  vertical-align: middle;
+}
+
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+
+.flashcard {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem;
+}
+
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+
+.quiz {
+  background: var(--accent3);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.quiz h3 { border-left-color: var(--accent1); }
+
+.quiz details {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+
+.quiz summary {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+
+.cheatsheet {
+  background: #1A1A2E;
+  color: #00FF88;
+  font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88;
+  box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-weight: 600;
+}
+
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+
+.example-dialog {
+  background: #fff;
+  border: 3px dashed var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+
+.section-badge {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+
+.op-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+nav.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 1rem 1.5rem;
+  background: var(--border);
+  border: 3px solid var(--border);
+}
+
+nav.footer-nav a {
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav.footer-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<h1>
+  Aula 12
+  <span class="jp-sub">Gramatica SOV, Frequencia e Verbos de Comer/Beber</span>
+</h1>
+
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <ul style="margin:0.5rem 0 0 1.5rem; line-height:1.8;">
+    <li>Entender a estrutura <strong>SOV (Sujeito-Objeto-Verbo)</strong> do japonês</li>
+    <li>Usar <strong>6 partículas essenciais</strong> (は·を·に·で·の·が)</li>
+    <li>Empregar <strong>advérbios de frequência</strong> (まいにち·ときどき·ぜんぜん)</li>
+    <li>Conjugar <strong>verbos たべます/のみます</strong> (comer/beber) e seus negativos</li>
+    <li>Montar <strong>frases completas</strong> com sujeito + frequência + objeto + verbo</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2 class="color-1"><span class="section-badge">1</span> Gramatica Japonesa — Estrutura SOV</h2>
+
+<div class="card card-accent1">
+  <h3>A Diferenca Fundamental</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Lingua</th>
+        <th>Estrutura</th>
+        <th>Exemplo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BR Portugues</td>
+        <td><strong>S + V + O</strong></td>
+        <td>"Eu <strong>gosto</strong> de escrever"</td>
+      </tr>
+      <tr>
+        <td>JP Japones</td>
+        <td><strong>S + O + V</strong></td>
+        <td>"Eu escrever <strong>gosto</strong>"</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 0.8rem; font-weight: 800; font-size: 1.1rem;">O verbo sempre fica no <span style="color: var(--accent1);">FINAL</span> da frase em japones!</p>
+</div>
+
+<div class="example-dialog">
+  <h3 style="margin-top: 0; border-left-color: var(--accent2);">Comparando Estruturas</h3>
+  <p><span class="speaker">BR:</span> <span class="jp-text">"Eu assisto anime"</span></p>
+  <p style="padding-left: 1.5rem; font-size: 0.9rem; color: #666;">Eu (S) + assisto (V) + anime (O)</p>
+  <p style="margin-top: 0.5rem;"><span class="speaker">JP:</span> <span class="jp-text" style="font-size: 1.1rem;">watashi wa anime wo mimasu</span></p>
+  <p style="padding-left: 1.5rem; font-size: 0.9rem; color: #666;">Eu (S) + anime (O) + vejo (V)</p>
+</div>
+
+<hr>
+
+<h2 class="color-2"><span class="section-badge">2</span> Particulas Essenciais</h2>
+
+<div class="card card-accent2">
+  <h3>As Particulas Sao a Chave!</h3>
+  <p>Como a ordem das palavras e diferente do portugues, o japones usa <strong>particulas</strong> (pequenas silabas) coladas as palavras para indicar a funcao de cada uma na frase.</p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Particula</th>
+      <th>Funcao</th>
+      <th>Exemplo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span style="font-size:1.2rem;font-weight:700;">&#x306F; (wa)</span></td>
+      <td>Indica o <strong>assunto/tópico</strong> da frase</td>
+      <td>わたし<strong>は</strong> = "quanto a mim..."</td>
+    </tr>
+    <tr>
+      <td><span style="font-size:1.2rem;font-weight:700;">&#x3092; (wo)</span></td>
+      <td>Indica o <strong>objeto</strong> que sofre a ação</td>
+      <td>やさい<strong>を</strong> たべます = como vegetais</td>
+    </tr>
+    <tr>
+      <td><span style="font-size:1.2rem;font-weight:700;">&#x306B; (ni)</span></td>
+      <td>Lugar, tempo, direção</td>
+      <td>がっこう<strong>に</strong> いきます = vou à escola</td>
+    </tr>
+    <tr>
+      <td><span style="font-size:1.2rem;font-weight:700;">&#x3067; (de)</span></td>
+      <td>Lugar onde a ação ocorre</td>
+      <td>にほん<strong>で</strong> = no Japão</td>
+    </tr>
+    <tr>
+      <td><span style="font-size:1.2rem;font-weight:700;">&#x306E; (no)</span></td>
+      <td>Posse / relação</td>
+      <td>わたし<strong>の</strong> = meu/minha</td>
+    </tr>
+    <tr>
+      <td><span style="font-size:1.2rem;font-weight:700;">&#x304C; (ga)</span></td>
+      <td>Sujeito enfatizado / objeto de sentimento</td>
+      <td>あめ<strong>が</strong> すきです = gosto de chuva</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info-box info-note">
+  <strong>Sujeito Omitido:</strong> Se o contexto ja deixa claro de quem se fala, os japoneses <strong>omitem o sujeito</strong>!
+  <br><br>
+  Em vez de: <span class="jp-text">watashi wa tabemasu</span> (Eu como)<br>
+  So: <span class="jp-text">tabemasu</span> (Como)
+</div>
+
+<div class="info-box info-note">
+  <strong>Verbos Nao Conjugam por Pessoa:</strong> <span class="jp-text">tabemasu</span> = "eu como" / "ele come" / "nos comemos"<br>
+  O verbo <strong>nao muda</strong> pela pessoa — muda apenas pelo <strong>tempo</strong> (passado, presente) e se e <strong>negativo</strong>.
+</div>
+
+<hr>
+
+<h2 class="color-3"><span class="section-badge">3</span> Grupos Alimentares</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Icone</th>
+      <th>Romaji</th>
+      <th>Japones</th>
+      <th>Portugues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="font-size: 1.4rem;">carne</td>
+      <td><strong>niku</strong></td>
+      <td><span style="font-size: 1.2rem;">niku</span></td>
+      <td>carne</td>
+    </tr>
+    <tr>
+      <td style="font-size: 1.4rem;">peixe</td>
+      <td><strong>sakana</strong></td>
+      <td><span style="font-size: 1.2rem;">sakana</span></td>
+      <td>peixe</td>
+    </tr>
+    <tr>
+      <td style="font-size: 1.4rem;">vegetais</td>
+      <td><strong>yasai</strong></td>
+      <td><span style="font-size: 1.2rem;">yasai</span></td>
+      <td>vegetais / verduras</td>
+    </tr>
+    <tr>
+      <td style="font-size: 1.4rem;">frutas</td>
+      <td><strong>kudamono</strong></td>
+      <td><span style="font-size: 1.2rem;">kudamono</span></td>
+      <td>frutas</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info-box info-tip">
+  <strong>Prefixo O — Tom Formal/Delicado:</strong> Colocar <span class="jp-text" style="font-weight: 800;">o</span> antes de uma palavra de comida soa mais <strong>formal e delicado</strong>:
+  <br><br>
+  <div class="op-words" style="margin: 0.3rem 0;">
+    <span class="flashcard"><span class="jp">yasai</span> <span class="romaji">→</span> <span class="pt">oyasai</span></span>
+    <span class="flashcard"><span class="jp">sushi</span> <span class="romaji">→</span> <span class="pt">osushi</span></span>
+    <span class="flashcard"><span class="jp">cha</span> <span class="romaji">→</span> <span class="pt">ocha</span></span>
+  </div>
+</div>
+
+<hr>
+
+<h2 class="color-4"><span class="section-badge">4</span> Adverbios de Frequencia</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Romaji</th>
+      <th>Hiragana</th>
+      <th>Portugues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>mainichi</strong></td>
+      <td><span style="font-size: 1.2rem;">mainichi</span></td>
+      <td>todo dia</td>
+    </tr>
+    <tr>
+      <td><strong>maishuu</strong></td>
+      <td><span style="font-size: 1.2rem;">maishuu</span></td>
+      <td>toda semana</td>
+    </tr>
+    <tr>
+      <td><strong>tokidoki</strong></td>
+      <td><span style="font-size: 1.2rem;">tokidoki</span></td>
+      <td>as vezes / de vez em quando</td>
+    </tr>
+    <tr>
+      <td><strong>zenzen</strong></td>
+      <td><span style="font-size: 1.2rem;">zenzen</span></td>
+      <td>nunca / nada (em negativas)</td>
+    </tr>
+    <tr>
+      <td><strong>itsu</strong></td>
+      <td><span style="font-size: 1.2rem;">itsu</span></td>
+      <td>quando (pergunta)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info-box info-warn">
+  <strong>zenzen — Uso com Negativa:</strong> <span class="jp-text">zenzen</span> e usado sempre com verbos <strong>negativos</strong>:
+  <br><br>
+  <span class="jp-text" style="font-size: 1.1rem;">zenzen tabemasen</span> = nao como nunca / nao como nada<br><br>
+  Com verbo positivo ficaria gramaticalmente estranho.
+</div>
+
+<hr>
+
+<h2 class="color-5"><span class="section-badge">5</span> Verbos Comer e Beber</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Japones</th>
+      <th>Romaji</th>
+      <th>Portugues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span style="font-size: 1.2rem; font-weight: 700;">tabemasu</span></td>
+      <td>tabemasu</td>
+      <td>comer / como</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem; font-weight: 700;">tabemasen</span></td>
+      <td>tabemasen</td>
+      <td>nao comer / nao como</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem; font-weight: 700;">nomimasu</span></td>
+      <td>nomimasu</td>
+      <td>beber / bebo</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem; font-weight: 700;">nomimasen</span></td>
+      <td>nomimasen</td>
+      <td>nao beber / nao bebo</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 class="color-6"><span class="section-badge">6</span> Frases Modelo com Frequencia</h2>
+
+<div class="card card-accent6">
+  <h3>Estrutura</h3>
+  <p style="font-family: var(--font-jp); font-size: 1.3rem; font-weight: 700; text-align: center; padding: 0.5rem;">
+    [sujeito] wa [frequencia] [comida/bebida] wo [verbo]
+  </p>
+</div>
+
+<h3>Dialogos da Aula</h3>
+
+<div class="example-dialog">
+  <p><span class="speaker">Pergunta:</span> <span class="jp-text" style="font-size: 1.1rem;">Yasai wa tabemasu ka?</span></p>
+  <p class="translation">Voce come vegetais? / Gosta de comer verduras?</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">Resposta:</span> <span class="jp-text" style="font-size: 1.1rem;">Yasai wa mainichi tabemasu.</span></p>
+  <p class="translation">Como vegetais todo dia.</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">Pergunta:</span> <span class="jp-text" style="font-size: 1.1rem;">Kudamono wa dou desu ka?</span></p>
+  <p class="translation">E quanto a fruta?</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">Resposta:</span> <span class="jp-text" style="font-size: 1.1rem;">Kudamono wa tokidoki tabemasu.</span></p>
+  <p class="translation">Como fruta as vezes.</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">Pergunta:</span> <span class="jp-text" style="font-size: 1.1rem;">Niku wa itsu tabemasu ka?</span></p>
+  <p class="translation">Quando voce come carne?</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="speaker">Resposta:</span> <span class="jp-text" style="font-size: 1.1rem;">Niku wa zenzen tabemasen.</span></p>
+  <p class="translation">Nao como carne nunca.</p>
+</div>
+
+<h3>Frases de Pratica</h3>
+
+<div class="example-dialog">
+  <p><span class="jp-text" style="font-size: 1.1rem;">Gohan wa mainichi tabemasu.</span></p>
+  <p class="translation">Como arroz todo dia.</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="jp-text" style="font-size: 1.1rem;">Koohii wa tokidoki ka mainichi nomimasu.</span></p>
+  <p class="translation">Bebo cafe as vezes ou todo dia.</p>
+</div>
+
+<div class="example-dialog">
+  <p><span class="jp-text" style="font-size: 1.1rem;">Pasuta wa nichiyoubi tabemasu.</span></p>
+  <p class="translation">Como macarrao no domingo.</p>
+</div>
+
+<hr>
+
+<h2 class="color-1"><span class="section-badge">7</span> Pratica de Hiragana — Palavras da Aula</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hiragana</th>
+      <th>Romaji</th>
+      <th>Portugues</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span style="font-size: 1.2rem;">seki</span></td>
+      <td><strong>seki</strong></td>
+      <td>lugar (carteira escolar) / tosse</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem;">asa</span></td>
+      <td><strong>asa</strong></td>
+      <td>cedo / manha</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem;">aki</span></td>
+      <td><strong>aki</strong></td>
+      <td>outono</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem;">aoi</span></td>
+      <td><strong>aoi</strong></td>
+      <td>azul (adjetivo)</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem;">shika</span></td>
+      <td><strong>shika</strong></td>
+      <td>veado / animal</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem;">kai</span></td>
+      <td><strong>kai</strong></td>
+      <td>ostra</td>
+    </tr>
+    <tr>
+      <td><span style="font-size: 1.2rem;">sushi</span></td>
+      <td><strong>sushi</strong></td>
+      <td>sushi</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2 class="color-2"><span class="section-badge">8</span> Tabela Cola Rapida</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">Gramática SOV</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>Japonês = S + O + V</td><td>verbo sempre no final!</td></tr>
+        <tr><td>Português = S + V + O</td><td>&nbsp;</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">Partículas</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>は (wa)</td><td>tópico</td></tr>
+        <tr><td>を (wo)</td><td>objeto</td></tr>
+        <tr><td>に (ni)</td><td>lugar/dir</td></tr>
+        <tr><td>で (de)</td><td>local da ação</td></tr>
+        <tr><td>の (no)</td><td>posse</td></tr>
+        <tr><td>が (ga)</td><td>sujeito/sentimento</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">Frequência</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>mainichi</td><td>todo dia</td></tr>
+        <tr><td>maishuu</td><td>toda semana</td></tr>
+        <tr><td>tokidoki</td><td>às vezes</td></tr>
+        <tr><td>zenzen</td><td>nunca (+ neg.)</td></tr>
+        <tr><td>itsu</td><td>quando?</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">Verbos e Grupos</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>tabemasu / tabemasen</td><td>comer / não comer</td></tr>
+        <tr><td>nomimasu / nomimasen</td><td>beber / não beber</td></tr>
+        <tr><td>niku</td><td>carne</td></tr>
+        <tr><td>sakana</td><td>peixe</td></tr>
+        <tr><td>yasai</td><td>vegetal</td></tr>
+        <tr><td>kudamono</td><td>fruta</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<h2 class="color-3"><span class="section-badge">9</span> Mini-Quiz</h2>
+
+<div class="quiz">
+  <h3>Teste Voce Mesmo!</h3>
+  <ol style="padding-left: 1.5rem; margin: 1rem 0; line-height: 2;">
+    <li>Como a gramatica japonesa difere do portugues na ordem das palavras?</li>
+    <li>Qual particula indica o objeto da acao?</li>
+    <li>Como se diz "Nao bebo refrigerante nunca"?</li>
+    <li>zenzen deve ser usado com verbo positivo ou negativo?</li>
+    <li>"Eu como peixe todo dia" monte a frase em japones.</li>
+  </ol>
+
+  <details>
+    <summary>Ver Respostas</summary>
+    <ol style="padding-left: 1.5rem; margin: 0.5rem 0; line-height: 2;">
+      <li>Japones = S+O+V (verbo no final); Portugues = S+V+O</li>
+      <li>wo (o/wo)</li>
+      <li><span class="jp-text">Sooda wa zenzen nomimasen</span></li>
+      <li>Negativo (masen)</li>
+      <li><span class="jp-text">Watashi wa sakana wo mainichi tabemasu</span></li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<nav class="footer-nav">
+  <a href="Aula 11.html">&larr; Aula 11</a>
+  <span style="color:#fff;font-weight:800;">Fim das Lições &#x1F3AF;</span>
+</nav>
+
+</body>
+</html>

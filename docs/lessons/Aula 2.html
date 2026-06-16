@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 2 — Verbos de Sala de Aula e Pronomes</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+:root {
+  --bg: #FFFDF7;
+  --card-bg: #FFFFFF;
+  --border: #1A1A2E;
+  --shadow: #1A1A2E;
+  --text: #1A1A2E;
+  --accent1: #FF6B6B;
+  --accent2: #4ECDC4;
+  --accent3: #FFE66D;
+  --accent4: #A78BFA;
+  --accent5: #FF8C42;
+  --accent6: #6BCB77;
+  --accent7: #FFD93D;
+  --accent8: #F472B6;
+  --font-heading: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-jp: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Yu Gothic', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, #e8e8e8 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  background: var(--accent1);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border: 4px solid var(--border);
+  box-shadow: 8px 8px 0 var(--shadow);
+  margin-bottom: 2rem;
+  text-align: center;
+  -webkit-text-stroke: 2px var(--border);
+}
+
+h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 2rem 0 1rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  padding: 0.3rem 0.8rem;
+  border-left: 6px solid var(--border);
+}
+
+.card {
+  background: var(--card-bg);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.card-accent1 { background: #FFF5F5; border-color: var(--accent1); }
+.card-accent2 { background: #F0FFFE; border-color: var(--accent2); }
+.card-accent3 { background: #FFFEF5; border-color: var(--accent3); }
+.card-accent4 { background: #F8F5FF; border-color: var(--accent4); }
+.card-accent5 { background: #FFF9F5; border-color: var(--accent5); }
+.card-accent6 { background: #F5FFF6; border-color: var(--accent6); }
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 4px solid var(--border);
+  box-shadow: 5px 5px 0 var(--shadow);
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+thead th {
+  background: var(--border);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.7rem 0.8rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  border-bottom: 3px solid var(--border);
+}
+
+tbody td {
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+  font-family: var(--font-jp);
+  vertical-align: middle;
+}
+
+tbody td:last-child { border-right: none; }
+tbody tr:last-child td { border-bottom: none; }
+
+tbody tr:nth-child(even) { background: #f9f9f9; }
+tbody tr:hover { background: #FFF3CD; }
+
+.flashcard {
+  display: inline-block;
+  background: var(--card-bg);
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  padding: 0.5rem 1rem;
+  margin: 0.3rem;
+  font-family: var(--font-jp);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: transform 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+.flashcard:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--shadow); }
+
+.flashcard .jp { font-size: 1.4rem; color: #E63946; }
+.flashcard .romaji { font-size: 0.85rem; color: #555; }
+.flashcard .pt { font-size: 0.9rem; color: #1A1A2E; font-weight: 700; }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--border);
+  box-shadow: 2px 2px 0 var(--shadow);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0.2rem;
+}
+
+.tag-red { background: var(--accent1); color: #fff; }
+.tag-teal { background: var(--accent2); color: #1A1A2E; }
+.tag-yellow { background: var(--accent3); color: #1A1A2E; }
+.tag-purple { background: var(--accent4); color: #fff; }
+.tag-orange { background: var(--accent5); color: #fff; }
+.tag-green { background: var(--accent6); color: #fff; }
+
+.quiz {
+  background: var(--accent3);
+  border: 4px solid var(--border);
+  box-shadow: 6px 6px 0 var(--shadow);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.quiz h3 { border-left-color: var(--accent1); }
+
+.quiz details {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  border: 2px solid var(--border);
+}
+
+.quiz summary {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.3rem 0;
+}
+
+.quiz details[open] { background: #FFF5F5; border-color: var(--accent1); }
+
+.cheatsheet {
+  background: #1A1A2E;
+  color: #00FF88;
+  font-family: 'Courier New', monospace;
+  border: 4px solid #00FF88;
+  box-shadow: 6px 6px 0 #00FF8844;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.info-box {
+  padding: 1rem 1.5rem;
+  margin: 1rem 0;
+  border: 3px solid var(--border);
+  box-shadow: 4px 4px 0 var(--shadow);
+  font-weight: 600;
+}
+
+.info-tip { background: #E8F8F5; border-left: 8px solid var(--accent2); }
+.info-warn { background: #FFF3CD; border-left: 8px solid var(--accent3); }
+.info-danger { background: #FFE5E5; border-left: 8px solid var(--accent1); }
+.info-note { background: #F0E6FF; border-left: 8px solid var(--accent4); }
+
+.example-dialog {
+  background: #fff;
+  border: 3px dashed var(--border);
+  padding: 1rem 1.5rem;
+  margin: 0.8rem 0;
+  font-size: 0.95rem;
+}
+
+.example-dialog .speaker { font-weight: 800; color: var(--accent1); }
+.example-dialog .jp-text { font-family: var(--font-jp); }
+.example-dialog .translation { color: #666; font-style: italic; margin-left: 1.5rem; }
+
+.section-badge {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+hr { border: 2px solid var(--border); margin: 2rem 0; }
+
+.op-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+nav.footer-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  padding: 1rem 1.5rem;
+  background: var(--border);
+  border: 3px solid var(--border);
+}
+
+nav.footer-nav a {
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+nav.footer-nav a:hover { text-decoration: underline; }
+
+.mnemonic {
+  background: #FFF9E6;
+  border: 2px dashed var(--accent5);
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+.mnemonic strong { color: var(--accent5); }
+
+.pattern-box {
+  background: #fff;
+  border: 3px solid var(--accent4);
+  padding: 1rem 1.2rem;
+  margin: 0.8rem 0;
+  box-shadow: 3px 3px 0 var(--shadow);
+}
+.pattern-box .rule { font-size: 1.1rem; font-weight: 800; color: var(--accent4); }
+
+@media (max-width: 768px) {
+  body { padding: 1rem; }
+  h1 { font-size: 2rem; }
+  table { font-size: 0.8rem; }
+  td, th { padding: 0.4rem; }
+}
+
+.info-box h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.info-box h4 { margin-bottom: 0.3rem; }
+
+.card h3 { border-left: none; padding-left: 0; margin-top: 0; }
+
+.example-dialog h3 { border-left: none; padding-left: 0; margin-top: 0; }
+.example-dialog h4 { margin-bottom: 0.3rem; }
+</style>
+</head>
+<body>
+
+<!-- ===== TITLE ===== -->
+<h1>&#x1F38C; Aula 2 — Verbos de Sala de Aula e Pronomes</h1>
+
+<!-- ===== OBJETIVOS ===== -->
+<div class="info-box info-tip">
+  <h3>&#x1F3AF; O que você vai aprender</h3>
+  <p>Ao final desta aula, você será capaz de:</p>
+  <ul style="margin: 0.5rem 0 0 1.5rem; line-height: 1.8;">
+    <li>Dar <strong>comandos educados</strong> em sala de aula usando 〜てください</li>
+    <li>Entender o <strong>padrão de conjugação て (te-form)</strong> dos verbos</li>
+    <li>Usar <strong>pronomes pessoais</strong> corretos para cada gênero e situação</li>
+    <li>Conduzir uma <strong>conversa simples</strong> de sala de aula em japonês</li>
+  </ul>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 1: VERBOS E COMANDOS ===== -->
+<h2 style="background: var(--accent1); color: #fff;">&#x1F4DA; Verbos e Comandos com ください (Kudasai)</h2>
+
+<div class="card">
+  <h3>&#x1F4C4; Estrutura</h3>
+  <p><strong>[Verbo na forma -te] + ください (kudasai)</strong> = Por favor, [verbo]!</p>
+  <p><code>ください</code> sozinho = <strong>"por favor"</strong> (dá/me dê)</p>
+  <p style="margin-top:0.5rem;font-size:0.9rem;color:#555;">&#x1F1EF;&#x1F1F5; ください (kudasai) vem do verbo くださる (kudasaru) = "conceder/dar (a mim)" — é um verbo honorífico. Você literalmente diz "conceda-me [fazer tal ação]".</p>
+</div>
+
+<!-- Verb table -->
+<table>
+  <thead>
+    <tr>
+      <th>&#x1F1EF;&#x1F1F5; Dicionário</th>
+      <th>Romaji</th>
+      <th>&#x1F1E7;&#x1F1F7; Significado</th>
+      <th>Forma て</th>
+      <th>Comando Completo</th>
+      <th>Significado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>よむ</td>
+      <td><strong>yomu</strong></td>
+      <td>ler</td>
+      <td>よんで</td>
+      <td>よんでください <em>yonde kudasai</em></td>
+      <td>Por favor, leia</td>
+    </tr>
+    <tr>
+      <td>きく</td>
+      <td><strong>kiku</strong></td>
+      <td>ouvir</td>
+      <td>きいて</td>
+      <td>きいてください <em>kiite kudasai</em></td>
+      <td>Por favor, ouça</td>
+    </tr>
+    <tr>
+      <td>かく</td>
+      <td><strong>kaku</strong></td>
+      <td>escrever</td>
+      <td>かいて</td>
+      <td>かいてください <em>kaite kudasai</em></td>
+      <td>Por favor, escreva</td>
+    </tr>
+    <tr>
+      <td>みる</td>
+      <td><strong>miru</strong></td>
+      <td>ver / olhar</td>
+      <td>みて</td>
+      <td>みてください <em>mite kudasai</em></td>
+      <td>Por favor, olhe/veja</td>
+    </tr>
+    <tr>
+      <td>いう</td>
+      <td><strong>iu</strong></td>
+      <td>dizer</td>
+      <td>いって</td>
+      <td>いってください <em>itte kudasai</em></td>
+      <td>Por favor, diga</td>
+    </tr>
+    <tr>
+      <td>たつ</td>
+      <td><strong>tatsu</strong></td>
+      <td>levantar</td>
+      <td>たって</td>
+      <td>たってください <em>tatte kudasai</em></td>
+      <td>Por favor, levante-se</td>
+    </tr>
+    <tr>
+      <td>すわる</td>
+      <td><strong>suwaru</strong></td>
+      <td>sentar</td>
+      <td>すわって</td>
+      <td>すわってください <em>suwatte kudasai</em></td>
+      <td>Por favor, sente-se</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- て-form PATTERN EXPLANATION -->
+<div class="info-box info-note">
+  <h3>&#x1F9E9; O Segredo da Forma て (te-form)</h3>
+  <p>A forma て é <strong>essencial</strong> no japonês — você vai usá-la para comandos, pedidos, conectar frases, e muito mais. O segredo está na <strong>última sílaba</strong> do verbo na forma dicionário:</p>
+</div>
+
+<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.8rem; margin: 1rem 0;">
+
+  <div class="pattern-box">
+    <div class="rule">〜く → 〜いて</div>
+    <p>か<strong>く</strong> → か<strong>いて</strong> (kaku → kaite)</p>
+    <p>き<strong>く</strong> → き<strong>いて</strong> (kiku → kiite)</p>
+    <div class="mnemonic"><strong>&#x1F9E0; Mnemônica:</strong> "K de Kaká vai de ITEms"</div>
+  </div>
+
+  <div class="pattern-box">
+    <div class="rule">〜む / 〜ぶ / 〜ぬ → 〜んで</div>
+    <p>よ<strong>む</strong> → よ<strong>んで</strong> (yomu → yonde)</p>
+    <p>あそ<strong>ぶ</strong> → あそ<strong>んで</strong> (asobu → asonde)</p>
+    <div class="mnemonic"><strong>&#x1F9E0; Mnemônica:</strong> "MoBo NDa — M, B, N viram NDe"</div>
+  </div>
+
+  <div class="pattern-box">
+    <div class="rule">〜る / 〜う / 〜つ → 〜って</div>
+    <p>すわ<strong>る</strong> → すわ<strong>って</strong> (suwaru → suwatte)</p>
+    <p>い<strong>う</strong> → い<strong>って</strong> (iu → itte)</p>
+    <p>た<strong>つ</strong> → た<strong>って</strong> (tatsu → tatte)</p>
+    <div class="mnemonic"><strong>&#x1F9E0; Mnemônica:</strong> "RUTsu vira TTE — pense em RUTa TTe"</div>
+  </div>
+
+  <div class="pattern-box">
+    <div class="rule">〜す → 〜して</div>
+    <p>はな<strong>す</strong> → はな<strong>して</strong> (hanasu → hanashite)</p>
+    <div class="mnemonic"><strong>&#x1F9E0; Mnemônica:</strong> "SU de SUshi vai pra SHIte"</div>
+  </div>
+
+  <div class="pattern-box">
+    <div class="rule">〜ぐ → 〜いで</div>
+    <p>およ<strong>ぐ</strong> → およ<strong>いで</strong> (oyogu → oyoide)</p>
+    <p style="font-size:0.8rem;color:#888;">(não aparece nesta aula, mas grave o padrão!)</p>
+    <div class="mnemonic"><strong>&#x1F9E0; Mnemônica:</strong> "GU de água — vira IDe (molhado → で com tenten)"</div>
+  </div>
+
+</div>
+
+<!-- Warning: exceptions -->
+<div class="info-box info-warn">
+  <h3>&#x26A0;&#xFE0F; Exceção Importante: いく (iku)</h3>
+  <p>O verbo <strong>いく (iku)</strong> = "ir" segue a regra く→いて normalmente, mas merece atenção especial porque é <strong>muito frequente</strong>:</p>
+  <p style="font-size:1.2rem; text-align:center; margin:0.5rem 0;">いく → いって <em>(iku → itte)</em></p>
+  <p>&#x1F4A1; <strong>Não confunda:</strong> いって (itte) pode significar "vá" (de いく) OU "diga" (de いう). O contexto decide!</p>
+</div>
+
+<!-- Flashcards -->
+<h3>&#x1F44B; Flashcards — Verbos e Comandos</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">よむ</div><div class="romaji">yomu</div><div class="pt">ler</div></div>
+  <div class="flashcard"><div class="jp">きく</div><div class="romaji">kiku</div><div class="pt">ouvir</div></div>
+  <div class="flashcard"><div class="jp">かく</div><div class="romaji">kaku</div><div class="pt">escrever</div></div>
+  <div class="flashcard"><div class="jp">みる</div><div class="romaji">miru</div><div class="pt">ver / olhar</div></div>
+  <div class="flashcard"><div class="jp">いう</div><div class="romaji">iu</div><div class="pt">dizer</div></div>
+  <div class="flashcard"><div class="jp">たつ</div><div class="romaji">tatsu</div><div class="pt">levantar</div></div>
+  <div class="flashcard"><div class="jp">すわる</div><div class="romaji">suwaru</div><div class="pt">sentar</div></div>
+  <div class="flashcard"><div class="jp">よんでください</div><div class="romaji">yonde kudasai</div><div class="pt">Por favor, leia</div></div>
+  <div class="flashcard"><div class="jp">きいてください</div><div class="romaji">kiite kudasai</div><div class="pt">Por favor, ouça</div></div>
+  <div class="flashcard"><div class="jp">かいてください</div><div class="romaji">kaite kudasai</div><div class="pt">Por favor, escreva</div></div>
+  <div class="flashcard"><div class="jp">みてください</div><div class="romaji">mite kudasai</div><div class="pt">Por favor, olhe</div></div>
+  <div class="flashcard"><div class="jp">いってください</div><div class="romaji">itte kudasai</div><div class="pt">Por favor, diga</div></div>
+  <div class="flashcard"><div class="jp">たってください</div><div class="romaji">tatte kudasai</div><div class="pt">Por favor, levante</div></div>
+  <div class="flashcard"><div class="jp">すわってください</div><div class="romaji">suwatte kudasai</div><div class="pt">Por favor, sente</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 2: DIÁLOGO EM SALA DE AULA ===== -->
+<h2 style="background: var(--accent2); color: #1A1A2E;">&#x1F3EB; Diálogo na Sala de Aula</h2>
+
+<div class="card card-accent2">
+  <h3>&#x1F4AC; Cena: Início da Aula</h3>
+
+  <div class="example-dialog">
+    <p><span class="speaker">&#x1F468;&#x200D;&#x1F3EB; Sensei:</span>
+    <span class="jp-text">みなさん、おはようございます。すわってください。</span></p>
+    <p class="translation"><em>Minasan, ohayou gozaimasu. Suwatte kudasai.</em><br>
+    "Bom dia a todos. Por favor, sentem-se."</p>
+  </div>
+
+  <div class="example-dialog">
+    <p><span class="speaker">&#x1F468;&#x200D;&#x1F3EB; Sensei:</span>
+    <span class="jp-text">きょうかしょを よんでください。10ページです。</span></p>
+    <p class="translation"><em>Kyoukasho wo yonde kudasai. Juu-peeji desu.</em><br>
+    "Por favor, leiam o livro didático. Página 10."</p>
+  </div>
+
+  <div class="example-dialog">
+    <p><span class="speaker">&#x1F468;&#x200D;&#x1F3EB; Sensei:</span>
+    <span class="jp-text">こたえを かいてください。</span></p>
+    <p class="translation"><em>Kotae wo kaite kudasai.</em><br>
+    "Por favor, escrevam a resposta."</p>
+  </div>
+
+  <div class="example-dialog">
+    <p><span class="speaker">&#x1F468;&#x200D;&#x1F3EB; Sensei:</span>
+    <span class="jp-text">CDを きいてください。</span></p>
+    <p class="translation"><em>CD wo kiite kudasai.</em><br>
+    "Por favor, ouçam o CD."</p>
+  </div>
+
+  <div class="example-dialog">
+    <p><span class="speaker">&#x1F468;&#x200D;&#x1F3EB; Sensei:</span>
+    <span class="jp-text">ほんを みてください。</span></p>
+    <p class="translation"><em>Hon wo mite kudasai.</em><br>
+    "Por favor, olhem o livro."</p>
+  </div>
+
+  <div class="example-dialog">
+    <p><span class="speaker">&#x1F468;&#x200D;&#x1F3EB; Sensei:</span>
+    <span class="jp-text">いちど いってください。</span></p>
+    <p class="translation"><em>Ichido itte kudasai.</em><br>
+    "Por favor, digam uma vez."</p>
+  </div>
+</div>
+
+<!-- Vocabulário extra do diálogo -->
+<div class="info-box info-tip">
+  <h3>&#x1F4D6; Palavras novas do diálogo</h3>
+  <table style="font-size:0.9rem;">
+    <thead><tr><th>Japonês</th><th>Romaji</th><th>Português</th></tr></thead>
+    <tbody>
+      <tr><td>みなさん</td><td>minasan</td><td>todos (vocês)</td></tr>
+      <tr><td>きょうかしょ</td><td>kyoukasho</td><td>livro didático</td></tr>
+      <tr><td>ページ</td><td>peeji</td><td>página</td></tr>
+      <tr><td>こたえ</td><td>kotae</td><td>resposta</td></tr>
+      <tr><td>ほん</td><td>hon</td><td>livro</td></tr>
+      <tr><td>いちど</td><td>ichido</td><td>uma vez</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 3: POLIDEZ ===== -->
+<h2 style="background: var(--accent3); color: #1A1A2E;">&#x1F48E; Níveis de Polidez</h2>
+
+<div class="card">
+  <h3>De mais direto → mais educado</h3>
+  <table>
+    <thead><tr><th>Forma</th><th>Nível</th><th>Quando usar</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>よんで <em>yonde</em></td>
+        <td><span class="tag tag-red">Casual</span></td>
+        <td>Entre amigos, familiares. Pode soar rude com desconhecidos.</td>
+      </tr>
+      <tr>
+        <td>よんでください <em>yonde kudasai</em></td>
+        <td><span class="tag tag-teal">Educado</span></td>
+        <td>Sala de aula, colegas, situações cotidianas. <strong>USE ESTE.</strong></td>
+      </tr>
+      <tr>
+        <td>よんでくださいませんか <em>yonde kudasaimasen ka</em></td>
+        <td><span class="tag tag-purple">Muito educado</span></td>
+        <td>"Você não faria o favor de ler?" — Com superiores, clientes.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="info-box info-warn">
+  <h3>&#x1F4A1; Regra prática</h3>
+  <p>Na sala de aula japonesa, o professor usa <strong>〜てください</strong> com os alunos. É educado sem ser distante. Alunos respondem ao professor com linguagem <strong>ainda mais polida</strong> (けいご / keigo).</p>
+  <p>Entre colegas de classe, pode-se usar a forma casual (sem ください), especialmente em grupos de estudo informais.</p>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 4: PRÁTICA ===== -->
+<h2 style="background: var(--accent2); color: #1A1A2E;">&#x1F504; Prática e Ação</h2>
+
+<table>
+  <thead><tr><th>&#x1F1EF;&#x1F1F5; Hiragana</th><th>Romaji</th><th>&#x1F1E7;&#x1F1F7; Significado</th></tr></thead>
+  <tbody>
+    <tr><td>れんしゅう</td><td><strong>renshuu</strong></td><td>prática / treino</td></tr>
+    <tr><td>します</td><td><strong>shimasu</strong></td><td>fazer (formal)</td></tr>
+    <tr><td>しましょう</td><td><strong>shimashou</strong></td><td>vamos fazer!</td></tr>
+    <tr><td>もういちど</td><td><strong>mou ichido</strong></td><td>mais uma vez</td></tr>
+    <tr><td>わかりました</td><td><strong>wakarimashita</strong></td><td>entendi</td></tr>
+  </tbody>
+</table>
+
+<div class="example-dialog">
+  <h3>&#x1F4AC; Frases da Aula</h3>
+  <p class="jp-text"><strong>れんしゅう しましょう!</strong></p>
+  <p><em>Renshuu shimashou!</em></p>
+  <p class="translation"><strong>"Vamos praticar!"</strong> &#x1F389;</p>
+
+  <p class="jp-text" style="margin-top:0.8rem;"><strong>もういちど いってください。</strong></p>
+  <p><em>Mou ichido itte kudasai.</em></p>
+  <p class="translation"><strong>"Por favor, diga mais uma vez."</strong></p>
+
+  <p class="jp-text" style="margin-top:0.8rem;"><strong>はい、わかりました。</strong></p>
+  <p><em>Hai, wakarimashita.</em></p>
+  <p class="translation"><strong>"Sim, entendi."</strong></p>
+</div>
+
+<h3>&#x1F44B; Flashcards — Prática</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">れんしゅう</div><div class="romaji">renshuu</div><div class="pt">prática</div></div>
+  <div class="flashcard"><div class="jp">します</div><div class="romaji">shimasu</div><div class="pt">fazer</div></div>
+  <div class="flashcard"><div class="jp">しましょう</div><div class="romaji">shimashou</div><div class="pt">vamos fazer!</div></div>
+  <div class="flashcard"><div class="jp">もういちど</div><div class="romaji">mou ichido</div><div class="pt">mais uma vez</div></div>
+  <div class="flashcard"><div class="jp">わかりました</div><div class="romaji">wakarimashita</div><div class="pt">entendi</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 5: PRONOMES PESSOAIS ===== -->
+<h2 style="background: var(--accent3); color: #1A1A2E;">&#x1F464; Pronomes Pessoais</h2>
+
+<div class="info-box info-note">
+  <h3>&#x2139;&#xFE0F; Contexto Cultural</h3>
+  <p>Em japonês, o <strong>gênero do falante</strong> e a <strong>situação social</strong> determinam qual pronome usar. Diferente do português, onde só existe "eu" e "você", o japonês tem <strong>múltiplas formas</strong> com nuances de gênero, idade, e hierarquia.</p>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>&#x1F1EF;&#x1F1F5; Hiragana</th>
+      <th>Romaji</th>
+      <th>&#x1F1E7;&#x1F1F7; Significado</th>
+      <th>Gênero</th>
+      <th>Situação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>わたし</td><td><strong>watashi</strong></td><td>eu</td>
+      <td><span class="tag tag-teal">Neutro</span></td>
+      <td>Formal / Padrão. Use em qualquer situação.</td>
+    </tr>
+    <tr>
+      <td>わたくし</td><td><strong>watakushi</strong></td><td>eu</td>
+      <td><span class="tag tag-purple">Neutro</span></td>
+      <td>Muito formal. Discursos, negócios, cerimônias.</td>
+    </tr>
+    <tr>
+      <td>ぼく</td><td><strong>boku</strong></td><td>eu</td>
+      <td><span class="tag tag-orange">Masculino</span></td>
+      <td>Casual/íntimo. Homens jovens, entre amigos.</td>
+    </tr>
+    <tr>
+      <td>おれ</td><td><strong>ore</strong></td><td>eu</td>
+      <td><span class="tag tag-red">Masculino</span></td>
+      <td>Bem casual. Entre amigos homens. <strong>Não use</strong> com superiores!</td>
+    </tr>
+    <tr>
+      <td>あたし</td><td><strong>atashi</strong></td><td>eu</td>
+      <td><span class="tag tag-green">Feminino</span></td>
+      <td>Casual. Mulheres jovens, entre amigas.</td>
+    </tr>
+    <tr>
+      <td>あなた</td><td><strong>anata</strong></td><td>você</td>
+      <td><span class="tag tag-teal">Neutro</span></td>
+      <td>Padrão. Evite usar com superiores (use o nome!).</td>
+    </tr>
+    <tr>
+      <td>きみ</td><td><strong>kimi</strong></td><td>você</td>
+      <td><span class="tag tag-orange">Neutro</span></td>
+      <td>Casual/íntimo. Com amigos próximos ou namorado(a).</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="info-box info-warn">
+  <h3>&#x26A0;&#xFE0F; Regra de Ouro</h3>
+  <p><strong>Na dúvida, use わたし (watashi).</strong> É seguro em 100% das situações.</p>
+  <p><strong>Evite あなた (anata) com superiores.</strong> Em vez disso, use o <strong>nome da pessoa + さん (san)</strong>:</p>
+  <p style="text-align:center;font-size:1.1rem;margin:0.5rem 0;">
+    &#x274C; あなたは日本人ですか？ <em>(anata wa nihonjin desu ka?)</em><br>
+    &#x2705; 田中さんは日本人ですか？ <em>(Tanaka-san wa nihonjin desu ka?)</em>
+  </p>
+  <p>Na prática, japoneses <strong>omitem o sujeito</strong> sempre que o contexto já está claro — esta é uma das maiores diferenças do português!</p>
+</div>
+
+<div class="card card-accent4">
+  <h3>&#x1F9E0; Como Memorizar</h3>
+  <table style="font-size:0.9rem;">
+    <thead><tr><th>Pronome</th><th>Dica Mnemônica</th></tr></thead>
+    <tbody>
+      <tr><td>わたし</td><td><strong>Wa</strong>tashi = <strong>Wa</strong>n (万) = universal, todo mundo pode usar</td></tr>
+      <tr><td>ぼく</td><td><strong>Bo</strong>ku = <strong>Bo</strong>y = menino/homem</td></tr>
+      <tr><td>おれ</td><td><strong>Ore</strong> = <strong>O RE</strong>i = "O REi" (sou o rei!) → tom arrogante → só entre amigos</td></tr>
+      <tr><td>あたし</td><td><strong>Ata</strong>shi = <strong>A TA</strong>l (assim, desse jeito) → tom feminino suave</td></tr>
+      <tr><td>あなた</td><td><strong>Ana</strong>ta = <strong>A NA</strong>morada → use com intimidade, não com chefe</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3>&#x1F44B; Flashcards — Pronomes</h3>
+<div class="op-words">
+  <div class="flashcard"><div class="jp">わたし</div><div class="romaji">watashi</div><div class="pt">eu (neutro/formal)</div></div>
+  <div class="flashcard"><div class="jp">わたくし</div><div class="romaji">watakushi</div><div class="pt">eu (muito formal)</div></div>
+  <div class="flashcard"><div class="jp">ぼく</div><div class="romaji">boku</div><div class="pt">eu (masc casual)</div></div>
+  <div class="flashcard"><div class="jp">おれ</div><div class="romaji">ore</div><div class="pt">eu (masc bem casual)</div></div>
+  <div class="flashcard"><div class="jp">あたし</div><div class="romaji">atashi</div><div class="pt">eu (fem casual)</div></div>
+  <div class="flashcard"><div class="jp">あなた</div><div class="romaji">anata</div><div class="pt">você</div></div>
+  <div class="flashcard"><div class="jp">きみ</div><div class="romaji">kimi</div><div class="pt">você (íntimo)</div></div>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 6: TABELA COLA RÁPIDA ===== -->
+<h2 style="background: var(--accent4); color: #fff;">&#x1F9E0; Tabela Cola Rápida</h2>
+
+<div class="cheatsheet-grid">
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--vermillion">&#x1F4DA; Comandos com ください</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>よんでください</td><td>Por favor, leia</td></tr>
+        <tr><td>きいてください</td><td>Por favor, ouça</td></tr>
+        <tr><td>かいてください</td><td>Por favor, escreva</td></tr>
+        <tr><td>みてください</td><td>Por favor, olhe</td></tr>
+        <tr><td>いってください</td><td>Por favor, diga</td></tr>
+        <tr><td>たってください</td><td>Por favor, levante</td></tr>
+        <tr><td>すわってください</td><td>Por favor, sente</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--indigo">&#x1F9E9; Regra て-Form</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>〜く → 〜いて</td><td>かく → かいて</td></tr>
+        <tr><td>〜ぐ → 〜いで</td><td>およぐ → およいで</td></tr>
+        <tr><td>〜む/ぶ/ぬ → 〜んで</td><td>よむ → よんで</td></tr>
+        <tr><td>〜る/う/つ → 〜って</td><td>すわる → すわって</td></tr>
+        <tr><td>〜す → 〜して</td><td>はなす → はなして</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--matcha">&#x1F464; Pronomes</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>わたし</td><td>eu (padrão)</td></tr>
+        <tr><td>ぼく</td><td>eu (masc)</td></tr>
+        <tr><td>おれ</td><td>eu (masc rude)</td></tr>
+        <tr><td>あたし</td><td>eu (fem casual)</td></tr>
+        <tr><td>あなた</td><td>você</td></tr>
+        <tr><td>きみ</td><td>você (íntimo)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="cheatsheet-card">
+    <div class="cheatsheet-card__header cheatsheet-card__header--gold">&#x1F4AC; Frases Úteis</div>
+    <div class="cheatsheet-card__body">
+      <table>
+        <tr><td>れんしゅうしましょう</td><td>Vamos praticar!</td></tr>
+        <tr><td>もういちど いってください</td><td>Diga mais uma vez, p.f.</td></tr>
+        <tr><td>はい、わかりました</td><td>Sim, entendi</td></tr>
+        <tr><td>みなさん</td><td>todos</td></tr>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+
+<!-- ===== SECTION 7: EXERCÍCIOS ===== -->
+<h2 style="background: var(--accent5); color: #fff;">&#x1F3AF; Exercícios</h2>
+
+<div class="quiz">
+  <h3>&#x1F4DD; Nível 1 — Traduza para Japonês</h3>
+  <ol>
+    <li>Por favor, leia. → ?</li>
+    <li>Por favor, escreva. → ?</li>
+    <li>Por favor, ouça. → ?</li>
+    <li>Por favor, sente-se. → ?</li>
+    <li>Por favor, diga mais uma vez. → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>よんでください (yonde kudasai)</li>
+      <li>かいてください (kaite kudasai)</li>
+      <li>きいてください (kiite kudasai)</li>
+      <li>すわってください (suwatte kudasai)</li>
+      <li>もういちど いってください (mou ichido itte kudasai)</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E0; Nível 2 — Qual pronome usar?</h3>
+  <ol>
+    <li>Você é homem, falando com seu chefe. → ?</li>
+    <li>Você é mulher, falando com amigas. → ?</li>
+    <li>Você está numa entrevista de emprego. → ?</li>
+    <li>Você é homem, falando com amigos próximos (bem casual). → ?</li>
+    <li>Você quer chamar a atenção de um colega (não use あなた!). → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>わたし (watashi) — formal com superiores. <strong>Nunca おれ!</strong></li>
+      <li>あたし (atashi) — casual feminino entre amigas</li>
+      <li>わたし (watashi) ou わたくし (watakushi) — máxima formalidade</li>
+      <li>おれ (ore) — bem casual masculino, ou ぼく (boku) se for mais suave</li>
+      <li>Nome + さん! Ex: 田中さん (Tanaka-san). Evite あなた.</li>
+    </ol>
+  </details>
+</div>
+
+<div class="quiz">
+  <h3>&#x1F9E9; Nível 3 — Conjugue para forma て</h3>
+  <ol>
+    <li>かく (escrever) → ?</li>
+    <li>よむ (ler) → ?</li>
+    <li>いう (dizer) → ?</li>
+    <li>たつ (levantar) → ?</li>
+    <li>きく (ouvir) → ?</li>
+  </ol>
+  <details><summary>Ver Respostas</summary>
+    <ol>
+      <li>かいて (kaite) — く→いて</li>
+      <li>よんで (yonde) — む→んで</li>
+      <li>いって (itte) — う→って</li>
+      <li>たって (tatte) — つ→って</li>
+      <li>きいて (kiite) — く→いて</li>
+    </ol>
+  </details>
+</div>
+
+<hr>
+
+<!-- ===== SECTION 8: NAVEGAÇÃO ===== -->
+<h2 style="background: var(--accent6); color: #fff;">&#x1F517; Navegação</h2>
+
+<nav class="footer-nav">
+  <a href="Aula 1.html">&larr; Aula 1</a>
+  <a href="Aula 3.html">Aula 3 &rarr;</a>
+</nav>
+
+</body>
+</html>

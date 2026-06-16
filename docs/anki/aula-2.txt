@@ -1,0 +1,41 @@
+Frente	Verso
+よむ	<b>ler</b> (yomu)
+きく	<b>ouvir / escutar</b> (kiku)
+かく	<b>escrever</b> (kaku)
+みる	<b>ver / olhar</b> (miru)
+いう	<b>dizer</b> (iu)
+たつ	<b>levantar(-se)</b> (tatsu)
+すわる	<b>sentar(-se)</b> (suwaru)
+よんでください	<b>Por favor, leia</b> (yonde kudasai)
+きいてください	<b>Por favor, ouça</b> (kiite kudasai)
+かいてください	<b>Por favor, escreva</b> (kaite kudasai)
+みてください	<b>Por favor, olhe / veja</b> (mite kudasai)
+いってください	<b>Por favor, diga</b> (itte kudasai)
+たってください	<b>Por favor, levante-se</b> (tatte kudasai)
+すわってください	<b>Por favor, sente-se</b> (suwatte kudasai)
+みなさん	<b>todos / vocês</b> (minasan)
+きょうかしょ	<b>livro didático</b> (kyoukasho)
+ページ	<b>página</b> (peeji)
+こたえ	<b>resposta</b> (kotae)
+ほん	<b>livro</b> (hon)
+いちど	<b>uma vez</b> (ichido)
+れんしゅう	<b>prática / treino</b> (renshuu)
+します	<b>fazer</b> (shimasu) [formal]
+しましょう	<b>vamos fazer!</b> (shimashou)
+もういちど	<b>mais uma vez</b> (mou ichido)
+わかりました	<b>entendi / compreendi</b> (wakarimashita)
+わたし	<b>eu</b> (watashi)<br>neutro / formal — use em qualquer situação
+わたくし	<b>eu</b> (watakushi)<br>muito formal — discursos, negócios, cerimônias
+ぼく	<b>eu</b> (boku)<br>masculino casual — entre amigos
+おれ	<b>eu</b> (ore)<br>masculino bem casual — <b>não use com superiores!</b>
+あたし	<b>eu</b> (atashi)<br>feminino casual — entre amigas
+あなた	<b>você</b> (anata)<br>padrão — evite com superiores; prefira [nome]+さん
+きみ	<b>você</b> (kimi)<br>íntimo / casual — amigos próximos ou namorado(a)
+〜てください	<b>Estrutura:</b> [Verbo forma て] + ください = "Por favor, [verbo]!"<br><br>Ex: よんでください = Por favor, leia (yonde kudasai)<br>Ex: すわってください = Por favor, sente-se (suwatte kudasai)
+Regras da forma て:<br>〜く → 〜いて<br>〜む/ぶ/ぬ → 〜んで<br>〜る/う/つ → 〜って<br>〜す → 〜して	<b>Como conjugar a forma て:</b><br><br>〜く → 〜いて<br>Ex: かく → かいて (kaku → kaite)<br><br>〜む/ぶ/ぬ → 〜んで<br>Ex: よむ → よんで (yomu → yonde)<br><br>〜る/う/つ → 〜って<br>Ex: すわる → すわって (suwaru → suwatte)<br><br>〜す → 〜して<br>Ex: はなす → はなして (hanasu → hanashite)
+⚠️ いく (iku) → いって (itte)	<b>Exceção:</b> いく = "ir"<br>Regra esperada: いく → いいて<br><b>Mas é:</b> いく → いって (itte)<br><br>⚠️ Cuidado: いって pode ser "vá" (de いく) ou "diga" (de いう). O contexto decide!
+Níveis de polidez: よんで / よんでください / よんでくださいませんか	<b>Três níveis:</b><br><br>よんで (yonde) = <b>casual</b> — entre amigos, familiares<br><br>よんでください (yonde kudasai) = <b>educado</b> — sala de aula, colegas, cotidiano. <b>Use este!</b><br><br>よんでくださいませんか (yonde kudasaimasen ka) = <b>muito educado</b> — com superiores, clientes
+きょうかしょを よんでください。	<b>Por favor, leia o livro didático.</b> (Kyoukasho wo yonde kudasai)<br><br>— 10ページです (Juubeeji desu = É a página 10)
+れんしゅう しましょう！	<b>Vamos praticar!</b> (Renshuu shimashou!)
+はい、わかりました。	<b>Sim, entendi.</b> (Hai, wakarimashita)
+もういちど いってください。	<b>Por favor, diga mais uma vez.</b> (Mou ichido itte kudasai)
